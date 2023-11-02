@@ -33,6 +33,9 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+
+    --left-gradient: #ff0f7b;
+    --right-gradient: #f89b29;
   }
 
   .dark {
@@ -63,11 +66,12 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
+    --left-gradient: #ff0f7b;
+    --right-gradient: #f89b29;
   }
 
   .custom {
-    --left-gradient: #fcb0f3;
-    --right-gradient: #3d05dd;
   }
 }
 
@@ -103,3 +107,13 @@
   width: 100%;
 }
 
+.gradient {
+  background: linear-gradient(
+    to right,
+    var(--left-gradient),
+    var(--right-gradient)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}

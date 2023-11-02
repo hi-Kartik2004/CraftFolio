@@ -1,12 +1,10 @@
 import Link from "next/link";
 import { BiLogoGmail } from "react-icons/bi";
 import { BsDownload, BsGithub } from "react-icons/bs";
-import { SiPrisma } from "react-icons/si";
-import LogosTooltip from "./LogosTooltip";
-import { Button } from "./ui/button";
-import { GiTechnoHeart } from "react-icons/gi";
-import LeftLogos from "./LeftLogos";
-import RightLogos from "./RightLogos";
+import LeftLogos from "../components/LeftLogos";
+import RightLogos from "../components/RightLogos";
+import { Button } from "../components/ui/button";
+import { Separator } from "../components/ui/separator";
 
 function HeroSection() {
   return (
@@ -84,6 +82,8 @@ function HeroSection() {
         <div className="mt-6">
           <RightLogos className="mt-12" />
         </div>
+
+        <Separator orientation="horizontal" className="mt-6" />
       </div>
     </section>
   );
