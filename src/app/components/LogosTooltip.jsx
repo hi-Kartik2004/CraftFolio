@@ -31,85 +31,85 @@ function LogosTooltip({ icon, message }) {
           {icon === "TbBrandNextjs" && (
             <TbBrandNextjs
               className=" opacity-50 text-muted-foreground"
-              size={100}
+              size={75}
             />
           )}
           {icon === "FaReact" && (
-            <FaReact className=" opacity-50 text-muted-foreground" size={100} />
+            <FaReact className=" opacity-50 text-muted-foreground" size={75} />
           )}
           {icon === "SiTailwindcss" && (
             <SiTailwindcss
               className=" opacity-50 text-muted-foreground"
-              size={100}
+              size={75}
             />
           )}
           {icon === "DiCss3" && (
-            <DiCss3 className=" opacity-50 text-muted-foreground" size={100} />
+            <DiCss3 className=" opacity-50 text-muted-foreground" size={75} />
           )}
           {icon === "RiJavascriptFill" && (
             <RiJavascriptFill
               className=" opacity-50 text-muted-foreground"
-              size={100}
+              size={75}
             />
           )}
           {icon === "AiFillHtml5" && (
             <AiFillHtml5
               className=" opacity-50 text-muted-foreground"
-              size={100}
+              size={75}
             />
           )}
           {icon === "SiMysql" && (
-            <SiMysql className=" opacity-50 text-muted-foreground" size={100} />
+            <SiMysql className=" opacity-50 text-muted-foreground" size={75} />
           )}
           {icon === "SiPrisma" && (
             <SiPrisma
               className=" opacity-50 text-muted-foreground"
-              size={100}
+              size={75}
             />
           )}
           {icon === "BiLogoPhp" && (
             <BiLogoPhp
               className=" opacity-50 text-muted-foreground"
-              size={100}
+              size={75}
             />
           )}
           {icon === "SiCplusplus" && (
             <SiCplusplus
               className=" opacity-50 text-muted-foreground"
-              size={100}
+              size={75}
             />
           )}
           {icon === "TbBrandFramerMotion" && (
             <TbBrandFramerMotion
               className=" opacity-50 text-muted-foreground"
-              size={100}
+              size={75}
             />
           )}
           {icon === "BsGit" && (
-            <BsGit className=" opacity-50 text-muted-foreground" size={100} />
+            <BsGit className=" opacity-50 text-muted-foreground" size={75} />
           )}
           {icon === "SiRadixui" && (
             <SiRadixui
               className=" opacity-50 text-muted-foreground"
-              size={100}
+              size={75}
             />
           )}
           {icon === "BiLogoFigma" && (
             <BiLogoFigma
               className=" opacity-50 text-muted-foreground"
-              size={100}
+              size={75}
             />
           )}
           {icon === "FaUbuntu" && (
             <FaUbuntu
               className=" opacity-50 text-muted-foreground"
-              size={100}
+              size={75}
             />
           )}
           {icon === "BsWindows" && (
             <BsWindows
               className=" opacity-50 text-muted-foreground"
-              size={100}
+              size={75}
             />
           )}
         </TooltipTrigger>

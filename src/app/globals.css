@@ -71,6 +71,15 @@
   }
 }
 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
@@ -89,16 +98,8 @@
   border-radius: 10px;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
 .container {
   max-width: 1200px;
   width: 100%;
 }
+

@@ -6,6 +6,7 @@ import LogosTooltip from "./LogosTooltip";
 import { Button } from "./ui/button";
 import { GiTechnoHeart } from "react-icons/gi";
 import LeftLogos from "./LeftLogos";
+import RightLogos from "./RightLogos";
 
 function HeroSection() {
   return (
@@ -73,23 +74,15 @@ function HeroSection() {
           </div>
         </div>
       </div>
-      <div className="mt-16">
-        <div className="flex gap-2 items-center mb-6">
+      <div className="mt-12">
+        {/* <div className="flex gap-2 items-center mb-6">
           <GiTechnoHeart />
           <h2 className="text-lg">Technologies Known</h2>
-        </div>
+        </div> */}
 
         <LeftLogos className="mt-6" />
-
-        <div className="flex gap-10 overflow-x-auto mt-4">
-          <LogosTooltip icon="BiLogoPhp" message="PHP" />
-          <LogosTooltip icon="SiCplusplus" message="C++" />
-          <LogosTooltip icon="TbBrandFramerMotion" message="Framer Motion" />
-          <LogosTooltip icon="BsGit" message="Git" />
-          <LogosTooltip icon="SiRadixui" message="Radix UI" />
-          <LogosTooltip icon="BiLogoFigma" message="Figma" />
-          <LogosTooltip icon="FaUbuntu" message="Ubuntu" />
-          <LogosTooltip icon="BsWindows" message="Windows" />
+        <div className="mt-6">
+          <RightLogos className="mt-12" />
         </div>
       </div>
     </section>
