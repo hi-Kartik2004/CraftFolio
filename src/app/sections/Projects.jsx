@@ -30,13 +30,35 @@ function Projects() {
       projectGithubLink: "https://github.com/hi-kartik2004",
       projectHostedLink: "https://hi-kartik2004.github.io/Portfolio",
     },
-
     {
       projectId: 2,
       projectName: "Project2",
       projectDescription:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae iure molestiae necessitatibus.",
-      projectImage: "projects/next.svg",
+      projectImage: "https://i.postimg.cc/sDqdnrwS/image.png",
+      projectType: "frontend",
+      projectTechStack: ["react", "nextjs", "tailwindcss"],
+      projectGithubLink: "https://github.com/hi-kartik2004",
+      projectHostedLink: "https://hi-kartik2004.github.io/Portfolio",
+    },
+    {
+      projectId: 5,
+      projectName: "Project5",
+      projectDescription:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae iure molestiae necessitatibus.",
+      projectImage: "https://i.postimg.cc/NFVs7rK2/image.png",
+      projectType: "frontend",
+      projectTechStack: ["react", "nextjs", "tailwindcss"],
+      projectGithubLink: "https://github.com/hi-kartik2004",
+      projectHostedLink: "https://hi-kartik2004.github.io/Portfolio",
+    },
+
+    {
+      projectId: 4,
+      projectName: "frontend",
+      projectDescription:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae iure molestiae necessitatibus.",
+      projectImage: "https://i.postimg.cc/mkr31K92/image.png",
       projectType: "frontend",
       projectTechStack: ["react", "nextjs", "tailwindcss"],
       projectGithubLink: "https://github.com/hi-kartik2004",
@@ -47,23 +69,37 @@ function Projects() {
       projectName: "Project3",
       projectDescription:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae iure molestiae necessitatibus.",
-      projectImage: "projects/next.svg",
+      projectImage:
+        "https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/thumbnail-default@2x.png",
       projectType: "backend",
       projectTechStack: ["react", "nextjs", "tailwindcss"],
       projectGithubLink: "https://github.com/hi-kartik2004",
       projectHostedLink: "https://hi-kartik2004.github.io/Portfolio",
     },
-    {
-      projectId: 4,
-      projectName: "design",
-      projectDescription:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae iure molestiae necessitatibus.",
-      projectImage: "projects/next.svg",
-      projectType: "design",
-      projectTechStack: ["react", "nextjs", "tailwindcss"],
-      projectGithubLink: "https://github.com/hi-kartik2004",
-      projectHostedLink: "https://hi-kartik2004.github.io/Portfolio",
-    },
+    // {
+    //   projectId: 6,
+    //   projectName: "Project3",
+    //   projectDescription:
+    //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae iure molestiae necessitatibus.",
+    //   projectImage:
+    //     "https://hi-kartik2004.github.io/Portfolio/assets/img/wie_v13-02.png",
+    //   projectType: "design",
+    //   projectTechStack: ["react", "nextjs", "tailwindcss"],
+    //   projectGithubLink: "https://github.com/hi-kartik2004",
+    //   projectHostedLink: "https://hi-kartik2004.github.io/Portfolio",
+    // },
+    // {
+    //   projectId: 7,
+    //   projectName: "Project3",
+    //   projectDescription:
+    //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae iure molestiae necessitatibus.",
+    //   projectImage:
+    //     "https://i.postimg.cc/cC9QZTrg/image.png",
+    //   projectType: "design",
+    //   projectTechStack: ["react", "nextjs", "tailwindcss"],
+    //   projectGithubLink: "https://github.com/hi-kartik2004",
+    //   projectHostedLink: "https://hi-kartik2004.github.io/Portfolio",
+    // },
   ];
 
   return (

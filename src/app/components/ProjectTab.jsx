@@ -19,6 +19,7 @@ function ProjectTab({ projectDetails, value }) {
     >
       {
         // filter the projectDetails array based on the projectType with value frontend
+
         projectDetails
           .filter((project) => project.projectType === value || value === "all")
           .map((project) => {
@@ -59,7 +60,7 @@ function ProjectTab({ projectDetails, value }) {
                   <img
                     src={project.projectImage}
                     alt={project.projectName}
-                    className="bg-secondary-foreground rounded-md h-[200px] w-full object-cover"
+                    className="bg-secondary-foreground rounded-md h-[200px] w-full object-cover object-top"
                   />
                 </CardContent>
               </Card>
