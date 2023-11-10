@@ -8,11 +8,11 @@ import { Separator } from "../components/ui/separator";
 
 function HeroSection() {
   return (
-    <section className="container px-4 py-2">
+    <section className="container">
       <div className="headings flex justify-between mt-10 flex-col items-center">
         <h1 className="text-3xl font-bold">
           Lorem ipsum dolor sit amet consectetur{" "}
-          <span className="bg-gradient-to-r from-[#ff0f7b] to-[#f89b29] text-clip bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-left-gradient to-right-gradient text-clip bg-clip-text text-transparent">
             adipisicing
           </span>{" "}
           elit. Maxime{" "}

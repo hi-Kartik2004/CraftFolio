@@ -72,6 +72,8 @@
   }
 
   .custom {
+    --left-gradient: #ff0f7b;
+    --right-gradient: #f89b29;
   }
 }
 
