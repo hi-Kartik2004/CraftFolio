@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BiLogoGmail } from "react-icons/bi";
+import { BiCode, BiLogoGmail } from "react-icons/bi";
 import { BsDownload, BsGithub } from "react-icons/bs";
 import LeftLogos from "../components/LeftLogos";
 import RightLogos from "../components/RightLogos";
@@ -8,7 +8,8 @@ import { Separator } from "../components/ui/separator";
 
 function HeroSection() {
   return (
-    <section className="container">
+    <section className="container relative">
+      <BiCode className="absolute right-2 top-0 text-xl bg-muted rounded-sm" />
       <div className="headings flex justify-between mt-10 flex-col items-center">
         <h1 className="text-3xl font-bold">
           Lorem ipsum dolor sit amet consectetur{" "}

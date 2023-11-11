@@ -9,6 +9,7 @@ import {
 } from "../components/ui/hover-card";
 import { Button } from "../components/ui/button";
 import SkillsCard from "../components/SkillsCard";
+import { BiCode } from "react-icons/bi";
 
 const skillsData = [
   {
@@ -115,7 +116,8 @@ function Skills() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <section className="container">
+    <section className="container relative">
+      <BiCode className="absolute right-2 top-0 text-xl bg-muted rounded-sm" />
       <div className="flex justify-between flex-wrap items-center">
         <SectionHeading
           title="My "

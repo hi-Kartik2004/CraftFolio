@@ -3,12 +3,19 @@ import React from "react";
 import CodeSnippet from "../components/CodeSnippet";
 
 import SectionHeading from "../components/SectionHeading";
+import { BiCode } from "react-icons/bi";
 
 function AboutMe() {
   const Code = { code: "import something\ndo something\nNext Line here" };
   return (
-    <section className="container mt-12">
-     <SectionHeading title="About" gradientText="Me" description="lorem feifnien ienirg inerign ierg" badge="proud Geek_" />
+    <section className="container mt-12 relative">
+      <BiCode className="absolute right-2 top-0 text-xl bg-muted rounded-sm" />
+      <SectionHeading
+        title="About"
+        gradientText="Me"
+        description="lorem feifnien ienirg inerign ierg"
+        badge="proud Geek_"
+      />
 
       <div className="mt-16 flex justify-center flex-col items-center">
         <div className="flex max-w-[550px] w-full relative justify-center">

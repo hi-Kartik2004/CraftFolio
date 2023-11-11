@@ -11,14 +11,14 @@ function SectionHeading({
 }) {
   return (
     <div>
-      <Badge className="my-2">
+      <Badge className="my-4">
         {" "}
         {githubBadge ? <BsGithub className="mr-2" /> : ""} {badge}
       </Badge>
-      <h1 className="font-bold text-2xl mb-2">
+      <h1 className="font-bold text-4xl mb-2">
         {title}
         <span className="bg-gradient-to-b from-left-gradient to-right-gradient bg-clip-text text-transparent">
-          {gradientText}
+          {" " + gradientText}
         </span>
       </h1>
       <p className=" text-muted-foreground">{description}</p>

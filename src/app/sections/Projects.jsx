@@ -5,6 +5,7 @@ import { Badge } from "../components/ui/badge";
 import { Tabs, TabsList, TabsTrigger } from "../components/ui/tabs";
 import SectionHeading from "../components/SectionHeading";
 import SearchTech from "../components/SearchTech";
+import { BiCode } from "react-icons/bi";
 
 function Projects() {
   const projectDetails = [
@@ -105,7 +106,8 @@ function Projects() {
   ];
 
   return (
-    <section className="container">
+    <section className="container relative">
+      <BiCode className="absolute right-2 top-0 text-xl bg-muted rounded-sm" />
       <div className="flex flex-wrap justify-between items-center gap-4">
         <SectionHeading
           title="My"

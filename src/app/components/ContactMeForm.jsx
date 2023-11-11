@@ -53,7 +53,7 @@ export default function ContactMeForm() {
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="Your Beautiful Name" {...field} />
               </FormControl>
               <FormDescription>
                 It would be nicer if I know your name.
@@ -69,7 +69,7 @@ export default function ContactMeForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="Your Email" {...field} />
               </FormControl>
               <FormDescription>
                 I would reach out to you on this email.
@@ -94,9 +94,9 @@ export default function ContactMeForm() {
             //   <FormMessage />
             // </FormItem>
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Message</FormLabel>
               <FormControl>
-                <Textarea placeholder="Hi Kartikeya" {...field} />
+                <Textarea placeholder="Hi Kartikeya, ..." {...field} />
               </FormControl>
               <FormDescription>
                 I would reach out to you on this email.
