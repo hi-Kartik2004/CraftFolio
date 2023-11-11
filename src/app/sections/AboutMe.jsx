@@ -1,20 +1,14 @@
 "use client";
 import React from "react";
 import CodeSnippet from "../components/CodeSnippet";
-import { Badge } from "../components/ui/badge";
+
+import SectionHeading from "../components/SectionHeading";
 
 function AboutMe() {
   const Code = { code: "import something\ndo something\nNext Line here" };
   return (
     <section className="container mt-12">
-      <div>
-        <Badge className="my-2">Proud Geek_</Badge>
-        <h1 className="font-bold text-2xl mb-2">About <span className="bg-gradient-to-b from-left-gradient to-right-gradient bg-clip-text text-transparent">Me :)</span></h1>
-        <p className=" text-muted-foreground">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non,
-          reprehenderit. Aut, quae.
-        </p>
-      </div>
+     <SectionHeading title="About" gradientText="Me" description="lorem feifnien ienirg inerign ierg" badge="proud Geek_" />
 
       <div className="mt-16 flex justify-center flex-col items-center">
         <div className="flex max-w-[550px] w-full relative justify-center">

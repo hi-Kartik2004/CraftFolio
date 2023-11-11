@@ -24,7 +24,7 @@ function ProjectTab({ projectDetails, value }) {
           .filter((project) => project.projectType === value || value === "all")
           .map((project) => {
             return (
-              <Card className="bg-card  max-w-[400px] w-full">
+              <Card className="bg-card  max-w-[400px] w-full hover:bg-primary-foreground duration-500">
                 <CardHeader>
                   <div className="mb-2 flex justify-between">
                     <Badge className="bg-right-gradient">
@@ -47,14 +47,14 @@ function ProjectTab({ projectDetails, value }) {
                       {project.projectName}
                     </Link>
                   </CardTitle>
-                  <CardDescription>
+                  <div className="text-sm text-muted-foreground">
                     {project.projectDescription}
                     <div className="mt-4 flex gap-2 flex-wrap">
                       {project.projectTechStack.map((tech) => {
                         return <Badge>{tech}</Badge>;
                       })}
                     </div>
-                  </CardDescription>
+                  </div>
                 </CardHeader>
                 <CardContent>
                   <img

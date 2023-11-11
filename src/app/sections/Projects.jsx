@@ -3,6 +3,8 @@ import { BsGithub } from "react-icons/bs";
 import ProjectTab from "../components/ProjectTab";
 import { Badge } from "../components/ui/badge";
 import { Tabs, TabsList, TabsTrigger } from "../components/ui/tabs";
+import SectionHeading from "../components/SectionHeading";
+import SearchTech from "../components/SearchTech";
 
 function Projects() {
   const projectDetails = [
@@ -104,20 +106,16 @@ function Projects() {
 
   return (
     <section className="container">
-      <div>
-        <Badge className="gap-2 justify-center mb-2">
-          <BsGithub /> hi-kartik2004
-        </Badge>
-        <h2 className=" mb-2 text-2xl font-bold">
-          My{" "}
-          <span className=" bg-gradient-to-b from-left-gradient to-right-gradient text-clip bg-clip-text text-transparent">
-            Projects ;)
-          </span>
-        </h2>
-        <p className="text-muted-foreground">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi expedita
-          laboriosam quidem!
-        </p>
+      <div className="flex flex-wrap justify-between items-center gap-4">
+        <SectionHeading
+          title="My"
+          gradientText="Projects!"
+          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi expedita laboriosam quidem!"
+          badge="hi-kartik2004"
+          githubBadge={true}
+        />
+
+        <SearchTech />
       </div>
 
       <div className="mt-10">
