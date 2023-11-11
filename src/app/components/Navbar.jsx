@@ -65,7 +65,7 @@ function Navbar() {
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Link
-                  href={data.linkedinId}
+                  href={data.linkedinUrl}
                   className="flex gap-2 items-center"
                   target="_blank"
                 >

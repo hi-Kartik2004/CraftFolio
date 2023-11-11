@@ -9,7 +9,7 @@ const data = {
   resumeLink:
     "https://hi-kartik2004.github.io/Portfolio/assets/pdf/Kartikeya_Resume_June_2023.pdf",
   githubId: "hi-kartik2004",
-  linkedinId: "https://www.linkedin.com/in/kartikeya-saini-65504b240/",
+  linkedinUrl: "https://www.linkedin.com/in/kartikeya-saini-65504b240/",
   WhatsAppLink: "https://wa.me/916360006359",
   email: "kudlu2004@gmail.com",
   HeroTitle: () => (
@@ -99,6 +99,7 @@ const data = {
     "Adobe Illustrator",
     "Video Editing",
     "Content Creation/Curation",
+    "BootStrap 5",
   ],
   projectDetails: [
     {
@@ -281,8 +282,8 @@ const data = {
       progress: 90,
     },
   ],
+
   FooterBadge: "Thanks for visiting!",
-  FooterTitle: "Kartikeya Saini",
   FooterDescription:
     "I am available on almost every social media. You can message me, I will reply within 24 hours.",
   FooterSliderTitle:

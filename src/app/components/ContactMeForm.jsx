@@ -16,6 +16,7 @@ import {
 } from "./ui/form";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
+import data from "../data";
 
 const formSchema = z.object({
   name: z.string().min(2, {

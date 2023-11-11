@@ -128,13 +128,16 @@ function FooterSection() {
                 </p>
               </Button>
               <div className="flex gap-4 text-muted-foreground">
-                <Link href="/">
+                <Link href={data.linkedinUrl} target="_blank">
                   <BsLinkedin className="text-2xl hover:text-primary duration-500" />
                 </Link>
-                <Link href="/">
+                <Link
+                  href={`https://github.com/${data.githubId}`}
+                  target="_blank"
+                >
                   <BsGithub className="text-2xl hover:text-primary duration-500" />
                 </Link>
-                <Link href="/">
+                <Link href={data.WhatsAppLink} target="_blank">
                   <BsWhatsapp className="text-2xl hover:text-primary duration-500" />
                 </Link>
               </div>
