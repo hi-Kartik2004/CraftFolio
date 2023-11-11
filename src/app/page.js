@@ -6,6 +6,7 @@ import HeroSection from "./sections/HeroSection";
 import Projects from "./sections/Projects";
 import Skills from "./sections/Skills";
 import FooterSection from "./sections/FooterSection";
+import Foot from "./components/Foot";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Skills />
       <Separator className="my-12" />
       <FooterSection />
+      <Foot />
       {/* <div className="min-h-[100vh]"></div> */}
     </main>
   );

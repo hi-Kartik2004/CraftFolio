@@ -9,6 +9,17 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import data from "../data";
+
+const NavData = {
+  name: "Kartikeya Saini",
+  subtitle: "B.Tech, ISE UVCE (Batch of 2025)",
+  image: "https://avatars.githubusercontent.com/u/111000515?v=4",
+  resumeLink:
+    "https://hi-kartik2004.github.io/Portfolio/assets/pdf/Kartikeya_Resume_June_2023.pdf",
+  githubId: "hi-kartik2004",
+  linkedinId: "https://www.linkedin.com/in/kartikeya-saini-65504b240/",
+};
 
 function Navbar() {
   return (
@@ -19,14 +30,14 @@ function Navbar() {
             <DropdownMenuTrigger asChild>
               <div className="flex gap-4 items-center cursor-pointer">
                 <img
-                  src="https://avatars.githubusercontent.com/u/111000515?v=4"
+                  src={data.image}
                   alt="logo"
                   className="h-12 w-12 rounded-full select-none"
                 />
                 <div className="flex flex-col gap-[0.15rem]">
-                  <span className="text-md font-bold">Kartikeya Saini</span>
+                  <span className="text-md font-bold">{data.NavName}</span>
                   <p className="text-[0.7rem] text-muted-foreground">
-                    B.Tech, ISE UVCE (Batch of 2025)
+                    {data.NavSubtitle}
                   </p>
                 </div>
               </div>
@@ -34,7 +45,7 @@ function Navbar() {
             <DropdownMenuContent align="start" className="ml-2 mt-1">
               <DropdownMenuItem>
                 <Link
-                  href="https://hi-kartik2004.github.io/Portfolio/assets/pdf/Kartikeya_Resume_June_2023.pdf"
+                  href={data.resumeLink}
                   target="_blank"
                   className="flex gap-2 items-center"
                 >
@@ -45,7 +56,7 @@ function Navbar() {
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Link
-                  href="https://github.com/hi-kartik2004"
+                  href={`https://github.com/${NavData.githubId}`}
                   className="flex gap-2 items-center"
                   target="_blank"
                 >
@@ -54,7 +65,7 @@ function Navbar() {
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Link
-                  href="https://www.linkedin.com/in/kartikeya-saini-65504b240/"
+                  href={data.linkedinId}
                   className="flex gap-2 items-center"
                   target="_blank"
                 >

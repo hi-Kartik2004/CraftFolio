@@ -16,7 +16,7 @@ function CodeSnippet({ text, language, wrapLines, showLineNumbers }) {
   }
 
   return (
-    <pre className="rounded-md bg-primary-foreground border border-1 border-dashed px-4 pb-4 pt-8 overflow-auto relative max-h-[700px]">
+    <pre className="rounded-md bg-primary-foreground border border-1 border-dashed px-4 pb-4 pt-8 overflow-auto relative max-h-[600px]">
       {copied ? (
         <MdOutlineDownloadDone className="absolute right-2 top-4 bg-muted rounded-sm text-2xl p-1" />
       ) : (
