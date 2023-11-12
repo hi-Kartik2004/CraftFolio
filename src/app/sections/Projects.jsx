@@ -6,8 +6,9 @@ import SearchTech from "../components/SearchTech";
 import { BiCode } from "react-icons/bi";
 import CodeSnippet from "../components/CodeSnippet";
 import { IoIosArrowBack } from "react-icons/io";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import data from "../data";
+import CustomSizeSkeleton from "../components/CustomSizeSkeleton";
 
 const code = `<section className="container mt-12 relative">
 {showCode ? (
@@ -75,6 +76,15 @@ function Projects() {
 
   function handleShowCode() {
     setShowCode(!showCode);
+  }
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+  if (loading) {
+    return <CustomSizeSkeleton code={code} />;
   }
   return (
     <section className="container mt-12 relative">

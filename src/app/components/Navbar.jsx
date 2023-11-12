@@ -11,6 +11,8 @@ import {
 } from "./ui/dropdown-menu";
 import data from "../data";
 import { BiLogoGmail } from "react-icons/bi";
+import { useEffect, useState } from "react";
+import { Skeleton } from "./ui/skeleton";
 
 const NavData = {
   name: "Kartikeya Saini",
@@ -23,6 +25,16 @@ const NavData = {
 };
 
 function Navbar() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return <Skeleton className="h-16 m-2"></Skeleton>;
+  }
+
   return (
     <nav className="border-b-2">
       <div className="container flex gap-5 justify-between px-4 py-2 items-center hover: bg-none outline-none">

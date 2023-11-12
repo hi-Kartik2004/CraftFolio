@@ -7,7 +7,7 @@ import RightLogos from "../components/RightLogos";
 import { Button } from "../components/ui/button";
 import { Separator } from "../components/ui/separator";
 import { IoIosArrowBack } from "react-icons/io";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CodeSnippet from "../components/CodeSnippet";
 import data from "../data";
 import {
@@ -19,6 +19,9 @@ import {
   SheetTrigger,
 } from "../components/ui/sheet";
 import ContactMeForm from "../components/ContactMeForm";
+import { motion } from "framer-motion";
+import { Skeleton } from "../components/ui/skeleton";
+import CustomSizeSkeleton from "../components/CustomSizeSkeleton";
 
 const code = `
 <section className="container mt-12 relative">
@@ -102,14 +105,28 @@ const code = `
 </section>`;
 
 function HeroSection() {
+  const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
 
   function handleShowCode() {
     setShowCode(!showCode);
   }
+
+  if (loading) {
+    return <CustomSizeSkeleton code={code} />;
+  }
   return (
     <>
-      <section className="container mt-12 relative">
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ y: "-10px", opacity: 100 }}
+        transition={{ duration: 0.5 }}
+        className="container mt-12 relative"
+      >
         {showCode ? (
           <IoIosArrowBack
             className="absolute right-2 -top-6 text-xl bg-muted rounded-sm cursor-pointer"
@@ -127,11 +144,28 @@ function HeroSection() {
           </div>
         ) : (
           <>
-            <div className="headings flex justify-between mt-10 flex-col">
+            <motion.div
+              initial={{ opacity: 0, y: "10px" }}
+              animate={{ opacity: 100, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="headings flex justify-between mt-10 flex-col"
+            >
               <h1 className="text-3xl font-bold">{data.HeroTitle()}</h1>
-            </div>
-            <p className="text-muted-foreground mt-4">{data.HeroSubtitle()}</p>
-            <div className="mt-6 flex gap-4 items-center">
+            </motion.div>
+            <motion.p
+              initial={{ opacity: 0, y: "10px" }}
+              animate={{ opacity: 100, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-muted-foreground mt-4"
+            >
+              {data.HeroSubtitle()}
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 100, y: 0 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="mt-6 flex gap-4 items-center"
+            >
               <Button
                 asChild
                 //   className="bg-gradient-to-r from-[#ffa585] to-[#ffeda0]"
@@ -173,9 +207,14 @@ function HeroSection() {
                   </div>
                 </SheetContent>
               </Sheet>
-            </div>
+            </motion.div>
 
-            <div className="mt-12">
+            <motion.div
+              initial={{ opacity: 0, y: "10px" }}
+              animate={{ opacity: 100, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="mt-12"
+            >
               <Button asChild variant="link" className="-ml-3">
                 <Link
                   href={`https://github.com/${data.githubId}`}
@@ -195,7 +234,7 @@ function HeroSection() {
                   />
                 </div>
               </div>
-            </div>
+            </motion.div>
             <div className="mt-12">
               {/* <div className="flex gap-2 items-center mb-6">
           <GiTechnoHeart />
@@ -211,7 +250,7 @@ function HeroSection() {
             </div>
           </>
         )}
-      </section>
+      </motion.section>
     </>
   );
 }

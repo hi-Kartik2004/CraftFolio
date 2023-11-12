@@ -1,11 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CodeSnippet from "../components/CodeSnippet";
 
 import SectionHeading from "../components/SectionHeading";
 import { BiCode } from "react-icons/bi";
 import { IoIosArrowBack } from "react-icons/io";
 import data from "../data";
+import CustomSizeSkeleton from "../components/CustomSizeSkeleton";
 
 const code = ` <section className="container mt-12 relative">
 {showCode ? (
@@ -65,10 +66,20 @@ const code = ` <section className="container mt-12 relative">
 
 function AboutMe() {
   const [showCode, setShowCode] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+  if (loading) {
+    return <CustomSizeSkeleton code={code} />;
+  }
 
   function handleShowCode() {
     setShowCode(!showCode);
   }
+
+
   return (
     <section className="container mt-12 relative">
       {showCode ? (

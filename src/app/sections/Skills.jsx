@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SectionHeading from "../components/SectionHeading";
 import SearchTech from "../components/SearchTech";
 import {
@@ -13,6 +13,7 @@ import { BiCode } from "react-icons/bi";
 import CodeSnippet from "../components/CodeSnippet";
 import { IoIosArrowBack } from "react-icons/io";
 import data from "../data";
+import CustomSizeSkeleton from "../components/CustomSizeSkeleton";
 
 const code = ` <section className="container relative">
 {showCode ? (
@@ -89,7 +90,15 @@ function Skills() {
   function handleShowCode() {
     setShowCode(!showCode);
   }
+  
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+  if (loading) {
+    return <CustomSizeSkeleton code={code} />;
+  }
   return (
     <section className="container relative">
       {showCode ? (

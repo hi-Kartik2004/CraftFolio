@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SectionHeading from "../components/SectionHeading";
 import {
   Sheet,
@@ -20,6 +20,7 @@ import Link from "next/link";
 import CodeSnippet from "../components/CodeSnippet";
 import { IoIosArrowBack } from "react-icons/io";
 import data from "../data";
+import CustomSizeSkeleton from "../components/CustomSizeSkeleton";
 
 const code = ` <footer className="container mb-10 relative">
 {showCode ? (
@@ -89,6 +90,15 @@ function FooterSection() {
 
   function handleShowCode() {
     setShowCode(!showCode);
+  }
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+  if (loading) {
+    return <CustomSizeSkeleton code={code} />;
   }
 
   return (
