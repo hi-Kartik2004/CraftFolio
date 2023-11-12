@@ -138,8 +138,8 @@ function Projects() {
           className="mt-10"
         >
           <Tabs defaultValue="all">
-            <div className="flex justify-center">
-              <TabsList>
+            <div className="flex justify-center flex-wrap">
+              <TabsList className="flex-wrap h-full">
                 <TabsTrigger value="all">All</TabsTrigger>
                 <TabsTrigger value="fullstack">Full Stack</TabsTrigger>
                 <TabsTrigger value="frontend">Frontend</TabsTrigger>
