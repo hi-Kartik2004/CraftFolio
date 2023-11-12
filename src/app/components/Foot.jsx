@@ -4,7 +4,7 @@ import data from "../data";
 function Foot() {
   return (
     <div className="bg-primary-foreground p-2 rounded-sm">
-      <p className="text-sm text-muted-foreground">{data.FootTitle} </p>
+      <p className="text-sm text-muted-foreground text-center">{data.FootTitle} </p>
     </div>
   );
 }
