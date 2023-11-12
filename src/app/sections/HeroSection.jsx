@@ -118,7 +118,7 @@ function HeroSection() {
           </div>
         ) : (
           <>
-            <div className="headings flex justify-between mt-10 flex-col items-center">
+            <div className="headings flex justify-between mt-10 flex-col">
               <h1 className="text-3xl font-bold">{data.HeroTitle()}</h1>
             </div>
             <p className="text-muted-foreground mt-4">{data.HeroSubtitle()}</p>
