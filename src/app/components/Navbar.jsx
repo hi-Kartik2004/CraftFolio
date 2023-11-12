@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import data from "../data";
+import { BiLogoGmail } from "react-icons/bi";
 
 const NavData = {
   name: "Kartikeya Saini",
@@ -70,6 +71,15 @@ function Navbar() {
                   target="_blank"
                 >
                   <BsLinkedin /> Linkedin
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link
+                  href={`mailto:${data.email}`}
+                  className="flex gap-2 items-center"
+                >
+                  {" "}
+                  <BiLogoGmail /> Mail Me
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>

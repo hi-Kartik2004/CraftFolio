@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { BiCode, BiLogoGmail } from "react-icons/bi";
+import { BiCode, BiLogoGmail, BiSolidMessageAltDetail } from "react-icons/bi";
 import { BsDownload, BsGithub } from "react-icons/bs";
 import LeftLogos from "../components/LeftLogos";
 import RightLogos from "../components/RightLogos";
@@ -10,6 +10,15 @@ import { IoIosArrowBack } from "react-icons/io";
 import { useState } from "react";
 import CodeSnippet from "../components/CodeSnippet";
 import data from "../data";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "../components/ui/sheet";
+import ContactMeForm from "../components/ContactMeForm";
 
 const code = `
 <section className="container mt-12 relative">
@@ -122,7 +131,7 @@ function HeroSection() {
               <h1 className="text-3xl font-bold">{data.HeroTitle()}</h1>
             </div>
             <p className="text-muted-foreground mt-4">{data.HeroSubtitle()}</p>
-            <div className="mt-6 flex gap-4">
+            <div className="mt-6 flex gap-4 items-center">
               <Button
                 asChild
                 //   className="bg-gradient-to-r from-[#ffa585] to-[#ffeda0]"
@@ -135,15 +144,35 @@ function HeroSection() {
                   <BsDownload /> Download Resume
                 </Link>
               </Button>
-              <Button asChild variant="outline">
-                <Link
-                  href={`mailto:${data.email}`}
-                  className="flex gap-2 items-center"
+
+              <Sheet>
+                <SheetTrigger
+                  className="flex justify-between items-center w-full flex-wrap"
+                  asChild
                 >
-                  {" "}
-                  <BiLogoGmail /> Contact Me
-                </Link>
-              </Button>
+                  <div className="flex justify-between">
+                    <Button variant="outline">
+                      {" "}
+                      <p className="flex gap-2 items-center">
+                        <BiSolidMessageAltDetail /> <span>Contact Me</span>
+                      </p>
+                    </Button>
+                  </div>
+                </SheetTrigger>
+                <SheetContent>
+                  <SheetHeader>
+                    <SheetTitle>
+                      Message {data.FirstName + " " + data.LastName}
+                    </SheetTitle>
+                    <SheetDescription>
+                      {data.FooterSliderTitle}
+                    </SheetDescription>
+                  </SheetHeader>
+                  <div className="mt-4">
+                    <ContactMeForm />
+                  </div>
+                </SheetContent>
+              </Sheet>
             </div>
 
             <div className="mt-12">
