@@ -151,7 +151,9 @@ function HeroSection() {
               transition={{ duration: 0.5 }}
               className="headings flex justify-between mt-10 flex-col"
             >
-              <h1 className="text-4xl md:text-5xl font-bold">{data.HeroTitle()}</h1>
+              <h1 className="text-4xl md:text-5xl font-bold">
+                {data.HeroTitle()}
+              </h1>
             </motion.div>
             <motion.p
               initial={{ opacity: 0, y: "10px" }}
@@ -165,7 +167,7 @@ function HeroSection() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 100, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="mt-6 flex gap-4 items-center flex-wrap"
+              className="mt-6 flex gap-4 items-center flex-wrap xs:flex-nowrap"
             >
               <Button
                 asChild

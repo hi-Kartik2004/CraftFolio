@@ -117,7 +117,7 @@ function AboutMe() {
           <CodeSnippet text={code} />
         </div>
       ) : (
-        <div className="mt-10 flex justify-center flex-col items-center">
+        <div className="mt-10 md:mt-16 flex justify-center flex-col items-center">
           <div className="flex max-w-[550px] w-full relative justify-center">
             <motion.img
               initial="hidden"
@@ -160,7 +160,7 @@ function AboutMe() {
             />
           </div>
 
-          <div className="mt-[200px]">
+          <div className="mt-[200px] sm:mt-[275px]">
             <motion.div
               initial="hidden"
               whileInView="visible"
