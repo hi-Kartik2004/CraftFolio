@@ -165,7 +165,7 @@ function HeroSection() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 100, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="mt-6 flex gap-4 items-center"
+              className="mt-6 flex gap-4 items-center flex-wrap"
             >
               <Button
                 asChild

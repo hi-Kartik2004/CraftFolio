@@ -11,7 +11,7 @@ import { Progress } from "../components/ui/progress";
 
 function SkillsCard({ badgeText, title, description, progress }) {
   return (
-    <Card className="w-[350px] bg-card hover:bg-primary-foreground duration-500">
+    <Card className="max-w-[350px] w-full bg-card hover:bg-primary-foreground duration-500">
       <CardHeader>
         <div>
           <Badge>{badgeText}</Badge>

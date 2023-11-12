@@ -141,7 +141,7 @@ function FooterSection() {
             className="mt-4 flex justify-between items-center w-full flex-wrap"
             asChild
           >
-            <div className="flex justify-between">
+            <div className="flex justify-between flex-wrap gap-4">
               <Button>
                 {" "}
                 <p className="flex gap-2 items-center">
