@@ -125,12 +125,12 @@ function AboutMe() {
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.5, delay: 0.5 }}
               variants={{
-                visible: { opacity: 1, x: 0 },
+                visible: { opacity: 1, x: 0, rotate: -12 },
                 hidden: { opacity: 0, x: 10 },
               }}
               src={data.AboutImageLeft}
               alt="dp"
-              className="w-[200px] overflow-hidden h-[200px] bg-red-500 rounded-md -rotate-12 absolute left-1"
+              className="w-[200px] overflow-hidden h-[200px] bg-red-500 rounded-md absolute left-1"
             />
             <motion.img
               initial="hidden"
@@ -151,12 +151,12 @@ function AboutMe() {
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.5, delay: 0.5 }}
               variants={{
-                visible: { opacity: 1, y: 0 },
+                visible: { opacity: 1, y: 0, rotate: 12 },
                 hidden: { opacity: 0, y: 10 },
               }}
               src={data.AboutImageRight}
               alt="dp"
-              className="w-[200px] overflow-hidden h-[200px] bg-green-500 rounded-md rotate-12 absolute right-1"
+              className="w-[200px] overflow-hidden h-[200px] bg-green-500 rounded-md absolute right-1"
             />
           </div>
 
