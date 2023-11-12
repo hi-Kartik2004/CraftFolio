@@ -117,7 +117,7 @@ function AboutMe() {
           <CodeSnippet text={code} />
         </div>
       ) : (
-        <div className="mt-16 flex justify-center flex-col items-center">
+        <div className="mt-10 flex justify-center flex-col items-center">
           <div className="flex max-w-[550px] w-full relative justify-center">
             <motion.img
               initial="hidden"
@@ -130,7 +130,7 @@ function AboutMe() {
               }}
               src={data.AboutImageLeft}
               alt="dp"
-              className="w-[200px] overflow-hidden h-[200px] bg-red-500 rounded-md absolute left-1"
+              className="sm:w-[220px] overflow-hidden sm:h-[220px] w-[150px] h-[150px] bg-red-500 rounded-md absolute left-1"
             />
             <motion.img
               initial="hidden"
@@ -143,7 +143,7 @@ function AboutMe() {
               }}
               src={data.AboutImageCenter}
               alt="dp"
-              className="sm:w-[220px] overflow-hidden sm:h-[220px] w-[205px] h-[205px] bg-blue-500 rounded-md rotate-0 absolute m-auto left-0 right-0 z-10"
+              className="sm:w-[220px] overflow-hidden sm:h-[220px] w-[140px] h-[140px] bg-blue-500 rounded-md rotate-0 absolute m-auto left-0 right-0 z-10"
             />
             <motion.img
               initial="hidden"
@@ -156,11 +156,11 @@ function AboutMe() {
               }}
               src={data.AboutImageRight}
               alt="dp"
-              className="w-[200px] overflow-hidden h-[200px] bg-green-500 rounded-md absolute right-1"
+              className="sm:w-[220px] overflow-hidden sm:h-[220px] w-[150px] h-[150px] bg-green-500 rounded-md absolute right-1"
             />
           </div>
 
-          <div className="mt-[250px]">
+          <div className="mt-[200px]">
             <motion.div
               initial="hidden"
               whileInView="visible"
