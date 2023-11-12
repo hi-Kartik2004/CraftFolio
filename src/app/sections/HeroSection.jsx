@@ -151,7 +151,7 @@ function HeroSection() {
               transition={{ duration: 0.5 }}
               className="headings flex justify-between mt-10 flex-col"
             >
-              <h1 className="text-5xl font-bold">{data.HeroTitle()}</h1>
+              <h1 className="text-4xl md:text-5xl font-bold">{data.HeroTitle()}</h1>
             </motion.div>
             <motion.p
               initial={{ opacity: 0, y: "10px" }}
@@ -231,7 +231,7 @@ function HeroSection() {
                   <img
                     src={`https://ghchart.rshah.org/f89b29/${data.githubId}`}
                     alt="Github Chart"
-                    className="h-[120px] min-w-[700px] md:min-w-[1200px] md:h-[175px]"
+                    className="h-[120px] min-w-[700px] md:min-w-[1100px] md:h-[175px]"
                   />
                 </div>
               </div>

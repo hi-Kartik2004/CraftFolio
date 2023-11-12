@@ -9,6 +9,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { useEffect, useState } from "react";
 import data from "../data";
 import CustomSizeSkeleton from "../components/CustomSizeSkeleton";
+import { motion } from "framer-motion";
 
 const code = `<section className="container mt-12 relative">
 {showCode ? (
@@ -87,7 +88,17 @@ function Projects() {
     return <CustomSizeSkeleton code={code} />;
   }
   return (
-    <section className="container mt-12 relative">
+    <motion.section
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: 0.6 }}
+      variants={{
+        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 10 },
+      }}
+      className="container mt-12 relative"
+    >
       {showCode ? (
         <IoIosArrowBack
           className="absolute right-2 top-0 text-xl bg-muted rounded-sm cursor-pointer"
@@ -115,7 +126,17 @@ function Projects() {
           <CodeSnippet text={code} />
         </div>
       ) : (
-        <div className="mt-10">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          variants={{
+            visible: { opacity: 1, y: 0 },
+            hidden: { opacity: 0, y: 10 },
+          }}
+          className="mt-10"
+        >
           <Tabs defaultValue="all">
             <div className="flex justify-center">
               <TabsList>
@@ -144,9 +165,9 @@ function Projects() {
               <ProjectTab projectDetails={data.projectDetails} value="design" />
             </div>
           </Tabs>
-        </div>
+        </motion.div>
       )}
-    </section>
+    </motion.section>
   );
 }
 

@@ -10,6 +10,7 @@ import {
 } from "../components/ui/card";
 import { TabsContent } from "../components/ui/tabs";
 import { Badge } from "./ui/badge";
+import { motion } from "framer-motion";
 
 function ProjectTab({ projectDetails, value }) {
   return (
@@ -24,46 +25,57 @@ function ProjectTab({ projectDetails, value }) {
           .filter((project) => project.projectType === value || value === "all")
           .map((project) => {
             return (
-              <Card className="bg-card  max-w-[400px] w-full hover:bg-primary-foreground duration-500">
-                <CardHeader>
-                  <div className="mb-2 flex justify-between">
-                    <Badge className="bg-right-gradient">
-                      {project.projectType}
-                    </Badge>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                variants={{
+                  visible: { opacity: 1, y: 0 },
+                  hidden: { opacity: 0, y: 10 },
+                }}
+              >
+                <Card className="bg-card  max-w-[400px] w-full hover:bg-primary-foreground duration-500">
+                  <CardHeader>
+                    <div className="mb-2 flex justify-between">
+                      <Badge className="bg-right-gradient">
+                        {project.projectType}
+                      </Badge>
 
-                    <div className="flex gap-4 justify-center">
-                      <Link href={`${project.projectGithubLink}`}>
-                        <BsGithub size={25} />
-                      </Link>
+                      <div className="flex gap-4 justify-center">
+                        <Link href={`${project.projectGithubLink}`}>
+                          <BsGithub size={25} />
+                        </Link>
 
-                      <Link href={`${project.projectHostedLink}`}>
-                        <GoLinkExternal size={25} />
-                      </Link>
+                        <Link href={`${project.projectHostedLink}`}>
+                          <GoLinkExternal size={25} />
+                        </Link>
+                      </div>
                     </div>
-                  </div>
 
-                  <CardTitle className="text-lg">
-                    <Link href={project.projectHostedLink}>
-                      {project.projectName}
-                    </Link>
-                  </CardTitle>
-                  <div className="text-sm text-muted-foreground">
-                    {project.projectDescription}
-                    <div className="mt-4 flex gap-2 flex-wrap">
-                      {project.projectTechStack.map((tech) => {
-                        return <Badge>{tech}</Badge>;
-                      })}
+                    <CardTitle className="text-lg">
+                      <Link href={project.projectHostedLink}>
+                        {project.projectName}
+                      </Link>
+                    </CardTitle>
+                    <div className="text-sm text-muted-foreground">
+                      {project.projectDescription}
+                      <div className="mt-4 flex gap-2 flex-wrap">
+                        {project.projectTechStack.map((tech) => {
+                          return <Badge>{tech}</Badge>;
+                        })}
+                      </div>
                     </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <img
-                    src={project.projectImage}
-                    alt={project.projectName}
-                    className="bg-secondary-foreground rounded-md h-[200px] w-full object-cover object-top"
-                  />
-                </CardContent>
-              </Card>
+                  </CardHeader>
+                  <CardContent>
+                    <img
+                      src={project.projectImage}
+                      alt={project.projectName}
+                      className="bg-secondary-foreground rounded-md h-[200px] w-full object-cover object-top"
+                    />
+                  </CardContent>
+                </Card>
+              </motion.div>
             );
           })
       }

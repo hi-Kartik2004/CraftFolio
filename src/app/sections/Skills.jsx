@@ -14,6 +14,7 @@ import CodeSnippet from "../components/CodeSnippet";
 import { IoIosArrowBack } from "react-icons/io";
 import data from "../data";
 import CustomSizeSkeleton from "../components/CustomSizeSkeleton";
+import { motion } from "framer-motion";
 
 const code = ` <section className="container relative">
 {showCode ? (
@@ -90,7 +91,7 @@ function Skills() {
   function handleShowCode() {
     setShowCode(!showCode);
   }
-  
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -100,7 +101,17 @@ function Skills() {
     return <CustomSizeSkeleton code={code} />;
   }
   return (
-    <section className="container relative">
+    <motion.section
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.5 }}
+      variants={{
+        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 10 },
+      }}
+      className="container relative"
+    >
       {showCode ? (
         <IoIosArrowBack
           className="absolute right-2 top-0 text-xl bg-muted rounded-sm cursor-pointer"
@@ -132,13 +143,24 @@ function Skills() {
         <div className="my-10 flex justify-center gap-10 items-center flex-wrap">
           <div className="flex justify-center gap-10 items-center flex-wrap">
             {currentCards.map((skill, index) => (
-              <SkillsCard
-                key={index}
-                badgeText={skill.badgeText}
-                title={skill.title}
-                description={skill.description}
-                progress={skill.progress}
-              />
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                variants={{
+                  visible: { opacity: 1, y: 0 },
+                  hidden: { opacity: 0, y: 10 },
+                }}
+              >
+                <SkillsCard
+                  key={index}
+                  badgeText={skill.badgeText}
+                  title={skill.title}
+                  description={skill.description}
+                  progress={skill.progress}
+                />
+              </motion.div>
             ))}
           </div>
           {/* Pagination buttons */}
@@ -158,7 +180,7 @@ function Skills() {
           </div>
         </div>
       )}
-    </section>
+    </motion.section>
   );
 }
 

@@ -13,6 +13,7 @@ import data from "../data";
 import { BiLogoGmail } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import { Skeleton } from "./ui/skeleton";
+import CustomSizeSkeleton from "./CustomSizeSkeleton";
 
 const NavData = {
   name: "Kartikeya Saini",
@@ -32,7 +33,7 @@ function Navbar() {
   }, []);
 
   if (loading) {
-    return <Skeleton className="h-16 m-2"></Skeleton>;
+    return <CustomSizeSkeleton code=" " />;
   }
 
   return (

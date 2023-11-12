@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import CodeSnippet from "../components/CodeSnippet";
 
 import SectionHeading from "../components/SectionHeading";
@@ -7,6 +7,7 @@ import { BiCode } from "react-icons/bi";
 import { IoIosArrowBack } from "react-icons/io";
 import data from "../data";
 import CustomSizeSkeleton from "../components/CustomSizeSkeleton";
+import { motion, useAnimation, useInView } from "framer-motion";
 
 const code = ` <section className="container mt-12 relative">
 {showCode ? (
@@ -66,11 +67,13 @@ const code = ` <section className="container mt-12 relative">
 
 function AboutMe() {
   const [showCode, setShowCode] = useState(false);
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(false);
   }, []);
+
   if (loading) {
     return <CustomSizeSkeleton code={code} />;
   }
@@ -79,9 +82,18 @@ function AboutMe() {
     setShowCode(!showCode);
   }
 
-
   return (
-    <section className="container mt-12 relative">
+    <motion.section
+      className="container mt-12 relative"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5 }}
+      variants={{
+        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 10 },
+      }}
+    >
       {showCode ? (
         <IoIosArrowBack
           className="absolute right-2 top-0 text-xl bg-muted rounded-sm cursor-pointer"
@@ -107,17 +119,41 @@ function AboutMe() {
       ) : (
         <div className="mt-16 flex justify-center flex-col items-center">
           <div className="flex max-w-[550px] w-full relative justify-center">
-            <img
+            <motion.img
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              variants={{
+                visible: { opacity: 1, x: 0 },
+                hidden: { opacity: 0, x: 10 },
+              }}
               src={data.AboutImageLeft}
               alt="dp"
               className="w-[200px] overflow-hidden h-[200px] bg-red-500 rounded-md -rotate-12 absolute left-1"
             />
-            <img
+            <motion.img
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              variants={{
+                visible: { opacity: 1, x: 0 },
+                hidden: { opacity: 0, x: -10 },
+              }}
               src={data.AboutImageCenter}
               alt="dp"
-              className="sm:w-[220px] overflow-hidden sm:h-[220px] w-[205px] h-[205px] bg-blue-500 rounded-md rotate-0 absolute m-auto left-0 right-0 z-10 -top-3"
+              className="sm:w-[220px] overflow-hidden sm:h-[220px] w-[205px] h-[205px] bg-blue-500 rounded-md rotate-0 absolute m-auto left-0 right-0 z-10"
             />
-            <img
+            <motion.img
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              variants={{
+                visible: { opacity: 1, y: 0 },
+                hidden: { opacity: 0, y: 10 },
+              }}
               src={data.AboutImageRight}
               alt="dp"
               className="w-[200px] overflow-hidden h-[200px] bg-green-500 rounded-md rotate-12 absolute right-1"
@@ -125,17 +161,48 @@ function AboutMe() {
           </div>
 
           <div className="mt-[250px]">
-            <div className="text-muted-foreground">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5 }}
+              variants={{
+                visible: { opacity: 1, y: 0 },
+                hidden: { opacity: 0, y: 10 },
+              }}
+              className="text-muted-foreground"
+            >
               {data.AboutMainDescription()}
-              <div className="my-4">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                variants={{
+                  visible: { opacity: 1, y: 0 },
+                  hidden: { opacity: 0, y: 10 },
+                }}
+                className="my-4"
+              >
                 <CodeSnippet text={data.AboutMockCode} />
-              </div>
-              <p>{data.AboutOtherDescription()}</p>
-            </div>
+              </motion.div>
+              <motion.p
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.7 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                variants={{
+                  visible: { opacity: 1, y: 0 },
+                  hidden: { opacity: 0, y: 10 },
+                }}
+              >
+                {data.AboutOtherDescription()}
+              </motion.p>
+            </motion.div>
           </div>
         </div>
       )}
-    </section>
+    </motion.section>
   );
 }
 

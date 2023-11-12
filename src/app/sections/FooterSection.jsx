@@ -21,6 +21,7 @@ import CodeSnippet from "../components/CodeSnippet";
 import { IoIosArrowBack } from "react-icons/io";
 import data from "../data";
 import CustomSizeSkeleton from "../components/CustomSizeSkeleton";
+import { motion } from "framer-motion";
 
 const code = ` <footer className="container mb-10 relative">
 {showCode ? (
@@ -102,7 +103,17 @@ function FooterSection() {
   }
 
   return (
-    <footer className="container mb-10 relative">
+    <motion.footer
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, amount: 0.7 }}
+      variants={{
+        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 10 },
+      }}
+      className="container mb-10 relative"
+    >
       {showCode ? (
         <IoIosArrowBack
           className="absolute right-2 top-0 text-xl bg-muted rounded-sm cursor-pointer"
@@ -166,7 +177,7 @@ function FooterSection() {
           </SheetContent>
         </Sheet>
       )}
-    </footer>
+    </motion.footer>
   );
 }
 
