@@ -107,7 +107,7 @@ function FooterSection() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      transition={{ duration: 0.5, amount: 0.7 }}
+      transition={{ duration: 0.5, amount: 0.8 }}
       variants={{
         visible: { opacity: 1, y: 0 },
         hidden: { opacity: 0, y: 10 },

@@ -177,7 +177,7 @@ function AboutMe() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
                 variants={{
                   visible: { opacity: 1, y: 0 },
                   hidden: { opacity: 0, y: 10 },
@@ -190,7 +190,7 @@ function AboutMe() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.7 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
                 variants={{
                   visible: { opacity: 1, y: 0 },
                   hidden: { opacity: 0, y: 10 },
