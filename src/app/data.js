@@ -271,7 +271,7 @@ const data = {
     },
     {
       badgeText: "Intermediate",
-      title: "Video Editing",
+      title: "Framer Motion",
       description: "lorem niing nirngi nrin ginri gnirn ignring irnign irng",
       progress: 60,
     },
