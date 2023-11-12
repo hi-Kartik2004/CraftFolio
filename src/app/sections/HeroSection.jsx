@@ -22,6 +22,7 @@ import ContactMeForm from "../components/ContactMeForm";
 import { motion } from "framer-motion";
 import { Skeleton } from "../components/ui/skeleton";
 import CustomSizeSkeleton from "../components/CustomSizeSkeleton";
+import SingleLogos from "../components/SingleLogos";
 
 const code = `
 <section className="container mt-12 relative">
@@ -150,7 +151,7 @@ function HeroSection() {
               transition={{ duration: 0.5 }}
               className="headings flex justify-between mt-10 flex-col"
             >
-              <h1 className="text-3xl font-bold">{data.HeroTitle()}</h1>
+              <h1 className="text-5xl font-bold">{data.HeroTitle()}</h1>
             </motion.div>
             <motion.p
               initial={{ opacity: 0, y: "10px" }}
@@ -230,12 +231,12 @@ function HeroSection() {
                   <img
                     src={`https://ghchart.rshah.org/f89b29/${data.githubId}`}
                     alt="Github Chart"
-                    className="h-[120px] min-w-[700px]"
+                    className="h-[120px] min-w-[700px] md:min-w-[1200px] md:h-[175px]"
                   />
                 </div>
               </div>
             </motion.div>
-            <div className="mt-12">
+            <div className="mt-12 md:hidden">
               {/* <div className="flex gap-2 items-center mb-6">
           <GiTechnoHeart />
           <h2 className="text-lg">Technologies Known</h2>
@@ -244,6 +245,16 @@ function HeroSection() {
               <LeftLogos className="mt-6" />
               <div className="mt-6">
                 <RightLogos className="mt-12" />
+              </div>
+
+              <Separator orientation="horizontal" className="mt-6" />
+            </div>
+
+            <div className="mt-12 md:block hidden">
+              <SingleLogos direction="left" className="mt-12" />
+
+              <div className="mt-6">
+                <SingleLogos direction="right" className="mt-12" />
               </div>
 
               <Separator orientation="horizontal" className="mt-6" />
