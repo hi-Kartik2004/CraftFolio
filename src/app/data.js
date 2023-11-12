@@ -13,7 +13,8 @@ const data = {
   WhatsAppLink: "https://wa.me/916360006359",
   email: "kudlu2004@gmail.com",
   HeroTitle: () => (
-    <>Lorem ipsum dolor sit amet{" "}
+    <>
+      Lorem ipsum dolor sit amet{" "}
       <span className="bg-gradient-to-br from-left-gradient to-right-gradient text-clip bg-clip-text text-transparent">
         adipisicing
       </span>{" "}
@@ -288,7 +289,7 @@ const data = {
   FooterSliderTitle:
     "I will try to get in touch with you within 24 hours on your email!",
   FootTitle:
-    "💖 Build using Nextjs 14, Tailwind CSS, Shadcn UI and React Icons",
+    "💖 Build using Nextjs 14, Tailwind CSS, Framer Motion, Shadcn UI and React Icons",
 };
 
 export default data;
