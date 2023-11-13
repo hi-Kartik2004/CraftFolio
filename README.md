@@ -38,7 +38,26 @@ Craftfolio is not just a portfolio website; it's your digital canvas, designed f
 
 
 ## Screenshots
-The webiste has Dark, light and system Theme Modes (Default = system)
+The webiste has Dark, light and system Theme Modes (Default = system) and animations which gives the portoflio a clean and amazing feel.
+
+### Light Mode
+
+![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/e1cb4c72-a3e3-488d-ab13-e8b7b84cd70f)
+
+#### Toggle between the section and its code.
+![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/829709f7-28b5-4483-b992-f1803b3b9bdf)
+
+![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/81c4e8c8-fec2-4628-9125-97987609b6e7)
+
+![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/1c70b7c6-ee41-4be1-935f-21000bb2d964)
+
+![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/405a24a3-26d9-4d64-b72c-05ba628c187c)
+
+![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/a17a3885-dcea-485c-a6b8-4dc8761ab739)
+
+![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/8dc45354-d578-4c3e-9a2b-32f9c8c4554d)
+
+![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/c926bf10-e3ac-488e-b138-754f69f8fb6a)
 
 ### Dark Mode
 
@@ -57,25 +76,6 @@ The webiste has Dark, light and system Theme Modes (Default = system)
 ![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/37677a6f-e1b2-4208-ba46-568506ca3e8c)
 
 ![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/44b35fe4-f7cf-4a34-93bc-09d474d178ab)
-
-### Light Mode
-
-![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/e1cb4c72-a3e3-488d-ab13-e8b7b84cd70f)
-
-![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/829709f7-28b5-4483-b992-f1803b3b9bdf)
-
-![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/81c4e8c8-fec2-4628-9125-97987609b6e7)
-
-![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/1c70b7c6-ee41-4be1-935f-21000bb2d964)
-
-![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/405a24a3-26d9-4d64-b72c-05ba628c187c)
-
-![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/a17a3885-dcea-485c-a6b8-4dc8761ab739)
-
-![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/8dc45354-d578-4c3e-9a2b-32f9c8c4554d)
-
-![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/c926bf10-e3ac-488e-b138-754f69f8fb6a)
-
 
 
 ## Tech Stack
