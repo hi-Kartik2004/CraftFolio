@@ -11,66 +11,104 @@ import data from "../data";
 import CustomSizeSkeleton from "../components/CustomSizeSkeleton";
 import { motion } from "framer-motion";
 
-const code = `<section className="container mt-12 relative">
-{showCode ? (
-  <IoIosArrowBack
-    className="absolute right-2 top-0 text-xl bg-muted rounded-sm cursor-pointer"
-    onClick={handleShowCode}
-  />
-) : (
-  <BiCode
-    className="absolute right-2 top-0 text-xl bg-muted rounded-sm cursor-pointer"
-    onClick={handleShowCode}
-  />
-)}
-<div className="flex flex-wrap justify-between items-center gap-4">
-  <SectionHeading
-    title={data.ProjectTitle}
-    gradientText={data.ProjectTitleGradient}
-    description={data.ProjectDescription}
-    badge={data.ProjectBadge}
-    githubBadge={true}
-  />
+const code = `function Projects() {
+  const [showCode, setShowCode] = useState(false);
 
-  <SearchTech technologies={data.ProjectTechnologies} />
-</div>
-{showCode ? (
-  <div className="my-4">
-    <CodeSnippet text={code} />
-  </div>
-) : (
-  <div className="mt-10">
-    <Tabs defaultValue="all">
-      <div className="flex justify-center">
-        <TabsList>
-          <TabsTrigger value="all">All</TabsTrigger>
-          <TabsTrigger value="fullstack">Full Stack</TabsTrigger>
-          <TabsTrigger value="frontend">Frontend</TabsTrigger>
-          <TabsTrigger value="backend">Backend</TabsTrigger>
-          <TabsTrigger value="design">Design</TabsTrigger>
-        </TabsList>
-      </div>
+  function handleShowCode() {
+    setShowCode(!showCode);
+  }
 
-      <div className="my-6">
-        <ProjectTab projectDetails={data.projectDetails} value="all" />
-        <ProjectTab
-          projectDetails={data.projectDetails}
-          value="frontend"
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+  if (loading) {
+    return <CustomSizeSkeleton code={code} />;
+  }
+  return (
+    <motion.section
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+      variants={{
+        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 10 },
+      }}
+      className="container mt-12 relative"
+    >
+      {showCode ? (
+        <IoIosArrowBack
+          className="absolute right-2 top-0 text-xl bg-muted rounded-sm cursor-pointer"
+          onClick={handleShowCode}
         />
-        <ProjectTab
-          projectDetails={data.projectDetails}
-          value="fullstack"
+      ) : (
+        <BiCode
+          className="absolute right-2 top-0 text-xl bg-muted rounded-sm cursor-pointer"
+          onClick={handleShowCode}
         />
-        <ProjectTab
-          projectDetails={data.projectDetails}
-          value="backend"
+      )}
+      <div className="flex flex-wrap justify-between items-center gap-4">
+        <SectionHeading
+          title={data.ProjectTitle}
+          gradientText={data.ProjectTitleGradient}
+          description={data.ProjectDescription}
+          badge={data.ProjectBadge}
+          githubBadge={true}
         />
-        <ProjectTab projectDetails={data.projectDetails} value="design" />
+
+        <SearchTech technologies={data.ProjectTechnologies} />
       </div>
-    </Tabs>
-  </div>
-)}
-</section>`;
+      {showCode ? (
+        <div className="my-4">
+          <CodeSnippet text={code} />
+        </div>
+      ) : (
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          variants={{
+            visible: { opacity: 1, y: 0 },
+            hidden: { opacity: 0, y: 10 },
+          }}
+          className="mt-10"
+        >
+          <Tabs defaultValue="all">
+            <div className="flex justify-center flex-wrap">
+              <TabsList className="flex-wrap h-full">
+                <TabsTrigger value="all">All</TabsTrigger>
+                <TabsTrigger value="fullstack">Full Stack</TabsTrigger>
+                <TabsTrigger value="frontend">Frontend</TabsTrigger>
+                <TabsTrigger value="backend">Backend</TabsTrigger>
+                <TabsTrigger value="design">Design</TabsTrigger>
+              </TabsList>
+            </div>
+
+            <div className="my-6">
+              <ProjectTab projectDetails={data.projectDetails} value="all" />
+              <ProjectTab
+                projectDetails={data.projectDetails}
+                value="frontend"
+              />
+              <ProjectTab
+                projectDetails={data.projectDetails}
+                value="fullstack"
+              />
+              <ProjectTab
+                projectDetails={data.projectDetails}
+                value="backend"
+              />
+              <ProjectTab projectDetails={data.projectDetails} value="design" />
+            </div>
+          </Tabs>
+        </motion.div>
+      )}
+    </motion.section>
+  );
+}`;
 
 function Projects() {
   const [showCode, setShowCode] = useState(false);
