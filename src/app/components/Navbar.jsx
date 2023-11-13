@@ -1,7 +1,11 @@
 "use client";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { BiLogoGmail } from "react-icons/bi";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { FiDownload } from "react-icons/fi";
+import data from "../data";
+import CustomSizeSkeleton from "./CustomSizeSkeleton";
 import { ModeToggle } from "./ModeToggle";
 import {
   DropdownMenu,
@@ -9,11 +13,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import data from "../data";
-import { BiLogoGmail } from "react-icons/bi";
-import { useEffect, useState } from "react";
-import { Skeleton } from "./ui/skeleton";
-import CustomSizeSkeleton from "./CustomSizeSkeleton";
 
 const NavData = {
   name: "Kartikeya Saini",

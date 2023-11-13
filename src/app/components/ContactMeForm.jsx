@@ -17,6 +17,9 @@ import {
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import data from "../data";
+import { useState } from "react";
+import { BsCheck2Circle } from "react-icons/bs";
+import { Card } from "./ui/card";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -31,6 +34,7 @@ const formSchema = z.object({
 });
 
 export default function ContactMeForm() {
+  const [submitted, setSubmitted] = useState(true);
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -40,8 +44,42 @@ export default function ContactMeForm() {
     },
   });
 
+  // const client = new SMTPClient({
+  //   user: 'user',
+  //   password: 'password',
+  //   host: 'smtp.your-email.com',
+  //   ssl: true,
+  // });
+
   function onSubmit(values) {
+    // Make an HTTP request to the server-side function (mocked endpoint)
     console.log(values);
+    setSubmitted(true);
+    // client.send(
+    //   {
+    //     text: 'i hope this works',
+    //     from: 'Portfolio <kudlu2004@gmail.com>',
+    //     to: 'Kartikeya Saini <kudlu2004@gmail.com>',
+    //     subject: 'testing emailjs',
+    //   },
+    //   (err, message) => {
+    //     console.log(err || message);
+    //   }
+    // );
+  }
+
+  if (submitted) {
+    return (
+      <div className="text-center h-full mt-24 gap-4 flex flex-col justify-center">
+        <BsCheck2Circle size={50}  />
+        <div className="p-2 rounded-md border">
+          <p className="text-start">
+            Thanks for Filling the form I shall get back to you ASAP, however
+            you could also reach me on my other socials for faster response.
+          </p>
+        </div>
+      </div>
+    );
   }
 
   return (

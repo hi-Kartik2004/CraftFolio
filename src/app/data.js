@@ -14,26 +14,29 @@ const data = {
   email: "kudlu2004@gmail.com",
   HeroTitle: () => (
     <>
-      Lorem ipsum dolor sit amet{" "}
       <span className="bg-gradient-to-br from-left-gradient to-right-gradient text-clip bg-clip-text text-transparent">
-        adipisicing
+        Mastering the Art of Code,
       </span>{" "}
-      elit. Voluptate dolores facilis omnis?
+      <br className="hidden md:inline-block" />
+      <p className="mt-1">Building Tomorrow's Digital Landscape.</p>
     </>
   ),
   HeroSubtitle: () => (
     <React.Fragment className="text-muted-foreground">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate dolores
-      facilis omnis? sit amet consectetur adipisicing elit. Voluptate dolores
-      facilis omnis? sit amet consectetur adipisicing elit. Voluptate dolores
-      facilis omnis?
+      As a 2nd-year Information Science Engineering undergrad, I thrive as a
+      Front-End Developer, notably contributing to Cisco ThingQBator where I
+      built a responsive website for Project Shield. My innovative projects,
+      like the Real-Time Stock Trading Simulation and Customized Mass Email
+      Sender, showcase my expertise in web development. With a strong academic
+      record and coding contest victories, I'm passionate about crafting
+      seamless and engaging user experiences.
     </React.Fragment>
   ),
   AboutBadge: "Proud Geek_",
   AboutTitle: "About",
   AboutTitleGradient: "Me",
   AboutDescription:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptat dolores facilis omnis?  sit amet consectetur adipisicing elit. Voluptat dolores facilis omnis?",
+    "I'm excited to share a bit about myself with you. Thanks for showing interest! Below, you'll find a glimpse into my journey, experiences, and passion for coding. Feel free to explore, and if you have any questions or just want to connect, I'm all ears.",
   AboutImageLeft:
     "https://hi-kartik2004.github.io/Portfolio/assets/img/dp3_side_pose_v2.jpg",
   AboutImageCenter: "https://avatars.githubusercontent.com/u/111000515?v=4",
@@ -42,12 +45,13 @@ const data = {
   AboutMainDescription: () => (
     <React.Fragment className="text-muted-foreground">
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptat
-        dolores{" "}
+        Having ventured into Frontend, Backend, and UI/UX design realms, akin to
+        the versatile All Rounders in cricket who excel in both bowling and
+        batting,{" "}
         <span className="text-primary">
-          facilis omnis? sit amet consectetur adipisicing elit. Voluptat dolores{" "}
+          I embrace the title of a Full Stack developer with a distinct flair
+          for Frontend intricacies 😁{" "}
         </span>
-        facilis omnis?{" "}
       </p>
     </React.Fragment>
   ),
@@ -55,24 +59,40 @@ const data = {
   AboutOtherDescription: () => {
     return (
       <React.Fragment className="text-muted-foreground">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+        Delving into the tech world, I've worn multiple hats – from being an
+        active{" "}
         <span className="text-primary">
           {" "}
-          dolores facilis omnis? sit amet consectetur adipisicing elit.
-          Voluptate{" "}
+          volunteer at IEEE to currently being a part of the Executive team at
+          Google Developer Student Clubs (GDSC).
+        </span>{" "}
+        It's not just about the code for me; it's about community and
+        collaboration. Excitingly,{" "}
+        <span className="text-primary">
+          {" "}
+          I've been recommended by the Service Selection Board (SSB) for Officer
+          entry in the Indian Navy, a testament{" "}
         </span>
-        dolores facilis omnis? sit amet consectetur adipisicing elit. Voluptate
-        dolores facilis omnis?
+        to my teamwork and leadership skills.
       </React.Fragment>
     );
   },
 
-  AboutMockCode: "import something\n do something\n Next Line here\n",
+  AboutMockCode: `
+  const name = 'Kartikeya';
+  Developer dev = new Developer(name);
+
+  while (dev.isCoding()) {
+    dev.listenToMusic();
+    dev.openStackOverflow(); 
+    dev.drinkWater();
+  }
+`,
   ProjectBadge: "hi-kartik2004",
   ProjectTitle: "My",
   ProjectTitleGradient: "Projects!",
   ProjectDescription:
-    "lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptat dolores facilis omnis? sit amet consectetur adipisicing elit. Voluptat dolores facilis omnis?",
+    "Following are some of the exciting endeavors I've embarked on. Each project reflects my dedication to coding and creating meaningful digital experiences. Take a tour, and if you're curious or have any thoughts to share, feel free to reach out.",
   ProjectTechnologies: [
     "NextJs 14",
     "TailwindCSS",
@@ -100,196 +120,237 @@ const data = {
     "Video Editing",
     "Content Creation/Curation",
     "BootStrap 5",
+    "Framer Motion",
   ],
   projectDetails: [
     {
       projectId: 0,
-      projectName: "Project1",
+      projectName:
+        "Trading Arena - Real Time Stock Trading Simulation / Stocks Playground",
       projectDescription:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae iure molestiae necessitatibus.",
+        "Users can browse live stocks as per National stock exchange - India, when ever a user completes his/her signup he is credited Rs 1lac (virtual currency) and the user can use this virtual curreny to buy stocks, whenever the user sells the stocks, the amount credited is as per the latest stock prices.",
       projectImage:
         "https://user-images.githubusercontent.com/111000515/251038755-3eed0115-7085-4b5c-8bee-9952b18adc09.png",
       projectType: "fullstack",
-      projectTechStack: ["react", "nextjs", "tailwindcss"],
-      projectGithubLink: "https://github.com/hi-kartik2004",
-      projectHostedLink: "https://hi-kartik2004.github.io/Portfolio",
-    },
-    {
-      projectId: 0,
-      projectName: "Project1",
-      projectDescription:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae iure molestiae necessitatibus.",
-      projectImage:
-        "https://user-images.githubusercontent.com/111000515/251038755-3eed0115-7085-4b5c-8bee-9952b18adc09.png",
-      projectType: "fullstack",
-      projectTechStack: ["react", "nextjs", "tailwindcss"],
-      projectGithubLink: "https://github.com/hi-kartik2004",
-      projectHostedLink: "https://hi-kartik2004.github.io/Portfolio",
+      projectTechStack: [
+        "JavaScript",
+        "PHP",
+        "MySql",
+        "HTML 5",
+        "CSS 5",
+        "Hack",
+      ],
+      projectGithubLink: "https://github.com/hi-Kartik2004/TradingApp",
+      projectHostedLink:
+        "https://learn-stock-trading.000webhostapp.com/?home=firstTime",
     },
     {
       projectId: 1,
-      projectName: "Project1",
+      projectName: "Digital Clinic - A Web App Addressing Mental Health Issues",
       projectDescription:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae iure molestiae necessitatibus.",
+        "Application Offers Mental Health Assessment, Social Media & Articles Summariser, Articles on imporving mental health & digital Wellbeing, Community Articles with edit and delete Functionality by the creator, Online Counselling or meetup Sessions Scheduler, with edit and delete Functionality by the creator, Admin Panel, Track Login history.",
       projectImage:
         "https://user-images.githubusercontent.com/111000515/282149083-1d053699-0281-4c93-a6fb-2b646d7bbd1b.png",
       projectType: "fullstack",
-      projectTechStack: ["react", "nextjs", "tailwindcss"],
-      projectGithubLink: "https://github.com/hi-kartik2004",
-      projectHostedLink: "https://hi-kartik2004.github.io/Portfolio",
+      projectTechStack: [
+        "Rest APIs",
+        "AJAX",
+        "JavaScript",
+        "PHP",
+        "MySql",
+        "HTML 5",
+        "CSS 5",
+        "Hack",
+      ],
+      projectGithubLink: "https://github.com/hi-Kartik2004/CodeFury-6.0",
+      projectHostedLink:
+        "https://digital-clinic.000webhostapp.com/?home=firstTime",
     },
     {
       projectId: 2,
-      projectName: "Project2",
+      projectName:
+        "Event Website for CodeFury 6.0 - Annual National Level Hackathon",
       projectDescription:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae iure molestiae necessitatibus.",
+        "Built an visually appealling Event website, where visitors could know more about the hackathon and also register for the same, increased the number of registrations by 30% as compared to the previous year.",
       projectImage: "https://i.postimg.cc/sDqdnrwS/image.png",
       projectType: "frontend",
-      projectTechStack: ["react", "nextjs", "tailwindcss"],
-      projectGithubLink: "https://github.com/hi-kartik2004",
-      projectHostedLink: "https://hi-kartik2004.github.io/Portfolio",
+      projectTechStack: [
+        "HTML 5",
+        "CSS 5",
+        "JavaScript",
+        "Responsive Design",
+        "SEO",
+        "UED",
+        "Scemantic HTML",
+        "Animations",
+      ],
+      projectGithubLink: "https://github.com/SDSIG/Codefury_6.0",
+      projectHostedLink: "https://codefury.in",
     },
     {
       projectId: 5,
-      projectName: "Project5",
+      projectName:
+        "Modern Furniture Store Frontend - A Web App for a Furniture Store",
       projectDescription:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae iure molestiae necessitatibus.",
+        "A Modern Furniture store, with Animations and over 10 pages with modern design with Parallax effect and a fully responsive design, with multiple components, contact form and a newsletter subscription form.",
       projectImage: "https://i.postimg.cc/NFVs7rK2/image.png",
       projectType: "frontend",
-      projectTechStack: ["react", "nextjs", "tailwindcss"],
-      projectGithubLink: "https://github.com/hi-kartik2004",
-      projectHostedLink: "https://hi-kartik2004.github.io/Portfolio",
+      projectTechStack: ["Responsive User Design", "Webflow", "Ui/UX"],
+      projectHostedLink: "https://hi-kartik2004.github.io/furniture-store",
     },
 
     {
       projectId: 4,
-      projectName: "frontend",
+      projectName: "Portfolio - My Personal Portfolio Website",
       projectDescription:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae iure molestiae necessitatibus.",
+        "My Personal Portfolio, where you can know more about myself, my skills, my projects, what I do and contact me.",
       projectImage: "https://i.postimg.cc/mkr31K92/image.png",
       projectType: "frontend",
-      projectTechStack: ["react", "nextjs", "tailwindcss"],
-      projectGithubLink: "https://github.com/hi-kartik2004",
+      projectTechStack: [
+        "GSAP Animation",
+        "CSS 5",
+        "JavaScript",
+        "Modern Design",
+        "Responsive Design",
+        "Scemantic HTML",
+      ],
+      projectGithubLink: "https://github.com/hi-Kartik2004/Portfolio",
       projectHostedLink: "https://hi-kartik2004.github.io/Portfolio",
     },
     {
       projectId: 3,
-      projectName: "Project3",
+      projectName:
+        "Mass Email Sender - A Web App for sending customized mass emails",
       projectDescription:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae iure molestiae necessitatibus.",
+        "Developed a Responsive web application where organisations can send customised mass mails in text and html format directly from a CSV file.\n • Reduced the time to send mass emails by 400% per email.",
       projectImage:
         "https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/thumbnail-default@2x.png",
       projectType: "backend",
-      projectTechStack: ["react", "nextjs", "tailwindcss"],
-      projectGithubLink: "https://github.com/hi-kartik2004",
-      projectHostedLink: "https://hi-kartik2004.github.io/Portfolio",
+      projectTechStack: ["phpMailer", "PHP", "CSV", "MySql", "hostinger"],
+      projectGithubLink: "https://github.com/hi-Kartik2004/Read-csv",
+      projectHostedLink: "",
     },
   ],
   SkillsBadge: "Full Stack Developer | 3rd Year Undergrad",
   SkillsTitle: "My",
   SkillsTitleGradient: "Skills!",
   SkillsDescription:
-    "lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptat dolores facilis omnis? sit amet consectetur adipisicing elit. Voluptat dolores facilis omnis?",
+    "Dive into the realm of my skill set—an ever-growing toolbox tailored for crafting digital wonders. From mastering languages like C++ and JavaScript to navigating frameworks like React and Next.js, my journey is an ongoing exploration of the tech landscape.",
   skillsData: [
     {
       badgeText: "500+ DSA & CP Questions solved",
       title: "C and C++",
-      description: "lorem niing nirngi nrin ginri gnirn ignring irnign irng",
+      description:
+        "Mastering the art of algorithmic design and problem-solving through the versatile languages of C and C++.",
       progress: 90,
     },
     {
       badgeText: "Advanced",
       title: "HTML 5",
-      description: "lorem niing nirngi nrin ginri gnirn ignring irnign irng",
+      description:
+        "Crafting dynamic and responsive web pages with the latest features and capabilities of HTML 5.",
       progress: 90,
     },
     {
       badgeText: "Advanced",
       title: "CSS 5",
-      description: "lorem niing nirngi nrin ginri gnirn ignring irnign irng",
+      description:
+        "Elevating user interfaces through the expressive styling and layout capabilities of CSS 5.",
       progress: 90,
     },
     {
       badgeText: "Intermediate",
       title: "JavaScript",
-      description: "lorem niing nirngi nrin ginri gnirn ignring irnign irng",
+      description:
+        "Building interactive and engaging web experiences with the power of JavaScript.",
       progress: 75,
     },
     {
       badgeText: "Intermediate",
       title: "PHP",
-      description: "lorem niing nirngi nrin ginri gnirn ignring irnign irng",
+      description:
+        "Creating server-side applications and dynamic web content using the versatile scripting language PHP.",
       progress: 75,
     },
     {
       badgeText: "Intermediate",
-      title: "MySql",
-      description: "lorem niing nirngi nrin ginri gnirn ignring irnign irng",
+      title: "MySQL",
+      description:
+        "Managing and querying databases seamlessly with the robust relational database system MySQL.",
       progress: 75,
     },
     {
       badgeText: "Intermediate",
-      title: "NextJs",
-      description: "lorem niing nirngi nrin ginri gnirn ignring irnign irng",
+      title: "Next.js",
+      description:
+        "Developing scalable and efficient web applications using the React framework with Next.js.",
       progress: 75,
     },
     {
       badgeText: "Intermediate",
       title: "Firebase",
-      description: "lorem niing nirngi nrin ginri gnirn ignring irnign irng",
+      description:
+        "Leveraging Firebase to integrate powerful backend services seamlessly into web and mobile applications.",
       progress: 75,
     },
     {
       badgeText: "Advanced",
-      title: "Radix",
-      description: "lorem niing nirngi nrin ginri gnirn ignring irnign irng",
+      title: "Radix UI",
+      description:
+        "Crafting elegant and efficient user interfaces with the powerful Radix UI library.",
       progress: 95,
     },
     {
       badgeText: "Advanced",
       title: "Git & Github",
-      description: "lorem niing nirngi nrin ginri gnirn ignring irnign irng",
+      description:
+        "Ensuring version control mastery and collaborative development using Git and Github.",
       progress: 95,
     },
     {
       badgeText: "Beginner",
       title: "Docker",
-      description: "lorem niing nirngi nrin ginri gnirn ignring irnign irng",
+      description:
+        "Embarking on containerization journeys with Docker for scalable and portable application deployment.",
       progress: 50,
     },
     {
       badgeText: "Beginner",
       title: "Angular",
-      description: "lorem niing nirngi nrin ginri gnirn ignring irnign irng",
+      description:
+        "Exploring the Angular framework to build dynamic and feature-rich single-page applications.",
       progress: 50,
     },
     {
       badgeText: "Advanced",
       title: "Figma & Adobe Illustrator",
-      description: "lorem niing nirngi nrin ginri gnirn ignring irnign irng",
+      description:
+        "Transforming ideas into visually stunning designs with proficiency in Figma and Adobe Illustrator.",
       progress: 80,
     },
     {
       badgeText: "Intermediate",
       title: "Framer Motion",
-      description: "lorem niing nirngi nrin ginri gnirn ignring irnign irng",
+      description:
+        "Animating user interfaces and adding motion to web applications using the Framer Motion library.",
       progress: 60,
     },
     {
       badgeText: "Advanced",
       title: "Content Creation/Curation",
-      description: "lorem niing nirngi nrin ginri gnirn ignring irnign irng",
+      description:
+        "Curating compelling content and engaging media for a captivating digital presence.",
       progress: 90,
     },
   ],
 
   FooterBadge: "Thanks for visiting!",
   FooterDescription:
-    "I am available on almost every social media. You can message me, I will reply within 24 hours.",
+    "I appreciate your visit! Feel free to connect with me on various social media platforms; I'll respond within 24 hours.",
   FooterSliderTitle:
-    "I will try to get in touch with you within 24 hours on your email!",
+    "Expect a response within 24 hours when you reach out via email!",
   FootTitle:
-    "💖 Build using Nextjs 14, Tailwind CSS, Framer Motion, Shadcn UI and React Icons",
+    "💖 Crafted with Next.js 14, Tailwind CSS, Framer Motion, Radix UI, and React Icons",
 };
 
 export default data;

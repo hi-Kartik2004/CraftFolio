@@ -43,13 +43,16 @@ function ProjectTab({ projectDetails, value }) {
                       </Badge>
 
                       <div className="flex gap-4 justify-center">
-                        <Link href={`${project.projectGithubLink}`}>
-                          <BsGithub size={25} />
-                        </Link>
-
-                        <Link href={`${project.projectHostedLink}`}>
-                          <GoLinkExternal size={25} />
-                        </Link>
+                        {project.projectGithubLink && (
+                          <Link href={`${project.projectGithubLink}`}>
+                            <BsGithub size={25} />
+                          </Link>
+                        )}
+                        {project.projectHostedLink && (
+                          <Link href={`${project.projectHostedLink}`}>
+                            <GoLinkExternal size={25} />
+                          </Link>
+                        )}
                       </div>
                     </div>
 
