@@ -34,7 +34,7 @@ const formSchema = z.object({
 });
 
 export default function ContactMeForm() {
-  const [submitted, setSubmitted] = useState(true);
+  const [submitted, setSubmitted] = useState(false);
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
