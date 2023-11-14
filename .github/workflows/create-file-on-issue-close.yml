@@ -1,9 +1,8 @@
-name: Issue Template
+name: Create File on Issue Close
 
 on:
   issues:
     types:
-      - opened
       - closed
 
 jobs:
@@ -11,17 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check if the issue is closed
-        if: github.event_name == 'issues' && github.event.action == 'closed'
         run: |
           SLUG=$(echo "${{ github.event.issue.title }}" | tr -cd '[:alnum:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
-          FILE_CONTENT=$(echo "${{ github.event.issue.body }}")
+          FILE_PATH="app/users/${SLUG}.js"
           
-          FILE_PATH="src/app/users/${SLUG}.js"
-          
-          echo "// Content for the user ${SLUG}" > "${FILE_PATH}"
-          echo "${FILE_CONTENT}" >> "${FILE_PATH}"
-          
-          echo "File ${FILE_PATH} created successfully."
-          
-    env:
-      BODY: ${{ github.event.issue.body }}
+          # Check if the file already exists for the issue
+          if [ ! -f "${FILE_PATH}" ]; then
+            echo "// Content for the user ${SLUG}" > "${FILE_PATH}"
+            echo "import React from 'react';" >> "${FILE_PATH}"
+            echo "${{ github.event.issue.body }}" >> "${FILE_PATH}"
+            echo "File ${FILE_PATH} created successfully."
+          else
+            echo "File ${FILE_PATH} already exists. Skipping."
+          fi
