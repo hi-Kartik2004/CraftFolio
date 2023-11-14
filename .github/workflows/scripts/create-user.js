@@ -9,8 +9,8 @@ axios.get(`https://api.github.com/repos/hi-kartik2004/craftfolio/issues?state=cl
   .then(response => {
     const closedIssue = response.data.find(issue => issue.title === issueTitle);
     if (closedIssue) {
-      const filePath = `app/users/${fileName}.js`;
-      const fileContent = `// Content for the user ${fileName}\n\nconst userData = ${JSON.stringify(issueData, null, 2)};\n\nexport default userData;\n`;
+      const filePath = `src/app/users/${fileName}.js`;
+      const fileContent = `// Content for the user ${fileName}\n\nimport React from "react";\n\n${JSON.stringify(issueData, null, 2)}\n\nexport default data;\n`;
       fs.writeFileSync(filePath, fileContent);
       console.log(`File ${filePath} created successfully.`);
     } else {
