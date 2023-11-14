@@ -19,7 +19,10 @@ jobs:
             echo "// Content for the user ${SLUG}" > "${FILE_PATH}"
             echo "import React from 'react';" >> "${FILE_PATH}"
             echo -n "// " >> "${FILE_PATH}"
-            echo "${{ github.event.issue.body }}" | sed 's/^/    /' >> "${FILE_PATH}"
+            if ! echo "${{ github.event.issue.body }}" | sed 's/^/    /' >> "${FILE_PATH}"; then
+              echo "Error writing issue body to file."
+              exit 1
+            fi
             echo "" >> "${FILE_PATH}"
             echo "export default data;" >> "${FILE_PATH}"
             echo "" >> "${FILE_PATH}"
