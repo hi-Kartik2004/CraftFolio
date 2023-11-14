@@ -78,8 +78,7 @@ const data = {
     );
   },
 
-  AboutMockCode: `
-  const name = 'Kartikeya';
+  AboutMockCode: `const name = 'Kartikeya';
   Developer dev = new Developer(name);
 
   while (dev.isCoding()) {
@@ -350,7 +349,7 @@ const data = {
   FooterSliderTitle:
     "Expect a response within 24 hours when you reach out via email!",
   FootTitle:
-    "💖 Crafted with Next.js 14, Tailwind CSS, Framer Motion, Radix UI, and React Icons",
+    "💖 Crafted with Next.js 14, Tailwind CSS, Framer Motion, Shadcn UI, Radix UI, and React Icons",
 };
 
 export default data;

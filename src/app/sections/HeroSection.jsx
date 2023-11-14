@@ -24,8 +24,7 @@ import { Skeleton } from "../components/ui/skeleton";
 import CustomSizeSkeleton from "../components/CustomSizeSkeleton";
 import SingleLogos from "../components/SingleLogos";
 
-const code = `
-function HeroSection() {
+const code = `function HeroSection() {
   const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
 
