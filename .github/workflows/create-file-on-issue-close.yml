@@ -12,23 +12,22 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v2
 
+      - name: Set up Git
+        run: |
+          git config user.email "kudlu2004@gmail.com"
+          git config user.name "Kartikeya Saini"
+
       - name: Check if the issue is closed
         run: |
           SLUG=$(echo "${{ github.event.issue.title }}" | tr -cd '[:alnum:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
-          FILE_PATH="src/app/users/${SLUG}.txt"
-
-          # Create a temporary file and write the issue body to it
-          echo "${{ github.event.issue.body }}" > /tmp/issue_body.txt
+          FILE_PATH="src/app/users/${SLUG}.js"
 
           # Check if the file already exists for the issue
           if [ ! -f "${FILE_PATH}" ]; then
-            # Copy the contents of the temporary file to the desired file
-            cp /tmp/issue_body.txt "${FILE_PATH}"
+            echo "${{ github.event.issue.body }}" >> "${FILE_PATH}"
             echo "File ${FILE_PATH} created successfully."
 
             # Add and commit the new file
-            git config user.email "kudlu2004@gmail.com"
-            git config user.name "Kartikeya Saini"
             git add "${FILE_PATH}"
             git commit -m "Add file for issue: $SLUG"
             git push
