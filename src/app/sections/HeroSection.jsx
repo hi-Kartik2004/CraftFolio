@@ -117,7 +117,7 @@ function HeroSection() {
     };
 
     fetchDataAndSetState();
-  }, [sessionStorage]);
+  }, []);
 
   useEffect(() => {
     setLoading(false);
