@@ -17,28 +17,32 @@ jobs:
           git config user.email "kudlu2004@gmail.com"
           git config user.name "Kartikeya Saini"
 
+      - name: Install Python
+        run: |
+          sudo apt-get update
+          sudo apt-get install python3
+
       - name: Check if the issue is closed
         run: |
           SLUG=$(echo "${{ github.event.issue.title }}" | tr -cd '[:alnum:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
           FILE_PATH="src/app/users/${SLUG}.js"
 
+          # Check if the file already exists for the issue
           if [ ! -f "${FILE_PATH}" ]; then
             echo "import React from 'react';" > "${FILE_PATH}"
             echo "" >> "${FILE_PATH}"
             echo "const data = {" >> "${FILE_PATH}"
-            echo "${{ github.event.issue.body }}" | sed 's/\\/\\\\/g; s/(/\\(/g; s/)/\\)/g; s/"/\\"/g' | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' >> "${FILE_PATH}"
+            echo "${{ github.event.issue.body }}" | python3 -c "import sys, json; print(json.dumps(sys.stdin.read()))" | sed 's/^"\(.*\)"$/\1/' >> "${FILE_PATH}"
             echo "};" >> "${FILE_PATH}"
             echo "" >> "${FILE_PATH}"
             echo "export default data;" >> "${FILE_PATH}"
             echo "" >> "${FILE_PATH}"
             echo "File ${FILE_PATH} created successfully."
-          
+
+            # Add and commit the new file
+            git add "${FILE_PATH}"
+            git commit -m "Add file for issue: $SLUG"
+            git push
           else
             echo "File ${FILE_PATH} already exists. Skipping."
           fi
-
-      - name: Add and commit the new file
-        run: |
-          git add '${FILE_PATH}'
-          git commit -m "Add file for issue: $SLUG"
-          git push
