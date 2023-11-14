@@ -12,28 +12,27 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v2
 
-      - name: Set up Git
-        run: |
-          git config user.email "kudlu2004@gmail.com"
-          git config user.name "Kartikeya Saini"
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
 
       - name: Check if the issue is closed
         run: |
           SLUG=$(echo "${{ github.event.issue.title }}" | tr -cd '[:alnum:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
           FILE_PATH="src/app/users/${SLUG}.js"
 
-          # Create a temporary file and write the issue body to it
-          echo "${{ github.event.issue.body }}" > /tmp/issue_body.js
-
           # Check if the file already exists for the issue
           if [ ! -f "${FILE_PATH}" ]; then
-            # Copy the contents of the temporary file to the desired file
-            cp /tmp/issue_body.js "${FILE_PATH}"
-            echo "File ${FILE_PATH} created successfully."
+            # Use Node.js to handle base64 decoding and file appending
+            node -e "const fs = require('fs'); const content = Buffer.from('${{ github.event.issue.body }}', 'base64').toString('utf-8'); fs.appendFileSync('${FILE_PATH}', content); console.log('File ${FILE_PATH} created successfully.');"
 
-            # Add and commit the new file
+            # Add and commit the new content
             git add "${FILE_PATH}"
-            git commit -m "Add file for issue: $SLUG"
+            git commit -m "Add content for issue: $SLUG"
             git push
           else
             echo "File ${FILE_PATH} already exists. Skipping."
