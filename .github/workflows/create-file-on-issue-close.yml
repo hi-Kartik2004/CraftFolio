@@ -27,7 +27,7 @@ jobs:
             echo "import React from 'react';" > "${FILE_PATH}"
             echo "" >> "${FILE_PATH}"
             echo "const data = {" >> "${FILE_PATH}"
-            echo "${{ github.event.issue.body }}" | sed 's/(/\\(/g; s/)/\\)/g; s/{/\\{/g; s/}/\\}/g; s|//|\\//|; s|^|  |' >> "${FILE_PATH}"
+            echo "${{ github.event.issue.body }}" | sed 's/\\/\\\\/g; s/"/\\"/g' | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' >> "${FILE_PATH}"
             echo "};" >> "${FILE_PATH}"
             echo "" >> "${FILE_PATH}"
             echo "export default data;" >> "${FILE_PATH}"
