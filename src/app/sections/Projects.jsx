@@ -142,7 +142,7 @@ function Projects() {
     };
 
     fetchDataAndSetState();
-  }, [sessionStorage]);
+  }, []);
 
   useEffect(() => {
     setLoading(false);

@@ -151,7 +151,7 @@ function FooterSection() {
     };
 
     fetchDataAndSetState();
-  }, [sessionStorage]);
+  }, []);
 
   useEffect(() => {
     setLoading(false);

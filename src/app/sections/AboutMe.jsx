@@ -195,7 +195,7 @@ function AboutMe() {
     };
 
     fetchDataAndSetState();
-  }, [sessionStorage]);
+  }, []);
 
   useEffect(() => {
     setLoading(false);

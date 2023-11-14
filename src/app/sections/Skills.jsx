@@ -157,7 +157,7 @@ function Skills() {
     };
 
     fetchDataAndSetState();
-  }, [sessionStorage]);
+  }, []);
 
   useEffect(() => {
     setLoading(false);
