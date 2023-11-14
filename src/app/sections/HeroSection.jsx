@@ -82,7 +82,11 @@ const code = `function HeroSection() {
 }`;
 
 async function fetchData() {
-  const username = sessionStorage.getItem("username") || "default";
+  let username = "default";
+
+  if (typeof window !== "undefined") {
+    username = sessionStorage.getItem("username") || "default";
+  }
 
   try {
     const userData = await import(`@/app/users/${username}`);
