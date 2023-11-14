@@ -24,15 +24,17 @@ jobs:
 
           # Check if the file already exists for the issue
           if [ ! -f "${FILE_PATH}" ]; then
-            echo "import React from 'react';" > "${FILE_PATH}"
-            echo "" >> "${FILE_PATH}"
-            echo "const data = {" >> "${FILE_PATH}"
-            echo "${{ github.event.issue.body }}" | sed 's/^/  /' >> "${FILE_PATH}"
-            echo "};" >> "${FILE_PATH}"
-            echo "" >> "${FILE_PATH}"
-            echo "export default data;" >> "${FILE_PATH}"
-            echo "" >> "${FILE_PATH}"
-            echo "File ${FILE_PATH} created successfully."
+            cat <<EOL > "${FILE_PATH}"
+import React from 'react';
+
+const data = {
+  ${{ github.event.issue.body | sed 's/^/  /' }}
+};
+
+export default data;
+
+File ${FILE_PATH} created successfully.
+EOL
 
             # Add and commit the new file
             git add "${FILE_PATH}"
