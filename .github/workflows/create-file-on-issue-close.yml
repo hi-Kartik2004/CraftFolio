@@ -22,9 +22,13 @@ jobs:
           SLUG=$(echo "${{ github.event.issue.title }}" | tr -cd '[:alnum:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
           FILE_PATH="src/app/users/${SLUG}.js"
 
+          # Create a temporary file and write the issue body to it
+          echo "${{ github.event.issue.body }}" > /tmp/issue_body.js
+
           # Check if the file already exists for the issue
           if [ ! -f "${FILE_PATH}" ]; then
-            echo "${{ github.event.issue.body }}" >> "${FILE_PATH}"
+            # Copy the contents of the temporary file to the desired file
+            cp /tmp/issue_body.js "${FILE_PATH}"
             echo "File ${FILE_PATH} created successfully."
 
             # Add and commit the new file
