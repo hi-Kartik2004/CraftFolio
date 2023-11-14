@@ -1,4 +1,3 @@
-![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/712830c5-4db9-46b9-8ba4-67375a061952)
 # Craftfolio: Your Personalized Portfolio Builder
 
 Craftfolio is not just a portfolio website; it's your digital canvas, designed for effortless personalization. With a simple data.js file, you can dynamically transform every aspect of your portfolio—from project details to skills and personal information—without touching the code. Crafted with ease of use in mind, Craftfolio lets you toggle between sections and their corresponding code, making it a breeze to understand, modify, and make it uniquely yours. Embrace the power of seamless customization and showcase your journey, projects, and skills with Craftfolio.
