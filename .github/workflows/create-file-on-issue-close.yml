@@ -20,7 +20,7 @@ jobs:
       - name: Check if the issue is closed
         run: |
           SLUG=$(echo "${{ github.event.issue.title }}" | tr -cd '[:alnum:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
-          FILE_PATH="../../src/app/users/${SLUG}.js"
+          FILE_PATH="src/app/users/${SLUG}.js"
 
           # Check if the file already exists for the issue
           if [ ! -f "${FILE_PATH}" ]; then
