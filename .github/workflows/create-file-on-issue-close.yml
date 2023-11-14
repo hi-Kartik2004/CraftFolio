@@ -17,7 +17,7 @@ jobs:
           SLUG=$(echo "$BODY" | jq -r .details.slug)
           
           # Create file.js in @/app/users directory
-          touch "@/app/users/file.js"
+          touch "src/app/users/file.js"
           
     env:
       BODY: ${{ github.event.issue.body }}
