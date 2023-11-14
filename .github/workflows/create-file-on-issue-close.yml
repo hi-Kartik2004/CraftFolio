@@ -12,13 +12,10 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '14'
-
-      - name: Install dependencies
-        run: npm install
+      - name: Set up Git
+        run: |
+          git config user.email "kudlu2004@gmail.com"
+          git config user.name "Kartikeya Saini"
 
       - name: Check if the issue is closed
         run: |
@@ -27,12 +24,15 @@ jobs:
 
           # Check if the file already exists for the issue
           if [ ! -f "${FILE_PATH}" ]; then
-            # Use Node.js to handle base64 decoding and file appending
-            node -e "const fs = require('fs'); const content = Buffer.from('${{ github.event.issue.body }}', 'base64').toString('utf-8'); fs.appendFileSync('${FILE_PATH}', content); console.log('File ${FILE_PATH} created successfully.');"
+            ISSUE_BODY="${{ github.event.issue.body }}"
+            ESCAPED_BODY=$(echo "$ISSUE_BODY" | sed ':a;N;$!ba;s/\n/\\n/g')
+            
+            # Append issue body content to the file
+            echo -e "const data = {\n  issueBody: \"$ESCAPED_BODY\"\n};\n\nexport default data;\n" > "${FILE_PATH}"
 
-            # Add and commit the new content
+            # Add and commit the new file
             git add "${FILE_PATH}"
-            git commit -m "Add content for issue: $SLUG"
+            git commit -m "Add file for issue: $SLUG"
             git push
           else
             echo "File ${FILE_PATH} already exists. Skipping."
