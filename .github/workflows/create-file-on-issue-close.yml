@@ -18,7 +18,11 @@ jobs:
           if [ ! -f "${FILE_PATH}" ]; then
             echo "// Content for the user ${SLUG}" > "${FILE_PATH}"
             echo "import React from 'react';" >> "${FILE_PATH}"
-            echo "${{ github.event.issue.body }}" >> "${FILE_PATH}"
+            echo -n "// " >> "${FILE_PATH}"
+            echo "${{ github.event.issue.body }}" | sed 's/^/    /' >> "${FILE_PATH}"
+            echo "" >> "${FILE_PATH}"
+            echo "export default data;" >> "${FILE_PATH}"
+            echo "" >> "${FILE_PATH}"
             echo "File ${FILE_PATH} created successfully."
           else
             echo "File ${FILE_PATH} already exists. Skipping."
