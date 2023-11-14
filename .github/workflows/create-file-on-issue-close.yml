@@ -1,27 +1,23 @@
-name: Create File on Issue Close
+name: Issue Template
 
 on:
   issues:
     types:
+      - opened
       - closed
 
 jobs:
-  create-file:
+  process_issue:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Run Script
-        run: node .github/scripts/create-file.js ${{ github.event.issue.body }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check if the issue is closed
+        if: github.event_name == 'issues' && github.event.action == 'closed'
+        run: |
+          # Extract information from the issue body
+          SLUG=$(echo "$BODY" | jq -r .details.slug)
+          
+          # Create file.js in @/app/users directory
+          touch "@/app/users/file.js"
+          
+    env:
+      BODY: ${{ github.event.issue.body }}

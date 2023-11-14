@@ -1,3 +1,4 @@
+<!-- Issues template -->
 ## User Profile Information
 
 Please fill in the following details to create your user profile.
