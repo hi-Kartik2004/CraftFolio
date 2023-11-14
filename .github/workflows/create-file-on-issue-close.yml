@@ -10,17 +10,18 @@ jobs:
   process_issue:
     runs-on: ubuntu-latest
     steps:
-      - name: Debugging step
-        run: |
-          echo "BODY: $BODY"
       - name: Check if the issue is closed
         if: github.event_name == 'issues' && github.event.action == 'closed'
         run: |
-          # Extract information from the issue body
-          SLUG=$(echo "$BODY" | jq -r .details.slug)
+          SLUG=$(echo "${{ github.event.issue.title }}" | tr -cd '[:alnum:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+          FILE_CONTENT=$(echo "${{ github.event.issue.body }}")
           
-          # Create file.js in @/app/users directory
-          touch "src/app/users/file.js"
+          FILE_PATH="src/app/users/${SLUG}.js"
+          
+          echo "// Content for the user ${SLUG}" > "${FILE_PATH}"
+          echo "${FILE_CONTENT}" >> "${FILE_PATH}"
+          
+          echo "File ${FILE_PATH} created successfully."
           
     env:
       BODY: ${{ github.event.issue.body }}
