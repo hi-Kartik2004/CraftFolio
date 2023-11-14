@@ -24,14 +24,53 @@ const NavData = {
   linkedinId: "https://www.linkedin.com/in/kartikeya-saini-65504b240/",
 };
 
+async function fetchData() {
+  let username = "default";
+
+  if (typeof window !== "undefined") {
+    username = sessionStorage.getItem("username") || "default";
+  }
+
+  try {
+    const userData = await import(`@/app/users/${username}`);
+    return userData.default || userData;
+  } catch (error) {
+    console.error("Error fetching data from users folder:", error);
+
+    const defaultData = await import(`@/app/utilpages/UserNotFound`);
+    return defaultData.default || defaultData;
+  }
+}
+
 function Navbar() {
   const [loading, setLoading] = useState(true);
+  const [showCode, setShowCode] = useState(false);
+  const [data, setData] = useState(null); // Initialize data as null
+
+  useEffect(() => {
+    const fetchDataAndSetState = async () => {
+      try {
+        const result = await fetchData();
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDataAndSetState();
+  }, []);
 
   useEffect(() => {
     setLoading(false);
   }, []);
 
-  if (loading) {
+  function handleShowCode() {
+    setShowCode(!showCode);
+  }
+
+  if (loading || !data) {
     return <CustomSizeSkeleton code=" " />;
   }
 

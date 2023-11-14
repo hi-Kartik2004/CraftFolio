@@ -1,7 +1,7 @@
 import React from "react";
 
 const data = {
-  NavName: "Kartikeya Saini",
+  NavName: "test",
   FirstName: "Kartikeya",
   LastName: "Saini",
   NavSubtitle: "B.Tech, ISE UVCE (Batch of 2025)",
