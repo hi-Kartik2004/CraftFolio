@@ -5,6 +5,7 @@ import CodeSnippet from "../components/CodeSnippet";
 import SectionHeading from "../components/SectionHeading";
 import { BiCode } from "react-icons/bi";
 import { IoIosArrowBack } from "react-icons/io";
+// import data from `@/app/users/${localStorage.getItem("username")}`;
 import data from "../data";
 import CustomSizeSkeleton from "../components/CustomSizeSkeleton";
 import { motion, useAnimation, useInView } from "framer-motion";
@@ -162,21 +163,50 @@ const code = `function AboutMe() {
   );
 }`;
 
-function AboutMe() {
-  const [showCode, setShowCode] = useState(false);
+async function fetchData() {
+  const username = sessionStorage.getItem("username") || "default";
 
+  try {
+    const userData = await import(`@/app/users/${username}`);
+    return userData.default || userData;
+  } catch (error) {
+    console.error("Error fetching data from users folder:", error);
+
+    const defaultData = await import(`@/app/data`);
+    return defaultData.default || defaultData;
+  }
+}
+
+function AboutMe() {
   const [loading, setLoading] = useState(true);
+  const [showCode, setShowCode] = useState(false);
+  const [data, setData] = useState(null); // Initialize data as null
+
+  useEffect(() => {
+    const fetchDataAndSetState = async () => {
+      try {
+        const result = await fetchData();
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDataAndSetState();
+  }, [sessionStorage]);
 
   useEffect(() => {
     setLoading(false);
   }, []);
 
-  if (loading) {
-    return <CustomSizeSkeleton code={code} />;
-  }
-
   function handleShowCode() {
     setShowCode(!showCode);
+  }
+
+  if (loading || !data) {
+    return <CustomSizeSkeleton code={code} />;
   }
 
   const rotateStyle =

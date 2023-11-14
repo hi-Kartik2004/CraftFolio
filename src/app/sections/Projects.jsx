@@ -110,19 +110,49 @@ const code = `function Projects() {
   );
 }`;
 
+async function fetchData() {
+  const username = sessionStorage.getItem("username") || "default";
+
+  try {
+    const userData = await import(`@/app/users/${username}`);
+    return userData.default || userData;
+  } catch (error) {
+    console.error("Error fetching data from users folder:", error);
+
+    const defaultData = await import(`@/app/data`);
+    return defaultData.default || defaultData;
+  }
+}
+
 function Projects() {
+  const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
+  const [data, setData] = useState(null); // Initialize data as null
+
+  useEffect(() => {
+    const fetchDataAndSetState = async () => {
+      try {
+        const result = await fetchData();
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDataAndSetState();
+  }, [sessionStorage]);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
 
   function handleShowCode() {
     setShowCode(!showCode);
   }
 
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(false);
-  }, []);
-  if (loading) {
+  if (loading || !data) {
     return <CustomSizeSkeleton code={code} />;
   }
   return (

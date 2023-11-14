@@ -124,8 +124,53 @@ const code = `function Skills() {
   );
 }`;
 
+async function fetchData() {
+  const username = sessionStorage.getItem("username") || "default";
+
+  try {
+    const userData = await import(`@/app/users/${username}`);
+    return userData.default || userData;
+  } catch (error) {
+    console.error("Error fetching data from users folder:", error);
+
+    const defaultData = await import(`@/app/data`);
+    return defaultData.default || defaultData;
+  }
+}
+
 function Skills() {
   const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [showCode, setShowCode] = useState(false);
+  const [data, setData] = useState(null); // Initialize data as null
+
+  useEffect(() => {
+    const fetchDataAndSetState = async () => {
+      try {
+        const result = await fetchData();
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDataAndSetState();
+  }, [sessionStorage]);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
+  function handleShowCode() {
+    setShowCode(!showCode);
+  }
+
+  if (loading || !data) {
+    return <CustomSizeSkeleton code={code} />;
+  }
+  
   const cardsPerPage = 5;
 
   const indexOfLastCard = currentPage * cardsPerPage;
@@ -133,21 +178,7 @@ function Skills() {
   const currentCards = data.skillsData.slice(indexOfFirstCard, indexOfLastCard);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  const MockCode = { code: "import something\ndo something\nNext Line here" };
-  const [showCode, setShowCode] = useState(false);
-
-  function handleShowCode() {
-    setShowCode(!showCode);
-  }
-
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(false);
-  }, []);
-  if (loading) {
-    return <CustomSizeSkeleton code={code} />;
-  }
+ 
   return (
     <motion.section
       initial="hidden"

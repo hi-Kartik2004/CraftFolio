@@ -1,3 +1,4 @@
+"use client";
 import { FolderDot } from "lucide-react";
 import Navbar from "./components/Navbar";
 import { Separator } from "./components/ui/separator";
@@ -9,6 +10,7 @@ import FooterSection from "./sections/FooterSection";
 import Foot from "./components/Foot";
 
 export default function Home() {
+
   return (
     <main className="">
       <Navbar />
