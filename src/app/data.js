@@ -187,18 +187,6 @@ const data = {
       projectHostedLink: "https://codefury.in",
     },
     {
-      projectId: 5,
-      projectName:
-        "Modern Furniture Store Frontend - A Web App for a Furniture Store",
-      projectDescription:
-        "A Modern Furniture store, with Animations and over 10 pages with modern design with Parallax effect and a fully responsive design, with multiple components, contact form and a newsletter subscription form.",
-      projectImage: "https://i.postimg.cc/NFVs7rK2/image.png",
-      projectType: "frontend",
-      projectTechStack: ["Responsive User Design", "Webflow", "Ui/UX"],
-      projectHostedLink: "https://hi-kartik2004.github.io/furniture-store",
-    },
-
-    {
       projectId: 4,
       projectName: "Portfolio - My Personal Portfolio Website",
       projectDescription:
@@ -228,6 +216,17 @@ const data = {
       projectTechStack: ["phpMailer", "PHP", "CSV", "MySql", "hostinger"],
       projectGithubLink: "https://github.com/hi-Kartik2004/Read-csv",
       projectHostedLink: "",
+    },
+    {
+      projectId: 5,
+      projectName:
+        "Modern Furniture Store Frontend - A Web App for a Furniture Store",
+      projectDescription:
+        "A Modern Furniture store, with Animations and over 10 pages with modern design with Parallax effect and a fully responsive design, with multiple components, contact form and a newsletter subscription form.",
+      projectImage: "https://i.postimg.cc/NFVs7rK2/image.png",
+      projectType: "design",
+      projectTechStack: ["Responsive User Design", "Webflow", "Ui/UX"],
+      projectHostedLink: "https://hi-kartik2004.github.io/furniture-store",
     },
   ],
   SkillsBadge: "Full Stack Developer | 3rd Year Undergrad",
