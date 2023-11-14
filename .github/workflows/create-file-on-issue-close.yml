@@ -10,27 +10,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check if the issue is closed
-        run: |
-          set -x  # Enable debugging
-
-          SLUG=$(echo "${{ github.event.issue.title }}" | tr -cd '[:alnum:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
-          FILE_PATH="../../src/app/users/${SLUG}.js"
-
-          # Check if the file already exists for the issue
-          if [ ! -f "${FILE_PATH}" ]; then
-            echo "// Content for the user ${SLUG}" > "${FILE_PATH}"
-            echo "import React from 'react';" >> "${FILE_PATH}"
-            echo -n "// " >> "${FILE_PATH}"
-            if ! echo "${{ github.event.issue.body }}" | sed 's/(/\\(/g; s/)/\\)/g' | sed 's/^/    /' >> "${FILE_PATH}"; then
-              echo "Error writing issue body to file."
-              exit 1
-            fi
-            echo "" >> "${FILE_PATH}"
-            echo "export default data;" >> "${FILE_PATH}"
-            echo "" >> "${FILE_PATH}"
-            echo "File ${FILE_PATH} created successfully."
-          else
-            echo "File ${FILE_PATH} already exists. Skipping."
-          fi
-
-          set +x  # Disable debugging
+      run: |
+        SLUG=$(echo "${{ github.event.issue.title }}" | tr -cd '[:alnum:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+        FILE_PATH="../../src/app/users/${SLUG}.js"
+      
+        # Check if the file already exists for the issue
+        if [ ! -f "${FILE_PATH}" ]; then
+          echo "// Content for the user ${SLUG}" > "${FILE_PATH}"
+          echo "import React from 'react';" >> "${FILE_PATH}"
+          echo "// " >> "${FILE_PATH}"
+          echo "${{ github.event.issue.body }}" >> "${FILE_PATH}"
+          echo "" >> "${FILE_PATH}"
+          echo "export default data;" >> "${FILE_PATH}"
+          echo "" >> "${FILE_PATH}"
+          echo "File ${FILE_PATH} created successfully."
+      
+          # Add and commit the new file
+          git config --global user.email "kudlu2004@gmail.com"
+          git config --global user.name "Kartikeya Saini"
+          git add "${FILE_PATH}"
+          git commit -m "Add file for issue: $SLUG"
+          git push
+        else
+          echo "File ${FILE_PATH} already exists. Skipping."
+        fi
+    
