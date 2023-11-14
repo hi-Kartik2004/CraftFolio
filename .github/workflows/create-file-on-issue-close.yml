@@ -10,6 +10,9 @@ jobs:
   process_issue:
     runs-on: ubuntu-latest
     steps:
+      - name: Debugging step
+        run: |
+          echo "BODY: $BODY"
       - name: Check if the issue is closed
         if: github.event_name == 'issues' && github.event.action == 'closed'
         run: |
