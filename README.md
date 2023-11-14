@@ -44,7 +44,6 @@ The webiste has Dark, light and system Theme Modes (Default = system) and animat
 
 ![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/e1cb4c72-a3e3-488d-ab13-e8b7b84cd70f)
 
-#### Toggle between the section and its code.
 ![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/829709f7-28b5-4483-b992-f1803b3b9bdf)
 
 ![image](https://github.com/hi-Kartik2004/CraftFolio/assets/111000515/81c4e8c8-fec2-4628-9125-97987609b6e7)
