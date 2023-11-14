@@ -24,17 +24,10 @@ jobs:
 
           # Check if the file already exists for the issue
           if [ ! -f "${FILE_PATH}" ]; then
-            echo "// Content for the user ${SLUG}" > "${FILE_PATH}"
-            echo "import React from 'react';" >> "${FILE_PATH}"
-            echo "" >> "${FILE_PATH}"
-            echo "const data = \`${{ github.event.issue.body }}\`;" >> "${FILE_PATH}"
-            echo "" >> "${FILE_PATH}"
-            echo "# Replacing all occurrences of ( with \\(" >> "${FILE_PATH}"
-            echo 'const sanitizedIssueBody = issueBody.replace(/\\(/g, "\\(");' >> "${FILE_PATH}"
+            echo "import React from 'react';" > "${FILE_PATH}"
             echo "" >> "${FILE_PATH}"
             echo "const data = {" >> "${FILE_PATH}"
-            echo "  slug: \"${SLUG}\"," >> "${FILE_PATH}"
-            echo "  issueBody: sanitizedIssueBody," >> "${FILE_PATH}"
+            echo "${{ github.event.issue.body }}" | sed 's/(/\\(/g; s/)/\\)/g' | sed 's/^/  /' >> "${FILE_PATH}"
             echo "};" >> "${FILE_PATH}"
             echo "" >> "${FILE_PATH}"
             echo "export default data;" >> "${FILE_PATH}"
