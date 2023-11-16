@@ -12,7 +12,6 @@ export default function Portfolio() {
 
   return (
     <main className="">
-      <Navbar />
       <HeroSection />
       <AboutMe />
       {/* <AboutSection /> */}

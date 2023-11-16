@@ -119,3 +119,36 @@
   -webkit-background-clip: text;
   color: transparent;
 }
+
+/* ============== For markdown =========  */
+@layer components {
+  .markdown-body {
+    /* Customize your styles for markdown content here */
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--foreground);
+
+    h1 {
+      font-size: 2em;
+      color: var(--primary-foreground);
+    }
+
+    h2 {
+      font-size: 1.8em;
+      color: var(--secondary-foreground);
+    }
+
+    p {
+      margin-bottom: 1em;
+    }
+
+    code {
+      background-color: var(--primary-foreground);
+      color: var(--primary);
+      padding: 0.2em 0.4em;
+      border-radius: 0.3em;
+    }
+
+    /* Add styles for other markdown elements as needed */
+  }
+}
