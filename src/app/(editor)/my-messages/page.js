@@ -42,14 +42,16 @@ function AddBlog() {
     return null;
   }
 
-  getMessagesFromFirestore(user.username)
-    .then((messages) => {
-      console.log("messages", messages);
-      setMessages(messages);
-    })
-    .catch((error) => {
-      console.error("Error getting messages from Firestore:", error);
-    });
+  if (user) {
+    getMessagesFromFirestore(user.username)
+      .then((messages) => {
+        console.log("messages", messages);
+        setMessages(messages);
+      })
+      .catch((error) => {
+        console.error("Error getting messages from Firestore:", error);
+      });
+  }
 
   return (
     <div className="">
