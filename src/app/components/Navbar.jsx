@@ -13,6 +13,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import { ClerkLoaded, SignedIn, UserButton } from "@clerk/nextjs";
+import { usePathname } from "next/navigation";
 
 const NavData = {
   name: "Kartikeya Saini",
@@ -73,6 +75,9 @@ function Navbar() {
   if (loading || !data) {
     return <CustomSizeSkeleton code=" " />;
   }
+
+  const pathname = usePathname();
+  const specificRoute = "/add-blog";
 
   return (
     <nav className="border-b-2">
@@ -137,7 +142,7 @@ function Navbar() {
           </DropdownMenu>
         </div>
 
-        <div>
+        <div className="flex gap-2">
           <ModeToggle />
         </div>
       </div>

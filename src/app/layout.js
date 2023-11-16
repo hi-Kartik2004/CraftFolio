@@ -3,6 +3,8 @@ import "./globals.css";
 import { ThemeProvider } from "./components/providers/ThemeProvider";
 import data from "./data";
 import Navbar from "./components/Navbar";
+import { ClerkProvider } from "@clerk/nextjs";
+import { usePathname } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +24,7 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange
         >
           <Navbar />
+
           {children}
         </ThemeProvider>
       </body>

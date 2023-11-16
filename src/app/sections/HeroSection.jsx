@@ -22,7 +22,6 @@ import {
   SheetTrigger,
 } from "../components/ui/sheet";
 
-
 const code = `function HeroSection() {
   const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
@@ -231,7 +230,7 @@ function HeroSection() {
               <Button asChild variant="link" className="-ml-3">
                 <Link
                   href={`https://github.com/${data.githubId}`}
-                  className=" flex gap-2 items-center"
+                  className=" flex gap-2 items-center flex-wrap justify-start"
                 >
                   <BsGithub className="h-5 w-5" />
                   <h2 className="text-lg">My Contributions</h2>
