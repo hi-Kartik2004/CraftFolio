@@ -1,8 +1,7 @@
-
 import React from "react";
 
 const data = {
-  NavName: "Default",
+  NavName: "Kartikeya Saini",
   FirstName: "Kartikeya",
   LastName: "Saini",
   NavSubtitle: "B.Tech, ISE UVCE (Batch of 2025)",
@@ -16,7 +15,7 @@ const data = {
   HeroTitle: () => (
     <>
       <span className="bg-gradient-to-br from-left-gradient to-right-gradient text-clip bg-clip-text text-transparent">
-       Default Page,
+        Mastering the Art of Code,
       </span>{" "}
       <br className="hidden md:inline-block" />
       <p className="mt-1">Building Tomorrow's Digital Landscape.</p>

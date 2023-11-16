@@ -4,6 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
+import { useState } from "react";
+import { BsCheck2Circle } from "react-icons/bs";
 import { Button } from "./ui/button";
 import {
   Form,
@@ -16,10 +18,8 @@ import {
 } from "./ui/form";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-import data from "../data";
-import { useState } from "react";
-import { BsCheck2Circle } from "react-icons/bs";
-import { Card } from "./ui/card";
+import { db } from "@/firebase/config";
+import { collection, addDoc } from "firebase/firestore";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -33,7 +33,25 @@ const formSchema = z.object({
   }),
 });
 
+async function addMessageToFirestore(name, email, message) {
+  try {
+    const docRef = await addDoc(collection(db, "messages"), {
+      to: sessionStorage.getItem("username"),
+      name: name,
+      email: email,
+      message: message,
+      timestamp: Date.now(),
+    });
+    console.log("Document written with ID ", docRef.id);
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
+
 export default function ContactMeForm() {
+  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -44,34 +62,24 @@ export default function ContactMeForm() {
     },
   });
 
-  // const client = new SMTPClient({
-  //   user: 'user',
-  //   password: 'password',
-  //   host: 'smtp.your-email.com',
-  //   ssl: true,
-  // });
-
-  function onSubmit(values) {
+  async function onSubmit(values, event) {
+    event.preventDefault();
+    setSubmitting(true);
     // Make an HTTP request to the server-side function (mocked endpoint)
     console.log(values);
-    setSubmitted(true);
-    // client.send(
-    //   {
-    //     text: 'i hope this works',
-    //     from: 'Portfolio <kudlu2004@gmail.com>',
-    //     to: 'Kartikeya Saini <kudlu2004@gmail.com>',
-    //     subject: 'testing emailjs',
-    //   },
-    //   (err, message) => {
-    //     console.log(err || message);
-    //   }
-    // );
+    let isDocAdded = await addMessageToFirestore(
+      values.name,
+      values.email,
+      values.message
+    );
+    isDocAdded ? setSubmitted(true) : setSubmitted(false);
+    setSubmitting(false);
   }
 
   if (submitted) {
     return (
       <div className="text-center h-full mt-24 gap-4 flex flex-col justify-center">
-        <BsCheck2Circle size={50}  />
+        <BsCheck2Circle size={50} />
         <div className="p-2 rounded-md border">
           <p className="text-start">
             Thanks for Filling the form I shall get back to you ASAP, however
@@ -145,7 +153,9 @@ export default function ContactMeForm() {
           )}
         />
 
-        <Button type="submit">Submit</Button>
+        <Button type="submit" disabled={submitting}>
+          {submitting ? "Sending..." : "Submit"}
+        </Button>
       </form>
     </Form>
   );

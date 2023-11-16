@@ -346,7 +346,7 @@ const data = {
   FooterDescription:
     "I appreciate your visit! Feel free to connect with me on various social media platforms; I'll respond within 24 hours.",
   FooterSliderTitle:
-    "Expect a response within 24 hours when you reach out via email!",
+    "Expect a response within 24 hours, will reach you out on your entered email!",
   FootTitle:
     "💖 Crafted with Next.js 14, Tailwind CSS, Framer Motion, Shadcn UI, Radix UI, and React Icons",
 };

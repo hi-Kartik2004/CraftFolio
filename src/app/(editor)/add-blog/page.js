@@ -8,8 +8,11 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import React from "react";
+import { currentUser } from "@clerk/nextjs";
 
-function AddBlog() {
+async function AddBlog() {
+  const user = await currentUser();
+
   return (
     <div className="">
       <SignedIn>
