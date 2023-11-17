@@ -176,7 +176,7 @@ const data = {
   ProjectDescription:
     "Following are some of the exciting endeavors I've embarked on. Each project reflects my dedication to coding and creating meaningful digital experiences. Take a tour, and if you're curious or have any thoughts to share, feel free to reach out.",
   ProjectTitle: "Default",
-  HeroTitle: "Impressive, Animated and Responsive portfolio in just 5min!",
+  HeroTitle: "Animated and Responsive portfolio in just 5min!",
   AboutTitle: "About",
   AboutMainDescription:
     "<p>\n  Having ventured into Frontend, Backend, and UI/UX design realms, akin to\n  the versatile All Rounders in cricket who excel in both bowling and\n  batting, \n  <span className='text-primary'>\n    I embrace the title of a Full Stack developer with a distinct flair\n    for Frontend intricacies 😁 \n  </span>\n</p>",
@@ -291,7 +291,7 @@ const data = {
     },
   ],
   linkedinUrl: "https://www.linkedin.com/in/kartikeya-saini-65504b240/",
-  HeroGradient: "Create & Manage your,",
+  HeroGradient: "Create & Manage your impressive,",
   ProjectBadge: "hi-kartik2004",
 };
 
