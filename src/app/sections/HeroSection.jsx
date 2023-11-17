@@ -136,8 +136,8 @@ function HeroSection({ data }) {
               transition={{ duration: 0.5 }}
               className="headings flex justify-between mt-10 flex-col"
             >
-              <h1 className="text-4xl md:text-5xl font-bold">
-                <span className="my-2 bg-gradient-to-br from-left-gradient to-right-gradient text-transparent bg-clip-text text-clip">
+              <h1 className="text-4xl md:text-5xl font-bold flex flex-col gap-2">
+                <span className="bg-gradient-to-br from-left-gradient to-right-gradient text-transparent bg-clip-text text-clip">
                   {data.HeroGradient} <br />
                 </span>
                 {data.HeroTitle}
