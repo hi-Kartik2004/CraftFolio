@@ -86,11 +86,12 @@ function HeroSection({ data }) {
   const [showCode, setShowCode] = useState(false);
 
   console.log(data);
-  data = data || userNotFoundData;
 
   useEffect(() => {
     setLoading(false);
   }, []);
+
+  data = data || userNotFoundData;
 
   function handleShowCode() {
     setShowCode(!showCode);

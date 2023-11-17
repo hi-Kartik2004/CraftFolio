@@ -1,11 +1,12 @@
 import React from "react";
 
 const data = {
-  NavName: "Kartikeya Saini",
-  FirstName: "Kartikeya",
-  LastName: "Saini",
-  NavSubtitle: "B.Tech, ISE UVCE (Batch of 2025)",
-  image: "https://avatars.githubusercontent.com/u/111000515?v=4",
+  NavName: "User 404",
+  FirstName: "User",
+  LastName: "Not Found",
+  NavSubtitle: "Check the url for the typo!",
+  image:
+    "https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/thumbnail-default@2x.png",
   resumeLink:
     "https://hi-kartik2004.github.io/Portfolio/assets/pdf/Kartikeya_Resume_June_2023.pdf",
   githubId: "hi-kartik2004",

@@ -35,22 +35,22 @@ const NavData = {
 };
 
 function Navbar({ showProfile, data }) {
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
   data = data || userNotFoundData;
   
   useEffect(() => {
     data = data || userNotFoundData;
-    // setLoading(false);
+    setLoading(false);
   }, [showProfile]);
 
   function handleShowCode() {
     setShowCode(!showCode);
   }
 
-  // if (loading) {
-  //   return <CustomSizeSkeleton code=" " />;
-  // }
+  if (loading) {
+    return <CustomSizeSkeleton code=" " />;
+  }
 
   return (
     <nav className="border-b-2">

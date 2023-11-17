@@ -122,7 +122,7 @@ function Skills({ data }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
-  data = data || userNotFoundData;
+
   useEffect(() => {
     data = data || userNotFoundData;
   }, []);

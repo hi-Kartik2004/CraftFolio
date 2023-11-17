@@ -166,7 +166,7 @@ const code = `function AboutMe() {
 function AboutMe({ data }) {
   const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
-  data = data || userNotFoundData;
+
 
   useEffect(() => {
     data = data || userNotFoundData;

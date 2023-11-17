@@ -120,7 +120,7 @@ const code = `function FooterSection() {
 function FooterSection({ data }) {
   const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
-  data = data || userNotFoundData;
+
 
   useEffect(() => {
     data = data || userNotFoundData;
