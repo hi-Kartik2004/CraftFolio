@@ -1,5 +1,5 @@
 "use client";
-import Portfolio from "./Portfolio";
+import LandingPage from "./components/LandingPage";
 
 export default function Home() {
   if (typeof window !== "undefined")
@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
     <>
-      <Portfolio />
+      <LandingPage />
     </>
   );
 }
