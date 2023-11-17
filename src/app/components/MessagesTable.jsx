@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Table,
   TableBody,
@@ -8,35 +7,47 @@ import {
   TableHeader,
   TableRow,
 } from "@/app/components/ui/table";
-import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
-import { Button } from "./ui/button";
-import {
-  Dialog,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTrigger,
-} from "./ui/dialog";
-import { DialogContent, DialogTitle } from "@radix-ui/react-dialog";
-import { Label } from "./ui/label";
 import {
   AlertDialog,
+  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
+  AlertDialogDescription,
   AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
   AlertDialogTrigger,
 } from "./ui/alert-dialog";
-import { Alert } from "./ui/alert";
+import { Button } from "./ui/button";
+import { deleteDoc, doc } from "firebase/firestore";
+import { db } from "@/firebase/config";
+import { Toast, ToastAction } from "./ui/toast";
+import { useToast } from "./ui/use-toast";
+import { Toaster } from "./ui/toaster";
+import { useEffect, useState } from "react";
+import { Skeleton } from "./ui/skeleton";
 
 function MessagesTable({ messages }) {
-  async function deleteFunctionFromFirestore() {
-    console.log("delete function called");
+  const { toast } = useToast();
+
+  async function deleteFunctionFromFirestore(documentId, name) {
+    const documentRef = doc(db, "messages", documentId);
+
+    try {
+      await deleteDoc(documentRef);
+
+      toast({
+        title: "Message Deleted Successfully",
+        description: `Message from ${name} with id ${documentId} was deleted successfully.}`,
+      });
+    } catch (error) {
+      console.error("Error deleting document:", error);
+    }
   }
   return (
     <div className="container my-10">
-      <UserButton afterSignOutUrl="/" />
-
+      <Toaster />
       <Table>
         <TableCaption>A list of your recent messages.</TableCaption>
         <TableHeader>
@@ -61,10 +72,10 @@ function MessagesTable({ messages }) {
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
                     <div className="flex flex-col gap-2">
-                      {message.message.length > 20
-                        ? `${message.message.slice(0, 20)}...`
+                      {message.message.length > 40
+                        ? `${message.message.slice(0, 40)}...`
                         : message.message}
-                      {message.message.length > 20 && (
+                      {message.message.length > 40 && (
                         <Button variant="outline">Read Message</Button>
                       )}
                     </div>
@@ -89,13 +100,41 @@ function MessagesTable({ messages }) {
                   hour12: false, // Use 24-hour format
                 })}
               </TableCell>{" "}
-              <TableCell className="flex justify-end">
-                <Button
-                  variant="destructive"
-                  onClick={deleteFunctionFromFirestore}
-                >
-                  Delete {message.id}
-                </Button>
+              <TableCell className="flex justify-end items-center">
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button variant="destructive">Delete</Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>
+                        Are you absolutely sure, you want to delete?
+                      </AlertDialogTitle>
+                      <AlertDialogDescription>
+                        This action cannot be undone. This will permanently
+                        delete message will remove the data from our servers.
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogAction className="p-0">
+                        {" "}
+                        <Button
+                          variant="destructive"
+                          className="w-full"
+                          onClick={() => {
+                            deleteFunctionFromFirestore(
+                              message.id,
+                              message.name
+                            );
+                          }}
+                        >
+                          Delete {message.id}
+                        </Button>
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
               </TableCell>
             </TableRow>
           ))}

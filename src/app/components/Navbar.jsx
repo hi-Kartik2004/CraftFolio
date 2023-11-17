@@ -13,8 +13,15 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { ClerkLoaded, SignedIn, UserButton } from "@clerk/nextjs";
+import {
+  ClerkLoaded,
+  ClerkLoading,
+  SignedIn,
+  UserButton,
+  useUser,
+} from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
+import { Skeleton } from "./ui/skeleton";
 
 const NavData = {
   name: "Kartikeya Saini",
@@ -26,11 +33,15 @@ const NavData = {
   linkedinId: "https://www.linkedin.com/in/kartikeya-saini-65504b240/",
 };
 
-async function fetchData() {
+async function fetchData(loggedUser) {
   let username = "default";
 
   if (typeof window !== "undefined") {
     username = sessionStorage.getItem("username") || "default";
+  }
+
+  if (loggedUser) {
+    username = loggedUser;
   }
 
   try {
@@ -38,13 +49,15 @@ async function fetchData() {
     return userData.default || userData;
   } catch (error) {
     console.error("Error fetching data from users folder:", error);
+    let defaultData = null;
 
-    const defaultData = await import(`@/app/utilpages/UserNotFound`);
-    return defaultData.default || defaultData;
+    defaultData = await import(`@/app/utilpages/UserNotFound`);
+
+    return defaultData;
   }
 }
 
-function Navbar() {
+function Navbar({ showProfile }) {
   const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
   const [data, setData] = useState(null); // Initialize data as null
@@ -52,7 +65,7 @@ function Navbar() {
   useEffect(() => {
     const fetchDataAndSetState = async () => {
       try {
-        const result = await fetchData();
+        const result = await fetchData(loggedUser);
         setData(result);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -64,9 +77,15 @@ function Navbar() {
     fetchDataAndSetState();
   }, []);
 
-  useEffect(() => {
-    setLoading(false);
-  }, []);
+  let loggedUser = null;
+  if (showProfile) {
+    const { isLoaded, user } = useUser();
+    if (!isLoaded) {
+      return null;
+    }
+
+    loggedUser = user.username;
+  }
 
   function handleShowCode() {
     setShowCode(!showCode);
@@ -75,9 +94,6 @@ function Navbar() {
   if (loading || !data) {
     return <CustomSizeSkeleton code=" " />;
   }
-
-  const pathname = usePathname();
-  const specificRoute = "/add-blog";
 
   return (
     <nav className="border-b-2">
@@ -144,6 +160,19 @@ function Navbar() {
 
         <div className="flex gap-2">
           <ModeToggle />
+          {showProfile && (
+            <>
+              <ClerkLoading>
+                <Skeleton className="rounded-full h-[50] w-[50]" />
+              </ClerkLoading>
+
+              <ClerkLoaded>
+                <SignedIn>
+                  <UserButton afterSignOutUrl="/" />
+                </SignedIn>
+              </ClerkLoaded>
+            </>
+          )}
         </div>
       </div>
     </nav>

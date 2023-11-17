@@ -39,7 +39,6 @@ export default function Editor({ showProfile }) {
           <AlertDialogTrigger asChild>
             <div className="flex gap-4 items-center">
               <Button className="">Publish Blog</Button>
-              {showProfile === 1 && <UserButton afterSignOutUrl="/" />}
             </div>
           </AlertDialogTrigger>
           <AlertDialogContent>
