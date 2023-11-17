@@ -5,9 +5,9 @@ import { useUser } from "@clerk/nextjs";
 
 function createData(user) {
   const data = {
-    NavName: user.username,
-    FirstName: user.firstName,
-    LastName: user.lastName,
+    NavName: user.username || "User Not Found!",
+    FirstName: user.firstName || "User",
+    LastName: user.lastName || "Not Found!",
     NavSubtitle: "Portfolio not created yet",
     image:
       "https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/thumbnail-default@2x.png",
@@ -17,13 +17,13 @@ function createData(user) {
     WhatsAppLink: "#",
     email: "#",
     HeroTitle: () => (
-      <>
+      <React.Fragment>
         <span className="bg-gradient-to-br from-left-gradient to-right-gradient text-clip bg-clip-text text-transparent">
           User Not Found!,
         </span>{" "}
         <br className="hidden md:inline-block" />
         <p className="mt-1">Check the Username you entered in the url.</p>
-      </>
+      </React.Fragment>
     ),
     HeroSubtitle: () => (
       <React.Fragment className="text-muted-foreground">
@@ -364,16 +364,13 @@ function createData(user) {
   return data;
 }
 
-function PortfolioNotCreated() {
+export default function PortfolioNotCreated() {
   const { isLoaded, user } = useUser();
   if (!isLoaded) {
     return null;
   }
 
-  const resp = createData(user);
-  return resp;
+  const data = createData(user);
+
+  return data;
 }
-
-const data = PortfolioNotCreated();
-
-export default data;

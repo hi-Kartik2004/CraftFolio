@@ -22,6 +22,7 @@ import {
 } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import { Skeleton } from "./ui/skeleton";
+import PortfolioNotCreated from "@/app/utilpages/PortfolioNotCreated";
 
 const NavData = {
   name: "Kartikeya Saini",
@@ -33,15 +34,13 @@ const NavData = {
   linkedinId: "https://www.linkedin.com/in/kartikeya-saini-65504b240/",
 };
 
-async function fetchData(loggedUser) {
-  let username = "default";
-
-  if (typeof window !== "undefined") {
-    username = sessionStorage.getItem("username") || "default";
-  }
-
-  if (loggedUser) {
-    username = loggedUser;
+async function fetchData(showProfile) {
+  let username = null;
+  if (!showProfile) {
+    username = "default";
+    if (typeof window !== "undefined") {
+      username = sessionStorage.getItem("username") || "default";
+    }
   }
 
   try {
@@ -49,10 +48,7 @@ async function fetchData(loggedUser) {
     return userData.default || userData;
   } catch (error) {
     console.error("Error fetching data from users folder:", error);
-    let defaultData = null;
-
-    defaultData = await import(`@/app/utilpages/UserNotFound`);
-
+    let defaultData = PortfolioNotCreated();
     return defaultData;
   }
 }
@@ -65,27 +61,27 @@ function Navbar({ showProfile }) {
   useEffect(() => {
     const fetchDataAndSetState = async () => {
       try {
-        const result = await fetchData(loggedUser);
-        setData(result);
+        let username = null;
+        if (!showProfile) {
+          username = "default";
+          if (typeof window !== "undefined") {
+            username = sessionStorage.getItem("username") || "default";
+          }
+        }
+
+        const userData = await import(`@/app/users/${username}`);
+        setData(userData.default || userData);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
-      } finally {
+        const userData = await import(`@/app/utilpages/UserNotFound`);
+        setData(userData.default || userData);
         setLoading(false);
       }
     };
 
     fetchDataAndSetState();
-  }, []);
-
-  let loggedUser = null;
-  if (showProfile) {
-    const { isLoaded, user } = useUser();
-    if (!isLoaded) {
-      return null;
-    }
-
-    loggedUser = user.username;
-  }
+  }, [showProfile]);
 
   function handleShowCode() {
     setShowCode(!showCode);
@@ -99,68 +95,7 @@ function Navbar({ showProfile }) {
     <nav className="border-b-2">
       <div className="container flex gap-5 justify-between px-4 py-2 items-center hover: bg-none outline-none">
         <div className="relative">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <div className="flex gap-4 items-center cursor-pointer">
-                <img
-                  src={data.image}
-                  alt="logo"
-                  className="h-12 w-12 rounded-full select-none"
-                />
-                <div className="flex flex-col gap-[0.15rem]">
-                  <span className="text-md font-bold">{data.NavName}</span>
-                  <p className="text-[0.7rem] text-muted-foreground">
-                    {data.NavSubtitle}
-                  </p>
-                </div>
-              </div>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="ml-2 mt-1">
-              <DropdownMenuItem>
-                <Link
-                  href={data.resumeLink}
-                  target="_blank"
-                  className="flex gap-2 items-center"
-                >
-                  {" "}
-                  <FiDownload />
-                  Resume
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link
-                  href={`https://github.com/${NavData.githubId}`}
-                  className="flex gap-2 items-center"
-                  target="_blank"
-                >
-                  <BsGithub /> Github
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link
-                  href={data.linkedinUrl}
-                  className="flex gap-2 items-center"
-                  target="_blank"
-                >
-                  <BsLinkedin /> Linkedin
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link
-                  href={`mailto:${data.email}`}
-                  className="flex gap-2 items-center"
-                >
-                  {" "}
-                  <BiLogoGmail /> Mail Me
-                </Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-
-        <div className="flex gap-2">
-          <ModeToggle />
-          {showProfile && (
+          {showProfile ? (
             <>
               <ClerkLoading>
                 <Skeleton className="rounded-full h-[50] w-[50]" />
@@ -172,7 +107,69 @@ function Navbar({ showProfile }) {
                 </SignedIn>
               </ClerkLoaded>
             </>
+          ) : (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <div className="flex gap-4 items-center cursor-pointer">
+                  <img
+                    src={data.image}
+                    alt="logo"
+                    className="h-12 w-12 rounded-full select-none"
+                  />
+                  <div className="flex flex-col gap-[0.15rem]">
+                    <span className="text-md font-bold">{data.NavName}</span>
+                    <p className="text-[0.7rem] text-muted-foreground">
+                      {data.NavSubtitle}
+                    </p>
+                  </div>
+                </div>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="ml-2 mt-1">
+                <DropdownMenuItem>
+                  <Link
+                    href={data.resumeLink}
+                    target="_blank"
+                    className="flex gap-2 items-center"
+                  >
+                    {" "}
+                    <FiDownload />
+                    Resume
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link
+                    href={`https://github.com/${NavData.githubId}`}
+                    className="flex gap-2 items-center"
+                    target="_blank"
+                  >
+                    <BsGithub /> Github
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link
+                    href={data.linkedinUrl}
+                    className="flex gap-2 items-center"
+                    target="_blank"
+                  >
+                    <BsLinkedin /> Linkedin
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link
+                    href={`mailto:${data.email}`}
+                    className="flex gap-2 items-center"
+                  >
+                    {" "}
+                    <BiLogoGmail /> Mail Me
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           )}
+        </div>
+
+        <div className="flex gap-2">
+          <ModeToggle />
         </div>
       </div>
     </nav>
