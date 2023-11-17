@@ -7,22 +7,24 @@ import Projects from "./sections/Projects";
 import Skills from "./sections/Skills";
 import FooterSection from "./sections/FooterSection";
 import Foot from "./components/Foot";
+import { useEffect, useState } from "react";
+import { Skeleton } from "./components/ui/skeleton";
 
-export default function Portfolio() {
+export default function Portfolio({ data }) {
 
   return (
     <main className="">
-      <Navbar />
-      <HeroSection />
-      <AboutMe />
+      <Navbar data={data} />
+      <HeroSection data={data} />
+      <AboutMe data={data} />
       {/* <AboutSection /> */}
       <Separator className="my-12" />
-      <Projects />
+      <Projects data={data} />
       <Separator className="my-12" />
-      <Skills />
+      <Skills data={data} />
       <Separator className="my-12" />
-      <FooterSection />
-      <Foot />
+      <FooterSection data={data} />
+      <Foot data={data} />
       {/* <div className="min-h-[100vh]"></div> */}
     </main>
   );

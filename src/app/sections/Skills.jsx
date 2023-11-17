@@ -1,20 +1,14 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import SectionHeading from "../components/SectionHeading";
-import SearchTech from "../components/SearchTech";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "../components/ui/hover-card";
-import { Button } from "../components/ui/button";
-import SkillsCard from "../components/SkillsCard";
-import { BiCode } from "react-icons/bi";
-import CodeSnippet from "../components/CodeSnippet";
-import { IoIosArrowBack } from "react-icons/io";
-import data from "../data";
-import CustomSizeSkeleton from "../components/CustomSizeSkeleton";
+import userNotFoundData from "@/app/utilpages/UserNotFoundApi";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { BiCode } from "react-icons/bi";
+import { IoIosArrowBack } from "react-icons/io";
+import CodeSnippet from "../components/CodeSnippet";
+import CustomSizeSkeleton from "../components/CustomSizeSkeleton";
+import SectionHeading from "../components/SectionHeading";
+import SkillsCard from "../components/SkillsCard";
+import { Button } from "../components/ui/button";
 
 const code = `function Skills() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -124,39 +118,13 @@ const code = `function Skills() {
   );
 }`;
 
-async function fetchData() {
-  const username = sessionStorage.getItem("username") || "default";
-
-  try {
-    const userData = await import(`@/app/users/${username}`);
-    return userData.default || userData;
-  } catch (error) {
-    console.error("Error fetching data from users folder:", error);
-
-    const defaultData = await import(`@/app/data`);
-    return defaultData.default || defaultData;
-  }
-}
-
-function Skills() {
+function Skills({ data }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
-  const [data, setData] = useState(null); // Initialize data as null
-
+  data = data || userNotFoundData;
   useEffect(() => {
-    const fetchDataAndSetState = async () => {
-      try {
-        const result = await fetchData();
-        setData(result);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchDataAndSetState();
+    data = data || userNotFoundData;
   }, []);
 
   useEffect(() => {
@@ -170,7 +138,7 @@ function Skills() {
   if (loading || !data) {
     return <CustomSizeSkeleton code={code} />;
   }
-  
+
   const cardsPerPage = 5;
 
   const indexOfLastCard = currentPage * cardsPerPage;
@@ -178,7 +146,7 @@ function Skills() {
   const currentCards = data.skillsData.slice(indexOfFirstCard, indexOfLastCard);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
- 
+
   return (
     <motion.section
       initial="hidden"

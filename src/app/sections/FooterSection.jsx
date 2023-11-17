@@ -1,6 +1,16 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import userNotFoundData from "@/app/utilpages/UserNotFoundApi";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { BiCode, BiSolidMessageAltDetail } from "react-icons/bi";
+import { BsGithub, BsLinkedin, BsWhatsapp } from "react-icons/bs";
+import { IoIosArrowBack } from "react-icons/io";
+import CodeSnippet from "../components/CodeSnippet";
+import ContactMeForm from "../components/ContactMeForm";
+import CustomSizeSkeleton from "../components/CustomSizeSkeleton";
 import SectionHeading from "../components/SectionHeading";
+import { Button } from "../components/ui/button";
 import {
   Sheet,
   SheetContent,
@@ -9,19 +19,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "../components/ui/sheet";
-import { Form, FormControl } from "../components/ui/form";
-import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
-import ContactMeSlider from "../components/ContactMeForm";
-import { BiCode, BiSolidMessageAltDetail } from "react-icons/bi";
-import ContactMeForm from "../components/ContactMeForm";
-import { BsGithub, BsLinkedin, BsWhatsapp } from "react-icons/bs";
-import Link from "next/link";
-import CodeSnippet from "../components/CodeSnippet";
-import { IoIosArrowBack } from "react-icons/io";
 import data from "../data";
-import CustomSizeSkeleton from "../components/CustomSizeSkeleton";
-import { motion } from "framer-motion";
 
 const code = `function FooterSection() {
   const [showCode, setShowCode] = useState(false);
@@ -119,38 +117,13 @@ const code = `function FooterSection() {
 }
 `;
 
-async function fetchData() {
-  const username = sessionStorage.getItem("username") || "default";
-
-  try {
-    const userData = await import(`@/app/users/${username}`);
-    return userData.default || userData;
-  } catch (error) {
-    console.error("Error fetching data from users folder:", error);
-
-    const defaultData = await import(`@/app/data`);
-    return defaultData.default || defaultData;
-  }
-}
-
-function FooterSection() {
+function FooterSection({ data }) {
   const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
-  const [data, setData] = useState(null); // Initialize data as null
+  data = data || userNotFoundData;
 
   useEffect(() => {
-    const fetchDataAndSetState = async () => {
-      try {
-        const result = await fetchData();
-        setData(result);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchDataAndSetState();
+    data = data || userNotFoundData;
   }, []);
 
   useEffect(() => {

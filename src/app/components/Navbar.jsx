@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { BiLogoGmail } from "react-icons/bi";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { FiDownload } from "react-icons/fi";
-import data from "../data";
 import CustomSizeSkeleton from "./CustomSizeSkeleton";
 import { ModeToggle } from "./ModeToggle";
 import {
@@ -23,6 +22,7 @@ import {
 import { usePathname } from "next/navigation";
 import { Skeleton } from "./ui/skeleton";
 import PortfolioNotCreated from "@/app/utilpages/PortfolioNotCreated";
+import userNotFoundData from "@/app/utilpages/UserNotFoundApi";
 
 const NavData = {
   name: "Kartikeya Saini",
@@ -34,62 +34,23 @@ const NavData = {
   linkedinId: "https://www.linkedin.com/in/kartikeya-saini-65504b240/",
 };
 
-async function fetchData(showProfile) {
-  let username = null;
-  if (!showProfile) {
-    username = "default";
-    if (typeof window !== "undefined") {
-      username = sessionStorage.getItem("username") || "default";
-    }
-  }
-
-  try {
-    const userData = await import(`@/app/users/${username}`);
-    return userData.default || userData;
-  } catch (error) {
-    console.error("Error fetching data from users folder:", error);
-    let defaultData = PortfolioNotCreated();
-    return defaultData;
-  }
-}
-
-function Navbar({ showProfile }) {
-  const [loading, setLoading] = useState(true);
+function Navbar({ showProfile, data }) {
+  // const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
-  const [data, setData] = useState(null); // Initialize data as null
-
+  data = data || userNotFoundData;
+  
   useEffect(() => {
-    const fetchDataAndSetState = async () => {
-      try {
-        let username = null;
-        if (!showProfile) {
-          username = "default";
-          if (typeof window !== "undefined") {
-            username = sessionStorage.getItem("username") || "default";
-          }
-        }
-
-        const userData = await import(`@/app/users/${username}`);
-        setData(userData.default || userData);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        const userData = await import(`@/app/utilpages/UserNotFound`);
-        setData(userData.default || userData);
-        setLoading(false);
-      }
-    };
-
-    fetchDataAndSetState();
+    data = data || userNotFoundData;
+    // setLoading(false);
   }, [showProfile]);
 
   function handleShowCode() {
     setShowCode(!showCode);
   }
 
-  if (loading || !data) {
-    return <CustomSizeSkeleton code=" " />;
-  }
+  // if (loading) {
+  //   return <CustomSizeSkeleton code=" " />;
+  // }
 
   return (
     <nav className="border-b-2">

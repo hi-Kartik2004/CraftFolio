@@ -1,14 +1,14 @@
 "use client";
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import CodeSnippet from "../components/CodeSnippet";
 
-import SectionHeading from "../components/SectionHeading";
 import { BiCode } from "react-icons/bi";
 import { IoIosArrowBack } from "react-icons/io";
+import SectionHeading from "../components/SectionHeading";
 // import data from `@/app/users/${localStorage.getItem("username")}`;
-import data from "../data";
+import { motion } from "framer-motion";
 import CustomSizeSkeleton from "../components/CustomSizeSkeleton";
-import { motion, useAnimation, useInView } from "framer-motion";
+import userNotFoundData from "@/app/utilpages/UserNotFoundApi";
 
 const code = `function AboutMe() {
   const [showCode, setShowCode] = useState(false);
@@ -163,38 +163,13 @@ const code = `function AboutMe() {
   );
 }`;
 
-async function fetchData() {
-  const username = sessionStorage.getItem("username") || "default";
-
-  try {
-    const userData = await import(`@/app/users/${username}`);
-    return userData.default || userData;
-  } catch (error) {
-    console.error("Error fetching data from users folder:", error);
-
-    const defaultData = await import(`@/app/data`);
-    return defaultData.default || defaultData;
-  }
-}
-
-function AboutMe() {
+function AboutMe({ data }) {
   const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
-  const [data, setData] = useState(null); // Initialize data as null
+  data = data || userNotFoundData;
 
   useEffect(() => {
-    const fetchDataAndSetState = async () => {
-      try {
-        const result = await fetchData();
-        setData(result);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchDataAndSetState();
+    data = data || userNotFoundData;
   }, []);
 
   useEffect(() => {
@@ -212,7 +187,8 @@ function AboutMe() {
   const rotateStyle =
     window.innerWidth <= 640 ? { rotate: -12 } : { rotate: 0 };
 
-  const rotateStyleRight =  window.innerWidth <= 640 ? { rotate: 12 } : { rotate: 0 };
+  const rotateStyleRight =
+    window.innerWidth <= 640 ? { rotate: 12 } : { rotate: 0 };
 
   return (
     <motion.section
@@ -320,7 +296,7 @@ function AboutMe() {
                   }}
                   className="text-muted-foreground"
                 >
-                  {data.AboutMainDescription()}
+                  {data.AboutMainDescription}
 
                   <motion.p
                     initial="hidden"
@@ -333,7 +309,7 @@ function AboutMe() {
                     }}
                     className="mt-6"
                   >
-                    {data.AboutOtherDescription()}
+                    {data.AboutOtherDescription}
                   </motion.p>
                 </motion.div>
               </div>

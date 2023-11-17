@@ -14,9 +14,38 @@ import {
   AlertDialogTrigger,
 } from "@/app/components/ui/alert-dialog";
 import { Button } from "@/app/components/ui/button";
-import { UserButton } from "@clerk/nextjs";
+import { UserButton, useUser } from "@clerk/nextjs";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "@/firebase/config";
+import { useToast } from "./ui/use-toast";
+import { Toaster } from "./ui/toaster";
 
 export default function Editor({ showProfile }) {
+  const { isLoaded, user } = useUser();
+  const { toast } = useToast();
+
+  async function addBlogToFirestore() {
+    try {
+      const collectionRef = collection(db, "blogs");
+      const docSnap = await addDoc(collectionRef, {
+        user: user.username,
+        blog: sessionStorage.getItem("editBlog"),
+        timestamp: Date.now(),
+      });
+      console.log("Blog added with ID: ", docSnap.id);
+      toast({
+        title: "Blog Added Successfully",
+        description: `Your blog might take upto few minutes to go live, its id is ${docSnap.id}`,
+      });
+    } catch (e) {
+      console.log(e);
+      toast({
+        title: "Adding Blog failed",
+        description: `Please refer exisiting issue on our github repo with the following error: ${e}, or raise one yourself.`,
+      });
+    }
+  }
+
   const storedValue = sessionStorage.getItem("editBlog");
   const [value, setValue] = React.useState(
     storedValue || `<!-- Write your Blog here -->`
@@ -26,8 +55,13 @@ export default function Editor({ showProfile }) {
     sessionStorage.setItem("editBlog", value);
   }, [value]);
 
+  if (!isLoaded) {
+    return null;
+  }
+
   return (
     <div className="container my-6 min-h-full">
+      <Toaster />
       <div className="flex flex-wrap gap-6 justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">
           <span className=" bg-gradient-to-br from-left-gradient to-right-gradient text-transparent bg-clip-text">
@@ -51,7 +85,9 @@ export default function Editor({ showProfile }) {
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction>Continue</AlertDialogAction>
+              <AlertDialogAction onClick={addBlogToFirestore}>
+                Continue
+              </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>

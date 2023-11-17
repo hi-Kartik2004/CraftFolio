@@ -1,20 +1,19 @@
 import Editor from "@/app/components/Editor";
 import { Skeleton } from "@/app/components/ui/skeleton";
+import { Toaster } from "@/app/components/ui/toaster";
 import {
   ClerkLoading,
   SignIn,
   SignedIn,
-  SignedOut,
-  UserButton,
+  SignedOut
 } from "@clerk/nextjs";
-import React from "react";
-import { currentUser } from "@clerk/nextjs";
 
 async function AddBlog() {
-  const user = await currentUser();
+  
 
   return (
     <div className="">
+      <Toaster />
       <SignedIn>
         <Editor showProfile={1} />
       </SignedIn>

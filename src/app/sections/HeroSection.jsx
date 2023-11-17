@@ -21,6 +21,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "../components/ui/sheet";
+import userNotFoundData from "@/app/utilpages/UserNotFoundApi";
 
 const code = `function HeroSection() {
   const [loading, setLoading] = useState(true);
@@ -80,43 +81,12 @@ const code = `function HeroSection() {
   );
 }`;
 
-async function fetchData() {
-  let username = "default";
-
-  if (typeof window !== "undefined") {
-    username = sessionStorage.getItem("username") || "default";
-  }
-
-  try {
-    const userData = await import(`@/app/users/${username}`);
-    return userData.default || userData;
-  } catch (error) {
-    console.error("Error fetching data from users folder:", error);
-
-    const defaultData = await import(`@/app/utilpages/UserNotFound`);
-    return defaultData.default || defaultData;
-  }
-}
-
-function HeroSection() {
+function HeroSection({ data }) {
   const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
-  const [data, setData] = useState(null); // Initialize data as null
 
-  useEffect(() => {
-    const fetchDataAndSetState = async () => {
-      try {
-        const result = await fetchData();
-        setData(result);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchDataAndSetState();
-  }, []);
+  console.log(data);
+  data = data || userNotFoundData;
 
   useEffect(() => {
     setLoading(false);
@@ -126,9 +96,14 @@ function HeroSection() {
     setShowCode(!showCode);
   }
 
+  useEffect(() => {
+    data = data || userNotFoundData;
+  }, [data]);
+
   if (loading || !data) {
     return <CustomSizeSkeleton code={code} />;
   }
+
   return (
     <>
       <motion.section
@@ -161,7 +136,7 @@ function HeroSection() {
               className="headings flex justify-between mt-10 flex-col"
             >
               <h1 className="text-4xl md:text-5xl font-bold">
-                {data.HeroTitle()}
+                {data.HeroTitle}
               </h1>
             </motion.div>
             <motion.p
@@ -170,7 +145,7 @@ function HeroSection() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-muted-foreground mt-4"
             >
-              {data.HeroSubtitle()}
+              {data.HeroSubtitle}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -249,9 +224,9 @@ function HeroSection() {
             </motion.div>
             <div className="mt-12 md:hidden">
               {/* <div className="flex gap-2 items-center mb-6">
-          <GiTechnoHeart />
-          <h2 className="text-lg">Technologies Known</h2>
-        </div> */}
+            <GiTechnoHeart />
+            <h2 className="text-lg">Technologies Known</h2>
+          </div> */}
 
               <LeftLogos className="mt-6" />
               <div className="mt-6">

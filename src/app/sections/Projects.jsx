@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import data from "../data";
 import CustomSizeSkeleton from "../components/CustomSizeSkeleton";
 import { motion } from "framer-motion";
+import userNotFoundData from "@/app/utilpages/UserNotFoundApi";
 
 const code = `function Projects() {
   const [showCode, setShowCode] = useState(false);
@@ -110,38 +111,12 @@ const code = `function Projects() {
   );
 }`;
 
-async function fetchData() {
-  const username = sessionStorage.getItem("username") || "default";
-
-  try {
-    const userData = await import(`@/app/users/${username}`);
-    return userData.default || userData;
-  } catch (error) {
-    console.error("Error fetching data from users folder:", error);
-
-    const defaultData = await import(`@/app/data`);
-    return defaultData.default || defaultData;
-  }
-}
-
-function Projects() {
+function Projects({ data }) {
   const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
-  const [data, setData] = useState(null); // Initialize data as null
-
+  data = data || userNotFoundData;
   useEffect(() => {
-    const fetchDataAndSetState = async () => {
-      try {
-        const result = await fetchData();
-        setData(result);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchDataAndSetState();
+    data = data || userNotFoundData;
   }, []);
 
   useEffect(() => {

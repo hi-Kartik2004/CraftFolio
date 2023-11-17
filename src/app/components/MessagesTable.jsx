@@ -7,6 +7,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/app/components/ui/table";
+import { db } from "@/firebase/config";
+import { deleteDoc, doc } from "firebase/firestore";
 import Link from "next/link";
 import {
   AlertDialog,
@@ -20,13 +22,8 @@ import {
   AlertDialogTrigger,
 } from "./ui/alert-dialog";
 import { Button } from "./ui/button";
-import { deleteDoc, doc } from "firebase/firestore";
-import { db } from "@/firebase/config";
-import { Toast, ToastAction } from "./ui/toast";
-import { useToast } from "./ui/use-toast";
 import { Toaster } from "./ui/toaster";
-import { useEffect, useState } from "react";
-import { Skeleton } from "./ui/skeleton";
+import { useToast } from "./ui/use-toast";
 
 function MessagesTable({ messages }) {
   const { toast } = useToast();
@@ -45,6 +42,7 @@ function MessagesTable({ messages }) {
       console.error("Error deleting document:", error);
     }
   }
+  
   return (
     <div className="container my-10">
       <Toaster />
