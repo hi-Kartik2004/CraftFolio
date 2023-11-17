@@ -167,10 +167,7 @@ function AboutMe({ data }) {
   const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
 
-
-  useEffect(() => {
-    data = data || userNotFoundData;
-  }, []);
+  data = data || userNotFoundData;
 
   useEffect(() => {
     setLoading(false);
