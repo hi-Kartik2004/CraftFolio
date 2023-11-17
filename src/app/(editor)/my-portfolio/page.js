@@ -1,9 +1,26 @@
+"use client";
 import SectionHeading from "@/app/components/SectionHeading";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/app/components/ui/button";
 import EditPortfolio from "@/app/components/EditPortfolio";
+import { Skeleton } from "@/app/components/ui/skeleton";
 
 function EditPortfolioPage() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="container flex flex-col items-center justify-center gap-4">
+        <Skeleton className="w-full h-[20vh] m-4" />
+        <Skeleton className="w-full h-[60vh] m-2" />
+      </div>
+    );
+  }
+
   return (
     <section className="container">
       <div>

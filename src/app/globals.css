@@ -121,34 +121,118 @@
 }
 
 /* ============== For markdown =========  */
-@layer components {
-  .markdown-body {
-    /* Customize your styles for markdown content here */
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: var(--foreground);
+.markdown {
+  @apply leading-relaxed text-sm;
+}
 
-    h1 {
-      font-size: 2em;
-      color: var(--primary-foreground);
-    }
-
-    h2 {
-      font-size: 1.8em;
-      color: var(--secondary-foreground);
-    }
-
-    p {
-      margin-bottom: 1em;
-    }
-
-    code {
-      background-color: var(--primary-foreground);
-      color: var(--primary);
-      padding: 0.2em 0.4em;
-      border-radius: 0.3em;
-    }
-
-    /* Add styles for other markdown elements as needed */
+@screen sm {
+  .markdown {
+    @apply text-base;
   }
+}
+
+@screen lg {
+  .markdown {
+    @apply text-lg;
+  }
+}
+
+/* Headers */
+.markdown h1 {
+  @apply text-2xl my-8 font-bold;
+}
+.markdown h2 {
+  @apply text-xl my-6 font-semibold;
+}
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  @apply text-lg my-3 font-semibold;
+}
+
+@screen sm {
+  .markdown h1{
+    @apply text-3xl;
+  }
+  .markdown h2 {
+    @apply text-2xl;
+  }
+  .markdown h3,
+  .markdown h4,
+  .markdown h5,
+  .markdown h6 {
+    @apply text-xl;
+  }
+}
+
+/* Links */
+.markdown a {
+  @apply text-blue-600;
+}
+.markdown a:hover {
+  @apply underline;
+}
+/* Paragraph */
+.markdown p {
+  @apply mb-4;
+}
+/* Lists */
+.markdown ul,
+.markdown ol {
+  @apply mb-4 ml-8;
+}
+.markdown li > p,
+.markdown li > ul,
+.markdown li > ol {
+  @apply mb-0;
+}
+.markdown ol {
+  @apply list-decimal;
+}
+.markdown ul {
+  @apply list-disc;
+}
+/* Blockquotes */
+.markdown blockquote {
+  @apply p-2 my-4 bg-accent border-l-4 border-primary rounded-md;
+}
+.markdown blockquote > p {
+  @apply mb-0;
+}
+/* Tables */
+.markdown td,
+.markdown th {
+  @apply px-2 py-1 border-2 border-muted-foreground bg-accent;
+}
+.markdown tr:nth-child(odd) {
+  @apply bg-muted-foreground;
+}
+.markdown table {
+  @apply mb-6 border-collapse border border-foreground;
+}
+
+.markdown pre > code {
+  @apply px-6 py-2 flex rounded-md bg-accent mb-4 w-full overflow-auto max-h-[300px];
+}
+.markdown :not(pre) > code.language-text {
+  white-space: pre-line;
+  background-color: var(--input);
+  border: 1px solid var(--border);
+}
+
+.markdown em {
+  @apply italic mt-2;
+}
+
+.markdown p > code {
+  @apply px-2 py-1 rounded-md bg-accent border-2 border-dashed;
+  /* padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background-color: var(--); */
+}
+
+.markdown .img-full {
+  @apply w-full;
 }

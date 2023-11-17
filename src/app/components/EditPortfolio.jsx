@@ -28,6 +28,7 @@ import { Button } from "./ui/button";
 import { db } from "@/firebase/config";
 import { useToast } from "./ui/use-toast";
 import { Toaster } from "./ui/toaster";
+import { Skeleton } from "./ui/skeleton";
 
 function EditPortfolio() {
   const { isLoaded, user } = useUser();
@@ -36,6 +37,7 @@ function EditPortfolio() {
   const [textareaValue, setTextareaValue] = useState(
     sessionStorage.getItem("portfolioCode") || ""
   );
+  const [loading, setLoading] = useState(true);
 
   const { toast } = useToast();
 
@@ -145,6 +147,18 @@ function EditPortfolio() {
   useEffect(() => {
     getBlogFromFirestore();
   }, []);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="container mt-6">
+        <Skeleton className="w-full h-[60vh]" />
+      </div>
+    );
+  }
 
   return (
     <div className="mt-6">
