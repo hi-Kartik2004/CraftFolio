@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import {
   AlertDialog,
@@ -34,7 +35,7 @@ function EditPortfolio() {
   const { isLoaded, user } = useUser();
 
   // Add a check for user before proceeding
-  if (!isLoaded || !user) return null;
+  if (!isLoaded) return null;
 
   const [blogCode, setBlogCode] = useState("");
   const [textareaValue, setTextareaValue] = useState(
@@ -183,8 +184,8 @@ function EditPortfolio() {
               <AlertDialogDescription>
                 <p>
                   you are about to edit your portfolio; you can refresh to get
-                  back to the state of your last modified, however, you cannot undo this
-                  modification once made.
+                  back to the state of your last modified, however, you cannot
+                  undo this modification once made.
                 </p>
               </AlertDialogDescription>
               <AlertDialogFooter>
