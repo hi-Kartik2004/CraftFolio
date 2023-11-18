@@ -65,9 +65,15 @@ function Navbar({ showProfile, data }) {
         >
           <div className="flex justify-between items-center pb-2">
             <div className="left flex gap-4 flex-wrap">
-              <Link href="/my-portfolio">My Portfolio</Link>
-              <Link href="/my-messages">My Messages</Link>
-              <Link href="/add-blog">Add Blog</Link>
+              <Link href="/my-portfolio" className="text-sm">
+                My Portfolio
+              </Link>
+              <Link href="/my-messages" className="text-sm">
+                My Messages
+              </Link>
+              <Link href="/add-blog" className="text-sm">
+                Add Blog
+              </Link>
             </div>
 
             <IoIosClose
