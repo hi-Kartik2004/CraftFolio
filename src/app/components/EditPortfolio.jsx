@@ -202,7 +202,7 @@ function EditPortfolio() {
             </AlertDialogTrigger>
             <AlertDialogContent className="h-[90vh]">
               <iframe
-                src="https://chat.openai.com"
+                src="https://chat.openai.com/c/a40b8ffd-6578-4be9-9392-2f583050c471"
                 width="100%"
                 height="575px"
               ></iframe>
