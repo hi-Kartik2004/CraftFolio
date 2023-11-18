@@ -31,7 +31,6 @@ import { Skeleton } from "./ui/skeleton";
 
 function EditPortfolio() {
   const { isLoaded, user } = useUser();
-  if (!isLoaded) return null;
   const [blogCode, setBlogCode] = useState("");
   const [textareaValue, setTextareaValue] = useState(
     sessionStorage.getItem("portfolioCode") || ""
@@ -53,7 +52,7 @@ function EditPortfolio() {
 
   async function getBlogFromFirestore() {
     try {
-      if (!user) {
+      if (!isLoaded || !user) {
         console.log("User is null or undefined.");
         // Handle the case where user is not available
         return;
@@ -101,13 +100,13 @@ function EditPortfolio() {
     } catch (err) {
       console.error(err);
       toast({
-        title: "Some error occured while initialising your portfolio",
+        title: "Some error occurred while initializing your portfolio",
         description: `${err}`,
       });
     }
   }
 
-  async function updateProtfolioCodeInFireStore() {
+  async function updatePortfolioCodeInFirestore() {
     const portfolioCollection = collection(db, "portfolios");
     const querySnapshot = await getDocs(
       query(portfolioCollection, where("user", "==", user.username))
@@ -127,7 +126,7 @@ function EditPortfolio() {
         console.log("Document updated successfully!");
         toast({
           title: "Portfolio Updated Successfully",
-          description: `Your portfolio is updated successfully, might take upto few minutes to go live!`,
+          description: `Your portfolio is updated successfully, might take up to a few minutes to go live!`,
         });
       } catch (err) {
         console.error("Error updating document:", err);
@@ -140,7 +139,7 @@ function EditPortfolio() {
       console.log("No matching documents found.");
       toast({
         title: "No matching document found",
-        description: `Visit our github repo for more inforamtion.`,
+        description: `Visit our GitHub repo for more information.`,
       });
     }
   }
@@ -150,27 +149,22 @@ function EditPortfolio() {
   }
 
   useEffect(() => {
-    getBlogFromFirestore();
-  }, []);
+    // Call getBlogFromFirestore only when user is loaded
+    if (isLoaded) {
+      getBlogFromFirestore();
+    }
+  }, [isLoaded]);  // Dependency array ensures it runs when isLoaded changes
 
   useEffect(() => {
     setLoading(false);
   }, []);
-
-  if (loading) {
-    return (
-      <div className="container mt-6">
-        <Skeleton className="w-full h-[60vh]" />
-      </div>
-    );
-  }
 
   return (
     <div className="mt-6">
       <Toaster />
       <div className="mb-4 flex flex-wrap justify-between items-center">
         <Badge>
-          <p>users/{user.username}.js</p>
+          <p>users/{user?.username}.js</p>
         </Badge>
 
         <div className="flex gap-4 items-center flex-wrap">
@@ -184,14 +178,14 @@ function EditPortfolio() {
               </AlertDialogHeader>
               <AlertDialogDescription>
                 <p>
-                  you are about to edit your portfolio; you can refresh to get
+                  You are about to edit your portfolio; you can refresh to get
                   back to the state of your last modified, however, you cannot
                   undo this modification once made.
                 </p>
               </AlertDialogDescription>
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={updateProtfolioCodeInFireStore}>
+                <AlertDialogAction onClick={updatePortfolioCodeInFirestore}>
                   Modify
                 </AlertDialogAction>
               </AlertDialogFooter>
