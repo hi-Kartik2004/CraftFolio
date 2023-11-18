@@ -1,5 +1,6 @@
 "use client";
 import Navbar from "@/app/components/Navbar";
+import { Alert, AlertDescription } from "@/app/components/ui/alert";
 import { Badge } from "@/app/components/ui/badge";
 import {
   Card,
@@ -15,6 +16,7 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { BiNoSignal } from "react-icons/bi";
 import { GoLinkExternal } from "react-icons/go";
 
 function Blogs({ params }) {
@@ -162,7 +164,7 @@ function Blogs({ params }) {
               </CardHeader>
               <CardContent>
                 <img
-                  src={`https://source.unsplash.com/random/900×700/?${blog.title}/350x350`}
+                  src={`https://source.unsplash.com/random/350X350/?${blog.title}`}
                   alt="coming from unsplash"
                   className="bg-secondary-foreground rounded-md h-[200px] w-full object-cover object-top"
                 />
@@ -170,6 +172,17 @@ function Blogs({ params }) {
             </Card>
           </motion.div>
         ))}
+
+        {userBlogs.length === 0 && (
+          <Alert className="flex items-center gap-2">
+            <BiNoSignal size={20} />
+            <AlertDescription className="flex items-center">
+              <p className="text-lg">
+                User Has got no blogs or incorrect username!
+              </p>
+            </AlertDescription>
+          </Alert>
+        )}
       </div>
     </div>
   );

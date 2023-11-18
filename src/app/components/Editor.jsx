@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import MDEditor from "@uiw/react-md-editor";
 import rehypeSanitize from "rehype-sanitize";
 import {
@@ -19,15 +19,20 @@ import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/firebase/config";
 import { useToast } from "./ui/use-toast";
 import { Toaster } from "./ui/toaster";
+import { Input } from "./ui/input";
 
 export default function Editor({ showProfile }) {
   const { isLoaded, user } = useUser();
   const { toast } = useToast();
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
   async function addBlogToFirestore() {
     try {
       const collectionRef = collection(db, "blogs");
       const docSnap = await addDoc(collectionRef, {
+        title: title || "No title provided",
+        description: description || "No description provided",
         user: user.username,
         blog: sessionStorage.getItem("editBlog"),
         timestamp: Date.now(),
@@ -81,6 +86,17 @@ export default function Editor({ showProfile }) {
               <AlertDialogDescription>
                 The blog once published will be public to everyone, and can be
                 accessed by anyone.
+                <div className="flex flex-col flex-wrap gap-4 mt-4">
+                  <Input
+                    placeholder="Title"
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
+
+                  <Input
+                    placeholder="description"
+                    onChange={(e) => setDescription(e.target.value)}
+                  />
+                </div>
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
