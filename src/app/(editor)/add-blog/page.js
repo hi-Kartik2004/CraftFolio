@@ -1,16 +1,9 @@
 import Editor from "@/app/components/Editor";
 import { Skeleton } from "@/app/components/ui/skeleton";
 import { Toaster } from "@/app/components/ui/toaster";
-import {
-  ClerkLoading,
-  SignIn,
-  SignedIn,
-  SignedOut
-} from "@clerk/nextjs";
+import { ClerkLoading, SignIn, SignedIn, SignedOut } from "@clerk/nextjs";
 
 async function AddBlog() {
-  
-
   return (
     <div className="">
       <Toaster />

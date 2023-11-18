@@ -1,6 +1,4 @@
-"use client";
-import { Textarea } from "@/app/components/ui/textarea";
-import { Badge } from "@/app/components/ui/badge";
+import { useEffect, useState } from "react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,9 +9,16 @@ import {
   AlertDialogHeader,
   AlertDialogTrigger,
 } from "@/app/components/ui/alert-dialog";
+import { Badge } from "@/app/components/ui/badge";
+import { Button } from "./ui/button";
+import { Skeleton } from "./ui/skeleton";
+import { Textarea } from "@/app/components/ui/textarea";
+import { Toaster } from "./ui/toaster";
+import { AlertTriangle } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "@radix-ui/react-dialog";
 import { currentUser, useUser } from "@clerk/nextjs";
 import data from "@/app/utilpages/defaultFirebaseTemplate";
-
+import { useToast } from "./ui/use-toast";
 import {
   collection,
   query,
@@ -23,16 +28,14 @@ import {
   updateDoc,
   doc,
 } from "firebase/firestore";
-import { use, useEffect, useState } from "react";
-import { Button } from "./ui/button";
 import { db } from "@/firebase/config";
-import { useToast } from "./ui/use-toast";
-import { Toaster } from "./ui/toaster";
-import { Skeleton } from "./ui/skeleton";
 
 function EditPortfolio() {
   const { isLoaded, user } = useUser();
-  if (!isLoaded) return null;
+
+  // Add a check for user before proceeding
+  if (!isLoaded || !user) return null;
+
   const [blogCode, setBlogCode] = useState("");
   const [textareaValue, setTextareaValue] = useState(
     sessionStorage.getItem("portfolioCode") || ""
@@ -96,7 +99,7 @@ function EditPortfolio() {
     } catch (err) {
       console.error(err);
       toast({
-        title: "Some error occured while initialising your portfolio",
+        title: "Some error occurred while initializing your portfolio",
         description: `${err}`,
       });
     }
@@ -122,7 +125,7 @@ function EditPortfolio() {
         console.log("Document updated successfully!");
         toast({
           title: "Portfolio Updated Successfully",
-          description: `Your portfolio is updated successfully, might take upto few minutes to go live!`,
+          description: `Your portfolio is updated successfully, might take up to few minutes to go live!`,
         });
       } catch (err) {
         console.error("Error updating document:", err);
@@ -135,7 +138,7 @@ function EditPortfolio() {
       console.log("No matching documents found.");
       toast({
         title: "No matching document found",
-        description: `Visit our github repo for more inforamtion.`,
+        description: `Visit our GitHub repo for more information.`,
       });
     }
   }
@@ -168,29 +171,48 @@ function EditPortfolio() {
           <p>users/{user.username}.js</p>
         </Badge>
 
-        <AlertDialog>
-          <AlertDialogTrigger asChild>
-            <Button>Modify</Button>
-          </AlertDialogTrigger>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <h2 className="text-xl font-bold">Are you sure?</h2>
-            </AlertDialogHeader>
-            <AlertDialogDescription>
-              <p>
-                your are about to edit your portfolio, you can refresh to get
-                back to state your last modifed, however you cannot undo this
-                modification once made.
-              </p>
-            </AlertDialogDescription>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction onClick={updateProtfolioCodeInFireStore}>
-                Modify
-              </AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+        <div className="flex gap-4 items-center flex-wrap">
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button>Modify</Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <h2 className="text-xl font-bold">Are you sure?</h2>
+              </AlertDialogHeader>
+              <AlertDialogDescription>
+                <p>
+                  you are about to edit your portfolio; you can refresh to get
+                  back to the state of your last modified, however, you cannot undo this
+                  modification once made.
+                </p>
+              </AlertDialogDescription>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction onClick={updateProtfolioCodeInFireStore}>
+                  Modify
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button variant="outline">Ask Ai</Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent className="h-[90vh]">
+              <iframe
+                src="https://chat.openai.com"
+                width="100%"
+                height="575px"
+              ></iframe>
+
+              <AlertDialogFooter className="p-0 m-0">
+                <AlertDialogCancel>Close</AlertDialogCancel>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </div>
       </div>
       <Textarea
         rows="20"
