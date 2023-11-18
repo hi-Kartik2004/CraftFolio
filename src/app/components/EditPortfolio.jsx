@@ -28,6 +28,7 @@ import { db } from "@/firebase/config";
 import { useToast } from "./ui/use-toast";
 import { Toaster } from "./ui/toaster";
 import { Skeleton } from "./ui/skeleton";
+import Link from "next/link";
 
 function EditPortfolio() {
   const { isLoaded, user } = useUser();
@@ -153,7 +154,7 @@ function EditPortfolio() {
     if (isLoaded) {
       getBlogFromFirestore();
     }
-  }, [isLoaded]);  // Dependency array ensures it runs when isLoaded changes
+  }, [isLoaded]); // Dependency array ensures it runs when isLoaded changes
 
   useEffect(() => {
     setLoading(false);
@@ -162,6 +163,7 @@ function EditPortfolio() {
   return (
     <div className="mt-6">
       <Toaster />
+    
       <div className="mb-4 flex flex-wrap justify-between items-center">
         <Badge>
           <p>users/{user?.username}.js</p>

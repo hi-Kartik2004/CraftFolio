@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import { Button } from "@/app/components/ui/button";
 import EditPortfolio from "@/app/components/EditPortfolio";
 import { Skeleton } from "@/app/components/ui/skeleton";
+import Link from "next/link";
+import { BiArrowBack } from "react-icons/bi";
 
 function EditPortfolioPage() {
   const [loading, setLoading] = useState(true);
@@ -23,6 +25,11 @@ function EditPortfolioPage() {
 
   return (
     <section className="container">
+      <Button variant="link">
+        <Link href="/" className="my-4 flex gap-2 items-center">
+          <BiArrowBack /> Home
+        </Link>
+      </Button>
       <div>
         <SectionHeading
           title="Edit your"
