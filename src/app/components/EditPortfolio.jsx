@@ -17,7 +17,7 @@ import { Textarea } from "@/app/components/ui/textarea";
 import { Toaster } from "./ui/toaster";
 import { AlertTriangle } from "lucide-react";
 import { Dialog, DialogContent, DialogTrigger } from "@radix-ui/react-dialog";
-import { currentUser, useUser } from "@clerk/nextjs";
+import { SignIn, SignedOut, currentUser, useUser } from "@clerk/nextjs";
 import data from "@/app/utilpages/defaultFirebaseTemplate";
 import { useToast } from "./ui/use-toast";
 import {
@@ -167,6 +167,10 @@ function EditPortfolio() {
   return (
     <div className="mt-6">
       <Toaster />
+      <SignedOut>
+        <SignIn />
+      </SignedOut>
+
       <div className="mb-4 flex flex-wrap justify-between items-center">
         <Badge>
           <p>users/{user.username}.js</p>
