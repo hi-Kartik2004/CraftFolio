@@ -53,6 +53,12 @@ function EditPortfolio() {
 
   async function getBlogFromFirestore() {
     try {
+      if (!user) {
+        console.log("User is null or undefined.");
+        // Handle the case where user is not available
+        return;
+      }
+
       const portFolioCollection = collection(db, "portfolios");
 
       const q = query(portFolioCollection, where("user", "==", user.username));
