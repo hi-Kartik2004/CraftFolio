@@ -1,4 +1,3 @@
-"use client";
 import { Textarea } from "@/app/components/ui/textarea";
 import { Badge } from "@/app/components/ui/badge";
 import {
