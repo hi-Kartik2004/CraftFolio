@@ -39,7 +39,7 @@ function EditPortfolioPage() {
         </p>
       </div>
 
-      <EditPortfolio />
+      {/* <EditPortfolio /> */}
     </section>
   );
 }
