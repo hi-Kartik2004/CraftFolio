@@ -168,29 +168,48 @@ function EditPortfolio() {
           <p>users/{user.username}.js</p>
         </Badge>
 
-        <AlertDialog>
-          <AlertDialogTrigger asChild>
-            <Button>Modify</Button>
-          </AlertDialogTrigger>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <h2 className="text-xl font-bold">Are you sure?</h2>
-            </AlertDialogHeader>
-            <AlertDialogDescription>
-              <p>
-                your are about to edit your portfolio, you can refresh to get
-                back to state your last modifed, however you cannot undo this
-                modification once made.
-              </p>
-            </AlertDialogDescription>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction onClick={updateProtfolioCodeInFireStore}>
-                Modify
-              </AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+        <div className="flex gap-4 items-center flex-wrap">
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button>Modify</Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <h2 className="text-xl font-bold">Are you sure?</h2>
+              </AlertDialogHeader>
+              <AlertDialogDescription>
+                <p>
+                  you are about to edit your portfolio; you can refresh to get
+                  back to the state of your last modified, however, you cannot
+                  undo this modification once made.
+                </p>
+              </AlertDialogDescription>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction onClick={updateProtfolioCodeInFireStore}>
+                  Modify
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button variant="outline">Ask Ai</Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent className="h-[90vh]">
+              <iframe
+                src="https://chat.openai.com/c/a40b8ffd-6578-4be9-9392-2f583050c471"
+                width="100%"
+                height="575px"
+              ></iframe>
+
+              <AlertDialogFooter className="p-0 m-0">
+                <AlertDialogCancel>Close</AlertDialogCancel>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </div>
       </div>
       <Textarea
         rows="20"
