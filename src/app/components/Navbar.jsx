@@ -170,7 +170,7 @@ function Navbar({ showProfile, data, username }) {
         </div>
 
         <div className="flex gap-2 items-center">
-          <Link href={`/${sessionStorage.getItem("username")}/blogs`}>
+          <Link href={`/${username || sessionStorage.getItem("username") }/blogs`}>
             Blogs
           </Link>
           <ModeToggle />
