@@ -165,7 +165,7 @@ const data = {
   AboutMockCode:
     "const name = 'Kartikeya';\nDeveloper dev = new Developer(name);\n\nwhile (dev.isCoding()) {\n  dev.listenToMusic();\n  dev.openStackOverflow();\n  dev.drinkWater();\n}\n",
   AboutImageRight:
-    "https://media-maa2-2.cdn.whatsapp.net/v/t61.24694-24/349035960_938959620717155_2274104282359227756_n.jpg?ccb=11-4&oh=01_AdQ6Rtl8GUNVubjPEGKZfqp0ti7m6DswGst_M0nvcQAbsQ&oe=655CCFAE&_nc_sid=e6ed6c&_nc_cat=110",
+    "https://i.postimg.cc/8zTTKr1F/dp-may-23.jpg",
   NavName: "Kartikeya | CraftFolio",
   FooterSliderTitle:
     "Expect a response within 24 hours when you reach out via email!",
