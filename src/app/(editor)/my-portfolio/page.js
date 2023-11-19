@@ -53,7 +53,9 @@ function EditPortfolioPage() {
           </p>
         </div>
 
-        <EditPortfolio />
+        <div className="mb-8">
+          <EditPortfolio />
+        </div>
       </SignedIn>
     </section>
   );
