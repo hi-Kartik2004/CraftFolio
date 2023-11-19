@@ -33,15 +33,10 @@ function EditPortfolioPage() {
           </div>
         </ClerkLoading>
         <div className="flex justify-center items-center min-h-[80vh]">
-          <SignIn afterSignInUrl="/my-messages" />
+          <SignIn afterSignInUrl="/my-portfolio" />
         </div>
       </SignedOut>
       <SignedIn>
-        <Button variant="link">
-          <Link href="/" className="my-4 flex gap-2 items-center">
-            <BiArrowBack /> Home
-          </Link>
-        </Button>
         <div>
           <SectionHeading
             title="Edit your"

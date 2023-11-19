@@ -25,6 +25,7 @@ import PortfolioNotCreated from "@/app/utilpages/PortfolioNotCreated";
 import userNotFoundData from "@/app/utilpages/UserNotFoundApi";
 import { IoIosClose } from "react-icons/io";
 import { Separator } from "./ui/separator";
+import { Button } from "./ui/button";
 
 const NavData = {
   name: "Kartikeya Saini",
@@ -36,7 +37,7 @@ const NavData = {
   linkedinId: "https://www.linkedin.com/in/kartikeya-saini-65504b240/",
 };
 
-function Navbar({ showProfile, data }) {
+function Navbar({ showProfile, data, username }) {
   const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
   const [display, setDisplay] = useState(true);
@@ -55,9 +56,10 @@ function Navbar({ showProfile, data }) {
     return <CustomSizeSkeleton code=" " />;
   }
 
+
   return (
     <nav className="border-b-2">
-      {!showProfile && (
+      {
         <div
           className={`${
             display ? "" : "hidden"
@@ -85,7 +87,7 @@ function Navbar({ showProfile, data }) {
           </div>
           <Separator />
         </div>
-      )}
+      }
       <div className="container flex gap-5 justify-between px-4 py-2 items-center hover: bg-none outline-none">
         <div className="relative">
           {showProfile ? (
@@ -96,7 +98,13 @@ function Navbar({ showProfile, data }) {
 
               <ClerkLoaded>
                 <SignedIn>
-                  <UserButton afterSignOutUrl="/" />
+                  <div className="flex gap-4 items-center flex-wrap">
+                    <UserButton afterSignOutUrl="/" />
+                    <Button variant="outline">
+                    <Link href={`/${username}`}>/{username}</Link>
+                    </Button>
+                      
+                  </div>
                 </SignedIn>
               </ClerkLoaded>
             </>
