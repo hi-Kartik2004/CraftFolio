@@ -153,14 +153,14 @@ function Projects({ data }) {
       )}
       <div className="flex flex-wrap justify-between items-center gap-4">
         <SectionHeading
-          title={data.ProjectTitle}
-          gradientText={data.ProjectTitleGradient}
-          description={data.ProjectDescription}
-          badge={data.ProjectBadge}
+          title={data.ProjectTitle || "NULL"}
+          gradientText={data.ProjectTitleGradient || "NULL"}
+          description={data.ProjectDescription || "NULL"}
+          badge={data.ProjectBadge || "NULL"}
           githubBadge={true}
         />
 
-        <SearchTech technologies={data.ProjectTechnologies} />
+        <SearchTech technologies={data.ProjectTechnologies || "NULL"} />
       </div>
       {showCode ? (
         <div className="my-4">
@@ -190,20 +190,20 @@ function Projects({ data }) {
             </div>
 
             <div className="my-6">
-              <ProjectTab projectDetails={data.projectDetails} value="all" />
+              <ProjectTab projectDetails={data.projectDetails || "NULL"} value="all" />
               <ProjectTab
-                projectDetails={data.projectDetails}
+                projectDetails={data.projectDetails || "NULL"}
                 value="frontend"
               />
               <ProjectTab
-                projectDetails={data.projectDetails}
+                projectDetails={data.projectDetails || "NULL"}
                 value="fullstack"
               />
               <ProjectTab
-                projectDetails={data.projectDetails}
+                projectDetails={data.projectDetails || "NULL"}
                 value="backend"
               />
-              <ProjectTab projectDetails={data.projectDetails} value="design" />
+              <ProjectTab projectDetails={data.projectDetails || "NULL"} value="design" />
             </div>
           </Tabs>
         </motion.div>

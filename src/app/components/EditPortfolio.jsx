@@ -199,7 +199,7 @@ function EditPortfolio({ user }) {
             </AlertDialogTrigger>
             <AlertDialogContent className="h-[90vh]">
               <iframe
-                src="https://chat.openai.com/c/a40b8ffd-6578-4be9-9392-2f583050c471"
+                src="https://app.chatgptbuilder.io/webchat/?p=1261870&ref=1684698787972"
                 width="100%"
                 height="575px"
               ></iframe>

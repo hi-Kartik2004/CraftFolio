@@ -137,10 +137,10 @@ function HeroSection({ data }) {
               className="headings flex justify-between mt-10 flex-col"
             >
               <h1 className="text-4xl md:text-5xl font-bold flex flex-col">
-                <span className="leading-snug bg-gradient-to-br from-left-gradient to-right-gradient text-transparent bg-clip-text text-clip">
-                  {data.HeroGradient} <br />
+                <span className="leading-snug bg-gradient-to-r from-left-gradient to-right-gradient text-transparent bg-clip-text text-clip">
+                  {data.HeroGradient || "NULL"} <br />
                 </span>
-                {data.HeroTitle}
+                {data.HeroTitle || "NULL"}
               </h1>
             </motion.div>
             <motion.p
@@ -149,7 +149,7 @@ function HeroSection({ data }) {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-muted-foreground mt-4"
             >
-              {data.HeroSubtitle}
+              {data.HeroSubtitle || "NULL"}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -162,7 +162,7 @@ function HeroSection({ data }) {
                 //   className="bg-gradient-to-r from-[#ffa585] to-[#ffeda0]"
               >
                 <Link
-                  href={data.resumeLink}
+                  href={data.resumeLink || "NULL"}
                   target="_blank"
                   className="flex items-center gap-2"
                 >
@@ -187,10 +187,11 @@ function HeroSection({ data }) {
                 <SheetContent>
                   <SheetHeader>
                     <SheetTitle>
-                      Message {data.FirstName + " " + data.LastName}
+                      Message{" "}
+                      {data.FirstName || "NULL" + " " + data.LastName || "NULL"}
                     </SheetTitle>
                     <SheetDescription>
-                      {data.FooterSliderTitle}
+                      {data.FooterSliderTitle || "NULL"}
                     </SheetDescription>
                   </SheetHeader>
                   <div className="mt-4">
@@ -208,18 +209,20 @@ function HeroSection({ data }) {
             >
               <Button asChild variant="link" className="-ml-3">
                 <Link
-                  href={`https://github.com/${data.githubId}`}
+                  href={`https://github.com/${data.githubId || ""}`}
                   className=" flex gap-2 items-center flex-wrap justify-start"
                 >
                   <BsGithub className="h-5 w-5" />
                   <h2 className="text-lg">My Contributions</h2>
-                  <span className="text-xs">[{data.githubId}]</span>
+                  <span className="text-xs">[{data.githubId || "NULL"}]</span>
                 </Link>
               </Button>
               <div className="overflow-x-auto overflow-y-auto flex flex-grow w-full mt-4">
                 <div className="scrolling-container">
                   <img
-                    src={`https://ghchart.rshah.org/f89b29/${data.githubId}`}
+                    src={`https://ghchart.rshah.org/f89b29/${
+                      data.githubId || ""
+                    }`}
                     alt="Github Chart"
                     className="h-[120px] min-w-[700px] md:min-w-[1100px] md:h-[175px]"
                   />

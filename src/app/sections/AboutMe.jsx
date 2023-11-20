@@ -211,10 +211,10 @@ function AboutMe({ data }) {
         />
       )}
       <SectionHeading
-        title={data.AboutTitle}
-        description={data.AboutDescription}
-        gradientText={data.AboutTitleGradient}
-        badge={data.AboutBadge}
+        title={data.AboutTitle || "NULL"}
+        description={data.AboutDescription || "NULL"}
+        gradientText={data.AboutTitleGradient || "NULL"}
+        badge={data.AboutBadge || "NULL"}
       />
 
       {showCode ? (
@@ -234,7 +234,7 @@ function AboutMe({ data }) {
                   visible: { opacity: 1, x: 0, ...rotateStyle },
                   hidden: { opacity: 0, x: 10, ...rotateStyle },
                 }}
-                src={data.AboutImageLeft}
+                src={data.AboutImageLeft || "NULL"}
                 alt="dp"
                 className="sm:w-[220px] overflow-hidden sm:h-[220px] w-[150px] h-[150px] bg-red-500 rounded-md absolute left-1 -rotate-12 md:rotate-0"
               />
@@ -247,7 +247,7 @@ function AboutMe({ data }) {
                   visible: { opacity: 1, x: 0 },
                   hidden: { opacity: 0, x: -10 },
                 }}
-                src={data.AboutImageCenter}
+                src={data.AboutImageCenter || "NULL"}
                 alt="dp"
                 className="sm:w-[220px] overflow-hidden sm:h-[220px] w-[150px] h-[150px] bg-blue-500 rounded-md rotate-0 absolute m-auto left-0 right-0 z-10"
               />
@@ -260,7 +260,7 @@ function AboutMe({ data }) {
                   visible: { opacity: 1, x: 0, ...rotateStyleRight },
                   hidden: { opacity: 0, x: 10, ...rotateStyleRight },
                 }}
-                src={data.AboutImageRight}
+                src={data.AboutImageRight || "NULL"}
                 alt="dp"
                 className="sm:w-[220px] overflow-hidden sm:h-[220px] w-[150px] h-[150px] bg-green-500 rounded-md absolute right-1 rotate-12 md:rotate-0"
               />
@@ -278,7 +278,7 @@ function AboutMe({ data }) {
                 }}
                 className="w-full lg:max-w-[420px]"
               >
-                <CodeSnippet text={data.AboutMockCode} />
+                <CodeSnippet text={data.AboutMockCode || "NULL"} />
               </motion.div>
 
               <div className="mt-6 max-w-[1050px] w-full">
@@ -293,7 +293,7 @@ function AboutMe({ data }) {
                   }}
                   className="text-muted-foreground"
                 >
-                  {data.AboutMainDescription}
+                  {data.AboutMainDescription || "NULL"}
 
                   <motion.p
                     initial="hidden"
@@ -306,7 +306,7 @@ function AboutMe({ data }) {
                     }}
                     className="mt-6"
                   >
-                    {data.AboutOtherDescription}
+                    {data.AboutOtherDescription || "NULL"}
                   </motion.p>
                 </motion.div>
               </div>

@@ -159,10 +159,10 @@ function FooterSection({ data }) {
         />
       )}
       <SectionHeading
-        badge={data.FooterBadge}
-        title={data.FirstName + " "}
-        gradientText={data.LastName}
-        description={data.FooterDescription}
+        badge={data.FooterBadge || "NULL"}
+        title={data.FirstName || "NULL" + " "}
+        gradientText={data.LastName || "NULL"}
+        description={data.FooterDescription || "NULL"}
       />
       {showCode ? (
         <div className="my-4">
@@ -182,16 +182,16 @@ function FooterSection({ data }) {
                 </p>
               </Button>
               <div className="flex gap-4 text-muted-foreground">
-                <Link href={data.linkedinUrl} target="_blank">
+                <Link href={data.linkedinUrl || ""} target="_blank">
                   <BsLinkedin className="text-2xl hover:text-primary duration-500" />
                 </Link>
                 <Link
-                  href={`https://github.com/${data.githubId}`}
+                  href={`https://github.com/${data.githubId || ""}`}
                   target="_blank"
                 >
                   <BsGithub className="text-2xl hover:text-primary duration-500" />
                 </Link>
-                <Link href={data.WhatsAppLink} target="_blank">
+                <Link href={data.WhatsAppLink || ""} target="_blank">
                   <BsWhatsapp className="text-2xl hover:text-primary duration-500" />
                 </Link>
               </div>
@@ -200,9 +200,9 @@ function FooterSection({ data }) {
           <SheetContent>
             <SheetHeader>
               <SheetTitle>
-                Message {data.FirstName + " " + data.LastName}
+                Message {data.FirstName || "NULL" + " " + data.LastName || "NULL"}
               </SheetTitle>
-              <SheetDescription>{data.FooterSliderTitle}</SheetDescription>
+              <SheetDescription>{data.FooterSliderTitle || "NULL"}</SheetDescription>
             </SheetHeader>
             <div className="mt-4">
               <ContactMeForm />

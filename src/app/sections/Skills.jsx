@@ -170,10 +170,10 @@ function Skills({ data }) {
       )}
       <div className="flex justify-between flex-wrap items-center">
         <SectionHeading
-          badge={data.SkillsBadge}
-          title={data.SkillsTitle}
-          gradientText={data.SkillsTitleGradient}
-          description={data.SkillsDescription}
+          badge={data.SkillsBadge || "NULL"}
+          title={data.SkillsTitle || "NULL"}
+          gradientText={data.SkillsTitleGradient || "NULL"}
+          description={data.SkillsDescription || "NULL"}
         />
 
         {/* <div className="my-4">

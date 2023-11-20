@@ -17,7 +17,7 @@ function SectionHeading({
       </Badge>
       <h1 className="font-bold text-4xl mb-2">
         {title}
-        <span className="bg-gradient-to-b from-left-gradient to-right-gradient bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-left-gradient to-right-gradient bg-clip-text text-transparent">
           {" " + gradientText}
         </span>
       </h1>
