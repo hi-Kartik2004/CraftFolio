@@ -26,6 +26,7 @@ import userNotFoundData from "@/app/utilpages/UserNotFoundApi";
 import { IoIosClose } from "react-icons/io";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
+import { useRouter } from "next/navigation";
 
 const NavData = {
   name: "Kartikeya Saini",
@@ -38,6 +39,7 @@ const NavData = {
 };
 
 function Navbar({ showProfile, data, username }) {
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
   const [display, setDisplay] = useState(true);
@@ -55,7 +57,6 @@ function Navbar({ showProfile, data, username }) {
   if (loading) {
     return <CustomSizeSkeleton code=" " />;
   }
-
 
   return (
     <nav className="border-b-2">
@@ -101,9 +102,15 @@ function Navbar({ showProfile, data, username }) {
                   <div className="flex gap-4 items-center flex-wrap">
                     <UserButton afterSignOutUrl="/" />
                     <Button variant="outline">
-                    <Link href={`/${username}`}>/{username}</Link>
+                      <Link
+                        href={`/${username}`}
+                        onClick={() => {
+                          router.reload();
+                        }}
+                      >
+                        /{username}
+                      </Link>
                     </Button>
-                      
                   </div>
                 </SignedIn>
               </ClerkLoaded>
@@ -170,7 +177,9 @@ function Navbar({ showProfile, data, username }) {
         </div>
 
         <div className="flex gap-2 items-center">
-          <Link href={`/${username || sessionStorage.getItem("username") }/blogs`}>
+          <Link
+            href={`/${username || sessionStorage.getItem("username")}/blogs`}
+          >
             Blogs
           </Link>
           <ModeToggle />

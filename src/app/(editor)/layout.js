@@ -7,7 +7,7 @@ import { Button } from "../components/ui/button";
 import { BiArrowBack } from "react-icons/bi";
 
 async function layout({ children }) {
-  const user = await currentUser() || "No user";
+  const user = (await currentUser()) || "No user";
   const username = user.username || "No username";
 
   return (

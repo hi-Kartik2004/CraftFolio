@@ -137,6 +137,11 @@
   }
 }
 
+/* Hide errors */
+nextjs-portal {
+  display: none;
+}
+
 /* Headers */
 .markdown h1 {
   @apply text-2xl my-8 font-bold;
@@ -152,7 +157,7 @@
 }
 
 @screen sm {
-  .markdown h1{
+  .markdown h1 {
     @apply text-3xl;
   }
   .markdown h2 {

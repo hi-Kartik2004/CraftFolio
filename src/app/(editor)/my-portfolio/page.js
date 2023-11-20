@@ -6,10 +6,17 @@ import EditPortfolio from "@/app/components/EditPortfolio";
 import { Skeleton } from "@/app/components/ui/skeleton";
 import Link from "next/link";
 import { BiArrowBack } from "react-icons/bi";
-import { ClerkLoading, SignIn, SignedIn, SignedOut } from "@clerk/nextjs";
+import {
+  ClerkLoading,
+  SignIn,
+  SignedIn,
+  SignedOut,
+  useUser,
+} from "@clerk/nextjs";
 
 function EditPortfolioPage() {
   const [loading, setLoading] = useState(true);
+  const { isLoaded, user } = useUser();
 
   useEffect(() => {
     setLoading(false);
@@ -54,7 +61,7 @@ function EditPortfolioPage() {
         </div>
 
         <div className="mb-8">
-          <EditPortfolio />
+          <EditPortfolio user={user} />
         </div>
       </SignedIn>
     </section>

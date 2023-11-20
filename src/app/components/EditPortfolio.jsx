@@ -30,8 +30,7 @@ import { Toaster } from "./ui/toaster";
 import { Skeleton } from "./ui/skeleton";
 import Link from "next/link";
 
-function EditPortfolio() {
-  const { isLoaded, user } = useUser();
+function EditPortfolio({ user }) {
   const [blogCode, setBlogCode] = useState("");
   const [textareaValue, setTextareaValue] = useState(
     sessionStorage.getItem("portfolioCode") || ""
@@ -53,7 +52,7 @@ function EditPortfolio() {
 
   async function getBlogFromFirestore() {
     try {
-      if (!isLoaded || !user) {
+      if (!user) {
         console.log("User is null or undefined.");
         // Handle the case where user is not available
         return;
@@ -151,10 +150,10 @@ function EditPortfolio() {
 
   useEffect(() => {
     // Call getBlogFromFirestore only when user is loaded
-    if (isLoaded) {
+    if (user) {
       getBlogFromFirestore();
     }
-  }, [isLoaded]); // Dependency array ensures it runs when isLoaded changes
+  }, []); // Dependency array ensures it runs when isLoaded changes
 
   useEffect(() => {
     setLoading(false);
@@ -163,7 +162,7 @@ function EditPortfolio() {
   return (
     <div className="mt-6">
       <Toaster />
-    
+
       <div className="mb-4 flex flex-wrap justify-between items-center">
         <Badge>
           <p>users/{user?.username}.js</p>
