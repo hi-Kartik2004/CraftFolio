@@ -74,39 +74,46 @@ export default function Editor({ showProfile }) {
           </span>{" "}
           your blog!
         </h1>
-        <AlertDialog>
-          <AlertDialogTrigger asChild>
-            <div className="flex gap-4 items-center">
-              <Button className="">Publish Blog</Button>
-            </div>
-          </AlertDialogTrigger>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-              <AlertDialogDescription>
-                The blog once published will be public to everyone, and can be
-                accessed by anyone.
-                <div className="flex flex-col flex-wrap gap-4 mt-4">
-                  <Input
-                    placeholder="Title"
-                    onChange={(e) => setTitle(e.target.value)}
-                  />
+        {sessionStorage.getItem("editBlog").length > 75 ? (
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <div className="flex gap-4 items-center">
+                <Button>Publish Blog</Button>
+              </div>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  The blog once published will be public to everyone, and can be
+                  accessed by anyone.
+                  <div className="flex flex-col flex-wrap gap-4 mt-4">
+                    <Input
+                      placeholder="Title"
+                      onChange={(e) => setTitle(e.target.value)}
+                    />
 
-                  <Input
-                    placeholder="description"
-                    onChange={(e) => setDescription(e.target.value)}
-                  />
-                </div>
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction onClick={addBlogToFirestore}>
-                Continue
-              </AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+                    <Input
+                      placeholder="description"
+                      onChange={(e) => setDescription(e.target.value)}
+                    />
+                  </div>
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction
+                  onClick={addBlogToFirestore}
+                  disabled={title.length < 10}
+                >
+                  Continue
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        ) : (
+          <Button variant="secondary">Very little content</Button>
+        )}
       </div>
 
       <MDEditor
