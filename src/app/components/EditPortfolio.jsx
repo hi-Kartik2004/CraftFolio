@@ -207,7 +207,7 @@ function EditPortfolio({ user }) {
 
               <AlertDialogFooter className="p-0 m-0">
                 <p>
-                  It might take upto 1 minute to generate a response, kindly be
+                  It might take upto 2 minute to generate a response, kindly be
                   patient.
                 </p>
                 <AlertDialogCancel>Close</AlertDialogCancel>

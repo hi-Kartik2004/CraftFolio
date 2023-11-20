@@ -28,15 +28,15 @@ import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 
-const NavData = {
-  name: "Kartikeya Saini",
-  subtitle: "B.Tech, ISE UVCE (Batch of 2025)",
-  image: "https://avatars.githubusercontent.com/u/111000515?v=4",
-  resumeLink:
-    "https://hi-kartik2004.github.io/Portfolio/assets/pdf/Kartikeya_Resume_June_2023.pdf",
-  githubId: "hi-kartik2004",
-  linkedinId: "https://www.linkedin.com/in/kartikeya-saini-65504b240/",
-};
+// const NavData = {
+//   name: "Kartikeya Saini",
+//   subtitle: "B.Tech, ISE UVCE (Batch of 2025)",
+//   image: "https://avatars.githubusercontent.com/u/111000515?v=4",
+//   resumeLink:
+//     "https://hi-kartik2004.github.io/Portfolio/assets/pdf/Kartikeya_Resume_June_2023.pdf",
+//   githubId: "hi-kartik2004",
+//   linkedinId: "https://www.linkedin.com/in/kartikeya-saini-65504b240/",
+// };
 
 function Navbar({ showProfile, data, username }) {
   const router = useRouter();
@@ -146,7 +146,7 @@ function Navbar({ showProfile, data, username }) {
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Link
-                    href={`https://github.com/${NavData.githubId}`}
+                    href={`https://github.com/${data.githubId}`}
                     className="flex gap-2 items-center"
                     target="_blank"
                   >
