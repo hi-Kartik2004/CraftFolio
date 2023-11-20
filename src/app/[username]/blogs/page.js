@@ -96,8 +96,8 @@ function Blogs({ params }) {
         });
         setUserBlogs(blogsData);
         toast({
-          title: "Data Fetched",
-          description: "Our APIs are working fine!",
+          title: `Loaded ${params.username}'s Blogs`,
+          description: `You can check contact him out at the /${params.username} route`,
         });
       } catch (error) {
         console.error("Error fetching user blogs:", error);

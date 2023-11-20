@@ -9,7 +9,6 @@ import { db } from "@/firebase/config";
 import { Skeleton } from "../components/ui/skeleton";
 
 function page({ params }) {
-
   const [data, setData] = React.useState(null);
   const { toast } = useToast();
   async function getPortfolioDetailsFromFirestore() {
@@ -38,8 +37,8 @@ function page({ params }) {
       const portFolioCode = portFolioData.portfolioCode;
       console.log("Portfolio Code:", portFolioCode);
       toast({
-        title: "Data Fetched",
-        description: "Our APIs are working fine!",
+        title: `Viewing ${params.username}`,
+        description: "Data Feteched, Our APIs are working fine!",
       });
       setData(portFolioCode);
     } catch (error) {
@@ -55,8 +54,6 @@ function page({ params }) {
   useEffect(() => {
     getPortfolioDetailsFromFirestore();
   }, []);
-
-
 
   if (!params.username) {
     sessionStorage.setItem("username", "hi-kartik2004");
