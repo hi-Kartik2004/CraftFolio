@@ -1,8 +1,8 @@
 import React from "react";
-import Loader from "../components/loader";
+import Loader from "@/app/components/Loader";
 
-function loading() {
+function EditorLoading() {
   return <Loader />;
 }
 
-export default loading;
+export default EditorLoading;
