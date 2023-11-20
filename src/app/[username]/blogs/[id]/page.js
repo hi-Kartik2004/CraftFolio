@@ -17,8 +17,11 @@ import Link from "next/link";
 import Blog from "@/app/components/Blog";
 import { Skeleton } from "@/app/components/ui/skeleton";
 import Foot from "@/app/components/Foot";
+import { routeros } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { useRouter } from "next/navigation";
 
 function page({ params }) {
+  const router = useRouter();
   const { toast } = useToast();
   const [loading, setLoading] = useState(true);
   const [blogData, setBlogData] = useState(null);
@@ -98,7 +101,17 @@ function page({ params }) {
         </div>
       ) : (
         <div className="container mt-4">
-          <div className="flex justify-between flex-wrap items-center">
+          <div className="flex justify-between gap-2 flex-wrap items-center">
+            <Button variant="outline">
+              <Link
+                href={`/${params.username}`}
+                onClick={() => {
+                  router.reload();
+                }}
+              >
+                View Writter's Portfolio
+              </Link>
+            </Button>
             <p className="text-xs text-muted-foreground">id: {params.id}</p>
             <Button variant="secondary">
               <Link
