@@ -51,7 +51,9 @@ export default function Editor({ showProfile }) {
     }
   }
 
-  const storedValue = sessionStorage.getItem("editBlog");
+  const storedValue = sessionStorage.getItem("editBlog")
+    ? sessionStorage.getItem("editBlog")
+    : "";
   const [value, setValue] = React.useState(
     storedValue || `<!-- Write your Blog here -->`
   );
@@ -74,7 +76,7 @@ export default function Editor({ showProfile }) {
           </span>{" "}
           your blog!
         </h1>
-        {sessionStorage.getItem("editBlog").length > 75 ? (
+        {value.length > 75 ? (
           <AlertDialog>
             <AlertDialogTrigger asChild>
               <div className="flex gap-4 items-center">
