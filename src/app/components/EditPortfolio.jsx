@@ -29,6 +29,7 @@ import { useToast } from "./ui/use-toast";
 import { Toaster } from "./ui/toaster";
 import { Skeleton } from "./ui/skeleton";
 import Link from "next/link";
+import Timer from "./Timer";
 
 function EditPortfolio({ user }) {
   const [blogCode, setBlogCode] = useState("");
@@ -199,12 +200,16 @@ function EditPortfolio({ user }) {
             </AlertDialogTrigger>
             <AlertDialogContent className="h-[90vh]">
               <iframe
-                src="https://app.chatgptbuilder.io/webchat/?p=1261870&ref=1684698787972"
+                src="https://app.chatgptbuilder.io/webchat/?p=1261870&color=%2369A3FF"
                 width="100%"
                 height="575px"
               ></iframe>
 
               <AlertDialogFooter className="p-0 m-0">
+                <p>
+                  It might take upto 1 minute to generate a response, kindly be
+                  patient.
+                </p>
                 <AlertDialogCancel>Close</AlertDialogCancel>
               </AlertDialogFooter>
             </AlertDialogContent>
