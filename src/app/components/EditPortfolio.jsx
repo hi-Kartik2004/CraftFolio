@@ -202,7 +202,7 @@ function EditPortfolio({ user }) {
               <iframe
                 src="https://app.chatgptbuilder.io/webchat/?p=1261870&color=%2369A3FF"
                 width="100%"
-                height="575px"
+                className="h-[500px] md:h-[575px]"
               ></iframe>
 
               <AlertDialogFooter className="p-0 m-0">
