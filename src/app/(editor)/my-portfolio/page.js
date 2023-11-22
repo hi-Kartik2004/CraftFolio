@@ -60,9 +60,7 @@ function EditPortfolioPage() {
           </p>
         </div>
 
-        <div className="mb-8">
-          <EditPortfolio user={user} />
-        </div>
+        <div className="mb-8">{user && <EditPortfolio user={user} />}</div>
       </SignedIn>
     </section>
   );

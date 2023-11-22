@@ -164,8 +164,7 @@ const data = {
     "Dive into the realm of my skill set—an ever-growing toolbox tailored for crafting digital wonders. From mastering languages like C++ and JavaScript to navigating frameworks like React and Next.js, my journey is an ongoing exploration of the tech landscape.",
   AboutMockCode:
     "const name = 'Kartikeya';\nDeveloper dev = new Developer(name);\n\nwhile (dev.isCoding()) {\n  dev.listenToMusic();\n  dev.openStackOverflow();\n  dev.drinkWater();\n}\n",
-  AboutImageRight:
-    "https://i.postimg.cc/8zTTKr1F/dp-may-23.jpg",
+  AboutImageRight: "https://i.postimg.cc/8zTTKr1F/dp-may-23.jpg",
   NavName: "Kartikeya | CraftFolio",
   FooterSliderTitle:
     "Expect a response within 24 hours when you reach out via email!",

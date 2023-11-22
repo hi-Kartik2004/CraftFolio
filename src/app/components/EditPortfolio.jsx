@@ -1,3 +1,4 @@
+"use client";
 import { Textarea } from "@/app/components/ui/textarea";
 import { Badge } from "@/app/components/ui/badge";
 import {
@@ -31,8 +32,9 @@ import { Skeleton } from "./ui/skeleton";
 import Link from "next/link";
 import Timer from "./Timer";
 
-function EditPortfolio({ user }) {
-  const [blogCode, setBlogCode] = useState("");
+function EditPortfolio() {
+  const [blogCode, setBlogCode] = useState(null);
+  const { user, isLoaded } = useUser();
   const [textareaValue, setTextareaValue] = useState(
     sessionStorage.getItem("portfolioCode") || ""
   );
@@ -145,20 +147,18 @@ function EditPortfolio({ user }) {
     }
   }
 
-  if (!blogCode) {
-    getBlogFromFirestore();
-  }
-
   useEffect(() => {
-    // Call getBlogFromFirestore only when user is loaded
-    if (user) {
-      getBlogFromFirestore();
-    }
-  }, []); // Dependency array ensures it runs when isLoaded changes
+    // Call getBlogFromFirestore when the component mounts
+    getBlogFromFirestore();
+  }, []); // Dependency array ensures it runs only on mount
 
   useEffect(() => {
     setLoading(false);
   }, []);
+
+  if (!isLoaded && !user) {
+    return;
+  }
 
   return (
     <div className="mt-6">
@@ -200,6 +200,7 @@ function EditPortfolio({ user }) {
             </AlertDialogTrigger>
             <AlertDialogContent className="h-[90vh]">
               <iframe
+                // https://app.chatgptbuilder.io/webchat/?p=1568412&ref=1684699582029
                 src="https://app.chatgptbuilder.io/webchat/?p=1261870&color=%2369A3FF"
                 width="100%"
                 className="h-[500px] md:h-[575px]"
