@@ -5,7 +5,7 @@ const data = {
   LastName: "by Kartikeya Saini",
   NavName: "Craftfolio",
   NavSubtitle: "AI Powered Portfolio Builder",
-  image: "craftfolio.png",
+  image: "/craftfolio.png",
   AboutImageLeft: "https://i.postimg.cc/KcHK62y5/image.png",
   AboutImageCenter: "https://i.postimg.cc/8CpPFKS5/image.png",
   AboutImageRight: "https://i.postimg.cc/PqJJ33F7/image.png",
