@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BiCross, BiLogoGmail } from "react-icons/bi";
-import { BsGithub, BsLinkedin } from "react-icons/bs";
+import { BsFillCursorFill, BsGithub, BsLinkedin } from "react-icons/bs";
 import { FiDownload } from "react-icons/fi";
 import CustomSizeSkeleton from "./CustomSizeSkeleton";
 import { ModeToggle } from "./ModeToggle";
@@ -27,6 +27,7 @@ import { IoIosClose } from "react-icons/io";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
+import { TbHandClick } from "react-icons/tb";
 
 // const NavData = {
 //   name: "Kartikeya Saini",
@@ -125,7 +126,9 @@ function Navbar({ showProfile, data, username }) {
                     className="h-12 w-12 rounded-full select-none"
                   />
                   <div className="flex flex-col gap-[0.15rem]">
-                    <span className="text-md font-bold">{data.NavName}</span>
+                    <span className="text-md font-bold flex gap-2 items-center">
+                      {data.NavName} <TbHandClick />{" "}
+                    </span>
                     <p className="text-[0.7rem] text-muted-foreground">
                       {data.NavSubtitle}
                     </p>
