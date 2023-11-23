@@ -225,45 +225,51 @@ function AboutMe({ data }) {
         <>
           <div className="mt-4 flex justify-center flex-col items-center">
             <div className="flex max-w-[750px]  my-10 w-full relative justify-center">
-              <motion.img
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                variants={{
-                  visible: { opacity: 1, x: 0, ...rotateStyle },
-                  hidden: { opacity: 0, x: 10, ...rotateStyle },
-                }}
-                src={data.AboutImageLeft || "NULL"}
-                alt="dp"
-                className="sm:w-[220px] overflow-hidden sm:h-[220px] w-[150px] h-[150px] bg-red-500 rounded-md absolute left-1 -rotate-12 md:rotate-0"
-              />
-              <motion.img
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                variants={{
-                  visible: { opacity: 1, x: 0 },
-                  hidden: { opacity: 0, x: -10 },
-                }}
-                src={data.AboutImageCenter || "NULL"}
-                alt="dp"
-                className="sm:w-[220px] overflow-hidden sm:h-[220px] w-[150px] h-[150px] bg-blue-500 rounded-md rotate-0 absolute m-auto left-0 right-0 z-10"
-              />
-              <motion.img
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                variants={{
-                  visible: { opacity: 1, x: 0, ...rotateStyleRight },
-                  hidden: { opacity: 0, x: 10, ...rotateStyleRight },
-                }}
-                src={data.AboutImageRight || "NULL"}
-                alt="dp"
-                className="sm:w-[220px] overflow-hidden sm:h-[220px] w-[150px] h-[150px] bg-green-500 rounded-md absolute right-1 rotate-12 md:rotate-0"
-              />
+              <div>
+                <motion.img
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  variants={{
+                    visible: { opacity: 1, x: 0, ...rotateStyle },
+                    hidden: { opacity: 0, x: 10, ...rotateStyle },
+                  }}
+                  src={data.AboutImageLeft || "NULL"}
+                  alt="dp"
+                  className="sm:w-[220px] overflow-hidden sm:h-[220px] w-[150px] h-[150px] bg-muted-foreground rounded-md absolute left-1 -rotate-12 md:rotate-0 object-cover"
+                />
+              </div>
+              <div>
+                <motion.img
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  variants={{
+                    visible: { opacity: 1, x: 0 },
+                    hidden: { opacity: 0, x: -10 },
+                  }}
+                  src={data.AboutImageCenter || "NULL"}
+                  alt="dp"
+                  className="sm:w-[220px] overflow-hidden sm:h-[220px] w-[150px] h-[150px] bg-muted-foreground rounded-md rotate-0 absolute m-auto left-0 right-0 z-10 object-cover"
+                />
+              </div>
+              <div>
+                <motion.img
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  variants={{
+                    visible: { opacity: 1, x: 0, ...rotateStyleRight },
+                    hidden: { opacity: 0, x: 10, ...rotateStyleRight },
+                  }}
+                  src={data.AboutImageRight || "NULL"}
+                  alt="dp"
+                  className="sm:w-[220px] overflow-hidden sm:h-[220px] w-[150px] h-[150px] bg-muted-foreground rounded-md absolute right-1 rotate-12 md:rotate-0 object-cover"
+                />
+              </div>
             </div>
 
             <div className="flex flex-wrap w-full lg:flex-nowrap md:flex-row-reverse gap-4 items-start mt-[150px] sm:mt-[225px] mx-2 ">

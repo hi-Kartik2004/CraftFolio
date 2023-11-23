@@ -185,7 +185,7 @@ function Skills({ data }) {
           <CodeSnippet text={code} />
         </div>
       ) : (
-        <div className="my-10 flex justify-center gap-10 items-center flex-wrap">
+        <div className="my-10 flex justify-center gap-10 items-center flex-wrap flex-col">
           <div className="flex justify-center gap-10 items-center flex-wrap">
             {currentCards.map((skill, index) => (
               <motion.div

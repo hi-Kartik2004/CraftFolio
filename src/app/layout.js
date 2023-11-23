@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: `${data.FirstName} ${data.LastName} | Portfolio`,
+  title: `${data.FirstName} ${data.LastName}`,
   description: "Created by Kartikeya Saini",
 };
 

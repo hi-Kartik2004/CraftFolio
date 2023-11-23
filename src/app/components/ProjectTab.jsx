@@ -44,12 +44,18 @@ function ProjectTab({ projectDetails, value }) {
 
                       <div className="flex gap-4 justify-center">
                         {project.projectGithubLink && (
-                          <Link href={`${project.projectGithubLink}`}>
+                          <Link
+                            href={`${project.projectGithubLink}`}
+                            target="_blank"
+                          >
                             <BsGithub size={25} />
                           </Link>
                         )}
                         {project.projectHostedLink && (
-                          <Link href={`${project.projectHostedLink}`}>
+                          <Link
+                            href={`${project.projectHostedLink}`}
+                            target="_blank"
+                          >
                             <GoLinkExternal size={25} />
                           </Link>
                         )}
@@ -57,7 +63,7 @@ function ProjectTab({ projectDetails, value }) {
                     </div>
 
                     <CardTitle className="text-lg">
-                      <Link href={project.projectHostedLink}>
+                      <Link href={project.projectHostedLink} target="_blank">
                         {project.projectName}
                       </Link>
                     </CardTitle>
