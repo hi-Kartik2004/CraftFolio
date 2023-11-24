@@ -29,7 +29,7 @@ Craftfolio is not just a portfolio website; it's your digital canvas, designed f
 
 
 - **Note**\
-  If you are facing issues and need some help, you can use the Ask AI button to access CraftBot2. This chatbot can help you resolve your issues accordingly.
+  If you are facing issues and need some help, you can use the Ask AI button to access CraftBot2. This chatbot can generate your data.json from your resume text and help you resolve any issues in this context.
   ![step7](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/cbd4c737-e8d0-4e39-b83b-2093eb35fd84)
 ![step8](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/18388370-bcde-422e-855d-8fe80d79bfb7)
 
