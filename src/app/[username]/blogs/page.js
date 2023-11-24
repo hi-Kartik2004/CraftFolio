@@ -146,8 +146,8 @@ function Blogs({ params }) {
             }}
             key={index}
           >
-            <Card className="bg-card xs:w-[350px] w-[280px]hover:bg-primary-foreground duration-500">
-              <CardHeader>
+            <Card className="bg-card xs:w-[350px] w-[280px] h-[400px] hover:bg-primary-foreground duration-500 items-baseline flex-col flex justify-between overflow-hidden">
+              <CardHeader className="h-full">
                 <div className="mb-2 flex justify-between">
                   <Badge className="bg-right-gradient">
                     {blog.blog.length} characters
@@ -163,11 +163,13 @@ function Blogs({ params }) {
                     {blog.title || "No title provided"}
                   </Link>
                 </CardTitle>
-                <div className="text-sm text-muted-foreground">
-                  {blog.description || "No description provided"}
+                <div className="line-clamp-2">
+                  <p className="text-sm text-muted-foreground break-words">
+                    {blog.description || "No description provided"}
+                  </p>
                 </div>
               </CardHeader>
-              <CardContent>
+              <CardContent className="w-full">
                 <img
                   src={`https://source.unsplash.com/random/350X350/?${blog.title}`}
                   alt="coming from unsplash"
