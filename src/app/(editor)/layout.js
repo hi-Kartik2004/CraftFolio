@@ -11,6 +11,7 @@ import Navbar from "../components/Navbar";
 import Link from "next/link";
 import { Button } from "../components/ui/button";
 import { BiArrowBack } from "react-icons/bi";
+import AfterSignInMenu from "../components/AfterSignInMenu";
 
 async function layout({ children }) {
   const user = (await currentUser()) || "No user";
@@ -19,8 +20,9 @@ async function layout({ children }) {
   return (
     <ClerkProvider>
       <SignedIn>
-        <Navbar showProfile={1} username={username} className="my-4" />
+        {/* <Navbar showProfile={1} username={username} className="my-4" /> */}
       </SignedIn>
+      <AfterSignInMenu username={username} />
 
       <div>{children}</div>
     </ClerkProvider>
