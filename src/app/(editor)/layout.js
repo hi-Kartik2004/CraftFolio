@@ -1,4 +1,10 @@
-import { ClerkProvider, SignedIn, SignedOut, currentUser } from "@clerk/nextjs";
+import {
+  ClerkProvider,
+  SignIn,
+  SignedIn,
+  SignedOut,
+  currentUser,
+} from "@clerk/nextjs";
 import React from "react";
 import Foot from "../components/Foot";
 import Navbar from "../components/Navbar";
@@ -17,7 +23,6 @@ async function layout({ children }) {
       </SignedIn>
 
       <div>{children}</div>
-      {/* <Foot /> */}
     </ClerkProvider>
   );
 }

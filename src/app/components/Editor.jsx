@@ -15,17 +15,28 @@ import {
 } from "@/app/components/ui/alert-dialog";
 import { Button } from "@/app/components/ui/button";
 import { UserButton, useUser } from "@clerk/nextjs";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import { db } from "@/firebase/config";
 import { useToast } from "./ui/use-toast";
 import { Toaster } from "./ui/toaster";
 import { Input } from "./ui/input";
+import Link from "next/link";
 
-export default function Editor({ showProfile }) {
+export default function Editor({
+  showProfile,
+  gradient,
+  sectionTitle,
+  buttonText,
+  buttonType,
+  blogId,
+  blogCode,
+  blogTitle,
+  blogDescription,
+}) {
   const { isLoaded, user } = useUser();
   const { toast } = useToast();
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState(blogTitle || "");
+  const [description, setDescription] = useState(blogDescription || "");
 
   async function addBlogToFirestore() {
     try {
@@ -51,11 +62,35 @@ export default function Editor({ showProfile }) {
     }
   }
 
-  const storedValue = sessionStorage.getItem("editBlog")
-    ? sessionStorage.getItem("editBlog")
-    : "";
+  async function setBlogInFirestore() {
+    const blogRef = doc(db, "blogs", blogId);
+    await updateDoc(blogRef, {
+      title: title || "No title provided",
+      description: description || "No description provided",
+      blog: sessionStorage.getItem("editBlog"),
+      timestamp: Date.now(),
+    });
+    toast({
+      title: "Blog Edited Successfully",
+      description: `Your blog might take upto few minutes to go live, its id is ${blogId}`,
+    });
+  }
+
+  useEffect(() => {
+    if (buttonType == "edit" && blogCode) {
+      sessionStorage.setItem("editBlog", blogCode);
+    }
+  }, []);
+
+  let storedValue = "<!-- Write your blog below -->";
+  if (typeof window !== "undefined") {
+    storedValue = sessionStorage.getItem("editBlog")
+      ? sessionStorage.getItem("editBlog")
+      : "";
+  }
+
   const [value, setValue] = React.useState(
-    storedValue || `<!-- Write your Blog here -->`
+    storedValue || "<!-- Write your blog below -->"
   );
 
   useEffect(() => {
@@ -72,50 +107,66 @@ export default function Editor({ showProfile }) {
       <div className="flex flex-wrap gap-6 justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">
           <span className=" bg-gradient-to-br from-left-gradient to-right-gradient text-transparent bg-clip-text">
-            Craft
+            {gradient || "Craft"}
           </span>{" "}
-          your blog!
+          {sectionTitle || "your blog"}
         </h1>
-        {value.length > 75 ? (
-          <AlertDialog>
-            <AlertDialogTrigger asChild>
-              <div className="flex gap-4 items-center">
-                <Button>Publish Blog</Button>
-              </div>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                <AlertDialogDescription>
-                  The blog once published will be public to everyone, and can be
-                  accessed by anyone.
-                  <div className="flex flex-col flex-wrap gap-4 mt-4">
-                    <Input
-                      placeholder="Title"
-                      onChange={(e) => setTitle(e.target.value)}
-                    />
+        <div className="flex gap-4 flex-wrap">
+          <Button variant="outline">
+            <Link href="/manage-blogs">Manage Blogs</Link>
+          </Button>
+          {value.length > 75 ? (
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <div className="flex gap-4 items-center">
+                  <Button>{buttonText || "Publish Blog"} </Button>
+                </div>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    The blog once published will be public to everyone, and can
+                    be accessed by anyone.
+                    <div className="flex flex-col flex-wrap gap-4 mt-4">
+                      <Input
+                        placeholder="Title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                      />
 
-                    <Input
-                      placeholder="description"
-                      onChange={(e) => setDescription(e.target.value)}
-                    />
-                  </div>
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction
-                  onClick={addBlogToFirestore}
-                  disabled={title.length < 10}
-                >
-                  Continue
-                </AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
-        ) : (
-          <Button variant="secondary">Very little content</Button>
-        )}
+                      <Input
+                        placeholder="description"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                      />
+                    </div>
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  {buttonType == "edit" ? (
+                    <AlertDialogAction
+                      onClick={setBlogInFirestore}
+                      disabled={title.length < 10}
+                    >
+                      Publish Edited blog
+                    </AlertDialogAction>
+                  ) : (
+                    <AlertDialogAction
+                      onClick={addBlogToFirestore}
+                      disabled={title.length < 10}
+                    >
+                      Continue
+                    </AlertDialogAction>
+                  )}
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          ) : (
+            <Button variant="secondary">Very little content</Button>
+          )}
+        </div>
       </div>
 
       <MDEditor

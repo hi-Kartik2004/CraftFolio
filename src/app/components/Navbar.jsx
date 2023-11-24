@@ -105,9 +105,9 @@ function Navbar({ showProfile, data, username }) {
                     <Button variant="outline">
                       <Link
                         href={`/${username}`}
-                        onClick={() => {
-                          router.reload();
-                        }}
+                        // onClick={() => {
+                        //   router.reload();
+                        // }}
                       >
                         /{username}
                       </Link>

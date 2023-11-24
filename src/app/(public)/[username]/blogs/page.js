@@ -147,7 +147,7 @@ function Blogs({ params }) {
             key={index}
           >
             <Card className="bg-card xs:w-[350px] w-[280px] h-[400px] hover:bg-primary-foreground duration-500 items-baseline flex-col flex justify-between overflow-hidden">
-              <CardHeader className="h-full">
+              <CardHeader className="h-full w-full">
                 <div className="mb-2 flex justify-between">
                   <Badge className="bg-right-gradient">
                     {blog.blog.length} characters

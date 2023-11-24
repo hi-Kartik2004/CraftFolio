@@ -1,12 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Home from "../page";
-import Portfolio from "../Portfolio";
-import { useToast } from "../components/ui/use-toast";
-import { Toaster } from "../components/ui/toaster";
+import Home from "@/app/page";
+import Portfolio from "@/app/Portfolio";
+import { useToast } from "@/app/components/ui/use-toast";
+import { Toaster } from "@/app/components/ui/toaster";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/firebase/config";
-import { Skeleton } from "../components/ui/skeleton";
+import { Skeleton } from "@/app/components/ui/skeleton";
 
 function page({ params }) {
   const [data, setData] = React.useState(null);
