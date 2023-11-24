@@ -2,10 +2,38 @@
 
 Craftfolio is not just a portfolio website; it's your digital canvas, designed for effortless personalization. With a simple data.js file, you can dynamically transform every aspect of your portfolio—from project details to skills and personal information—without touching the code. Crafted with ease of use in mind, Craftfolio lets you toggle between sections and their corresponding code, making it a breeze to understand, modify, and make it uniquely yours. Embrace the power of seamless customization and showcase your journey, projects, and skills with Craftfolio.
 
-# How do I make this portfolio mine (Way1: No need to code or even open anyother application, just github 🙂)
-```
-   We are working on this.
-```
+# How do I make this portfolio mine? 
+- **Step1**\
+  Click on the "My Portfolio button"
+  ![step1](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/51a9a6c2-6b90-499e-b34b-ae9bb6e3d139)
+
+- **Step2**\
+  Sign in to CraftFolio with your github account and click on the authorize clerk button. 
+  (You have successfully signed in ^_^)
+  ![step2](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/d845c1b5-dc11-4ef7-9409-a9dd13c7d3b3)
+  ![step3](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/3a9db8a2-64bb-4f49-90bb-aceb93ad67ca)
+
+- **Step3**\
+  Here you get access to the existing default code and you are able to edit it to fit your 
+  description! Make sure to add your own text,images and socials replacing 
+  the default placeholders.
+  ![step4](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/17694273-27a4-42df-9c83-90b34dea8754)
+
+  
+- **Step4**\
+  Click on the Modify button to push the changes you've made and voila your portfolio is 
+  done :) Click on the /UserName button to access your portfolio.
+  ![step5](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/63fdb345-0af4-4308-a63f-bde0cbdfe545)
+  ![step6](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/75749131-95cb-4d1c-a8f7-64253847c126)
+
+
+
+- **Note**\
+  If you are facing issues and need some help, you can use the Ask AI button to access CraftBot2. This chatbot can generate your data.json from your resume text and help you resolve any issues in this context.
+  ![step7](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/cbd4c737-e8d0-4e39-b83b-2093eb35fd84)
+![step8](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/18388370-bcde-422e-855d-8fe80d79bfb7)
+
+
 
 # How do I make this portfolio mine (Way 2: You would have to and host yourself.)
 
