@@ -12,7 +12,7 @@ import { Skeleton } from "@/app/components/ui/skeleton";
 import { Toaster } from "@/app/components/ui/toaster";
 import { useToast } from "@/app/components/ui/use-toast";
 import { db } from "@/firebase/config";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -74,7 +74,11 @@ function Blogs({ params }) {
     const getUserBlogsFromFirestore = async () => {
       try {
         const blogsRef = collection(db, "blogs");
-        const q = query(blogsRef, where("user", "==", params.username));
+        const q = query(
+          blogsRef,
+          where("user", "==", params.username),
+          orderBy("timestamp", "desc")
+        );
         const blogsCollection = await getDocs(q);
 
         if (blogsCollection.empty) {
@@ -129,8 +133,8 @@ function Blogs({ params }) {
     <div>
       <Toaster />
       <Navbar data={data} />
-      <div className="container mt-6 flex flex-wrap justify-around gap-4">
-        {userBlogs.map((blog) => (
+      <div className="container my-6 flex flex-wrap justify-around gap-4">
+        {userBlogs.map((blog, index) => (
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -140,8 +144,9 @@ function Blogs({ params }) {
               visible: { opacity: 1, y: 0 },
               hidden: { opacity: 0, y: 10 },
             }}
+            key={index}
           >
-            <Card className="bg-card  max-w-[400px] w-full hover:bg-primary-foreground duration-500">
+            <Card className="bg-card xs:w-[350px] w-[280px]hover:bg-primary-foreground duration-500">
               <CardHeader>
                 <div className="mb-2 flex justify-between">
                   <Badge className="bg-right-gradient">
