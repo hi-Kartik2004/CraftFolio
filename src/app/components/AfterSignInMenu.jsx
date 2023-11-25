@@ -53,10 +53,11 @@ function AfterSignInMenu({ username }) {
                     </Button>
                   );
                 })}
-                <ModeToggle />
+
                 <Button variant="secondary">
                   <Link href={`/${username}`}>/{username}</Link>
                 </Button>
+                <ModeToggle />
                 <UserButton afterSignOutUrl="/" />
               </SignedIn>
 
