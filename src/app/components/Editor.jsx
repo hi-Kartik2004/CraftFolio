@@ -85,13 +85,11 @@ export default function Editor({
     blogCode && sessionStorage.setItem("editBlog", blogCode);
   }, []);
 
+  blogCode && sessionStorage.setItem("editBlog", blogCode);
+
   let storedValue = "<!-- Write your blog below -->";
   if (typeof window !== "undefined") {
-    storedValue = blogCode
-      ? sessionStorage.getItem("editBlog")
-      : sessionStorage.getItem("addBlog")
-      ? sessionStorage.getItem("addBlog")
-      : "";
+    sessionStorage.getItem("addBlog") ? sessionStorage.getItem("addBlog") : "";
   }
 
   const [value, setValue] = React.useState(
