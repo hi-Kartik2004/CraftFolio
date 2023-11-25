@@ -29,6 +29,7 @@ import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "@/firebase/config";
 import { useToast } from "./ui/use-toast";
 import { Toaster } from "./ui/toaster";
+import { revalidatePath } from "next/cache";
 
 function BlogCard({
   index,
@@ -51,7 +52,7 @@ function BlogCard({
 
     toast({
       title: `Blog Deleted Successfully`,
-      description: `Blog with title ${title} was deleted successfully.`,
+      description: `Blog with title ${title} was deleted successfully`,
     });
   }
 
