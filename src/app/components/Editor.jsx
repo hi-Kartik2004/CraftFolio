@@ -78,7 +78,9 @@ export default function Editor({
     });
   }
 
-  blogCode && sessionStorage.setItem("editBlog", blogCode);
+  blogCode
+    ? sessionStorage.setItem("editBlog", blogCode)
+    : sessionStorage.setItem("editBlog", "");
 
   let storedValue = "<!-- Write your blog below -->";
   if (typeof window !== "undefined") {
