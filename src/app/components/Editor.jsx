@@ -21,6 +21,7 @@ import { useToast } from "./ui/use-toast";
 import { Toaster } from "./ui/toaster";
 import { Input } from "./ui/input";
 import Link from "next/link";
+import { Skeleton } from "./ui/skeleton";
 
 export default function Editor({
   showProfile,
@@ -37,6 +38,7 @@ export default function Editor({
   const { toast } = useToast();
   const [title, setTitle] = useState(blogTitle || "");
   const [description, setDescription] = useState(blogDescription || "");
+  const [loading, setLoading] = useState(true);
 
   async function addBlogToFirestore() {
     try {
@@ -97,8 +99,21 @@ export default function Editor({
     sessionStorage.setItem("editBlog", value);
   }, [value]);
 
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
   if (!isLoaded) {
     return null;
+  }
+
+  if (loading) {
+    return (
+      <div className="container">
+        <Skeleton className="w-full h-100px my-2" />
+        <Skeleton className="w-full h-[80vh]" />
+      </div>
+    );
   }
 
   return (

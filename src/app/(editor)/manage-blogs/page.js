@@ -3,6 +3,7 @@ import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { db } from "@/firebase/config";
 import React from "react";
 import BlogCard from "@/app/components/BlogCard";
+import Navbar from "@/app/components/Navbar";
 
 async function ManageBlogs() {
   const user = await currentUser();
@@ -26,6 +27,7 @@ async function ManageBlogs() {
     <>
       <SignedIn>
         <div className="container">
+          <Navbar showProfile={1} username={user.username} className="my-4" />
           <h1 className="my-6 text-3xl font-bold">
             <span className="bg-gradient-to-r from-left-gradient to-right-gradient text-clip bg-clip-text text-transparent">
               {(user && user.username) || "Not found"}'s

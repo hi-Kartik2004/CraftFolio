@@ -21,6 +21,7 @@ import {
   orderBy,
 } from "firebase/firestore";
 import MessagesTable from "@/app/components/MessagesTable";
+import Navbar from "@/app/components/Navbar";
 function AddBlog() {
   const [loading, setLoading] = useState(true);
   const [messages, setMessages] = useState([]);
@@ -44,18 +45,25 @@ function AddBlog() {
   }, [user]);
 
   if (!isLoaded) {
-    if (loading) {
-      return (
-        <div className="flex justify-center">
-          <Skeleton className="w-[1400px] h-[80vh] m-2" />
-        </div>
-      );
-    }
+    return (
+      <div className="flex justify-center flex-col container">
+        <Skeleton className={`w-full h-[100px] rounded-lg`} />
+        <Skeleton className="w-full h-[80vh] my-2" />
+      </div>
+    );
   }
 
   return (
-    <div className="">
+    <div className="container">
       <SignedIn>
+        <Navbar showProfile={1} username={user.username} className="my-4" />
+        <h1 className="text-4xl font-bold mt-6">
+          {" "}
+          <span className="bg-gradient-to-r from-left-gradient to-right-gradient bg-clip-text text-transparent">
+            {user.username}'s
+          </span>{" "}
+          Messages{" "}
+        </h1>
         <MessagesTable messages={messages} />
       </SignedIn>
 
@@ -75,22 +83,22 @@ function AddBlog() {
 
 // Function to listen for changes in messages
 function listenToMessages(username, callback) {
-    const messagesCollection = collection(db, 'messages');
-    const q = query(
-      messagesCollection,
-      where('to', '==', username),
-      orderBy('timestamp', 'desc') 
-    );
-  
-    return onSnapshot(q, (querySnapshot) => {
-      const messages = [];
-      querySnapshot.forEach((doc) => {
-        messages.push({ id: doc.id, ...doc.data() });
-      });
-  
-      console.log(messages);
-      callback(messages);
+  const messagesCollection = collection(db, "messages");
+  const q = query(
+    messagesCollection,
+    where("to", "==", username),
+    orderBy("timestamp", "desc")
+  );
+
+  return onSnapshot(q, (querySnapshot) => {
+    const messages = [];
+    querySnapshot.forEach((doc) => {
+      messages.push({ id: doc.id, ...doc.data() });
     });
-  }
+
+    console.log(messages);
+    callback(messages);
+  });
+}
 
 export default AddBlog;

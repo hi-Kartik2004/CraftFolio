@@ -13,6 +13,7 @@ import {
   SignedOut,
   useUser,
 } from "@clerk/nextjs";
+import Navbar from "@/app/components/Navbar";
 
 function EditPortfolioPage() {
   const [loading, setLoading] = useState(true);
@@ -31,6 +32,10 @@ function EditPortfolioPage() {
     );
   }
 
+  if (!isLoaded) {
+    return;
+  }
+
   return (
     <section className="container">
       <SignedOut>
@@ -44,6 +49,7 @@ function EditPortfolioPage() {
         </div>
       </SignedOut>
       <SignedIn>
+        <Navbar showProfile={1} username={user.username} className="my-4" />
         <div>
           <SectionHeading
             title="Edit your"

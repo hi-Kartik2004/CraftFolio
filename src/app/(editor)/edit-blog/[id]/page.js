@@ -3,6 +3,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/firebase/config";
 import React from "react";
 import Editor from "@/app/components/Editor";
+import Navbar from "@/app/components/Navbar";
 
 async function EditBlog({ params }) {
   const user = await currentUser();
@@ -20,6 +21,7 @@ async function EditBlog({ params }) {
       <SignedIn>
         <div>
           <div className="container">
+            <Navbar showProfile={1} username={user.username} className="my-4" />
             <Editor
               gradient="Edit"
               sectionTitle="your blog"

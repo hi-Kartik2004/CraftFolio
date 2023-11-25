@@ -39,7 +39,7 @@ import { TbHandClick } from "react-icons/tb";
 //   linkedinId: "https://www.linkedin.com/in/kartikeya-saini-65504b240/",
 // };
 
-function Navbar({ showProfile, data, username }) {
+function Navbar({ showProfile, data, username, showLinks }) {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
@@ -61,7 +61,7 @@ function Navbar({ showProfile, data, username }) {
 
   return (
     <nav className="border-b-2">
-      {
+      {showLinks && (
         <div
           className={`${
             display ? "" : "hidden"
@@ -89,7 +89,7 @@ function Navbar({ showProfile, data, username }) {
           </div>
           <Separator />
         </div>
-      }
+      )}
       <div className="container flex gap-5 justify-between px-4 py-2 items-center hover: bg-none outline-none">
         <div className="relative">
           {showProfile ? (

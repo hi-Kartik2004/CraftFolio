@@ -21,8 +21,8 @@ async function layout({ children }) {
     <ClerkProvider>
       <SignedIn>
         {/* <Navbar showProfile={1} username={username} className="my-4" /> */}
+        <AfterSignInMenu username={username} />
       </SignedIn>
-      <AfterSignInMenu username={username} />
 
       <div>{children}</div>
     </ClerkProvider>

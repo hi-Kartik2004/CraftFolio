@@ -12,7 +12,7 @@ function LandingPage() {
   return (
     <div>
       <main className="">
-        <Navbar data={data} />
+        <Navbar data={data} showLinks={1} />
         <HeroSection data={data} />
         <AboutMe data={data} />
         {/* <AboutSection /> */}

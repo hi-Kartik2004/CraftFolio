@@ -36,10 +36,10 @@ function page({ params }) {
 
       const portFolioCode = portFolioData.portfolioCode;
       console.log("Portfolio Code:", portFolioCode);
-      toast({
-        title: `You are viewing ${params.username}`,
-        description: "Data Feteched, Our APIs are working fine!",
-      });
+      // toast({
+      //   title: `You are viewing ${params.username}`,
+      //   description: "Data Feteched, Our APIs are working fine!",
+      // });
       setData(portFolioCode);
     } catch (error) {
       console.error("Error getting blog:", error);

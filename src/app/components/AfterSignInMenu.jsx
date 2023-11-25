@@ -7,6 +7,7 @@ import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { AiOutlineClose } from "react-icons/ai";
 import { motion } from "framer-motion";
 import { ModeToggle } from "./ModeToggle";
+import { User } from "lucide-react";
 
 const menuLinks = [
   {
@@ -21,7 +22,7 @@ function AfterSignInMenu({ username }) {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <div className="fixed bottom-6 right-6 z-[100]">
-      <div className="relative z-100">
+      <div className="relative z-100 hidden md:block">
         <Button
           variant="secondary"
           className="rounded-full"
@@ -47,7 +48,7 @@ function AfterSignInMenu({ username }) {
               <SignedIn>
                 {menuLinks.map((link, index) => {
                   return (
-                    <Button variant="secondary">
+                    <Button variant="secondary" key={index}>
                       <Link href={link.link}>{link.name}</Link>
                     </Button>
                   );
@@ -75,6 +76,49 @@ function AfterSignInMenu({ username }) {
                   </Link>
                 </Button>
               </SignedOut>
+            </div>
+          </motion.div>
+        )}
+      </div>
+
+      <div className="relative md:hidden flex flex-col justify-end items-end">
+        <div>
+          <Button
+            variant="secondary"
+            className="rounded-full mb-2"
+            onClick={() => {
+              setShowMenu(!showMenu);
+            }}
+          >
+            {showMenu ? <AiOutlineClose size={25} /> : <BiMenu size={25} />}
+          </Button>
+        </div>
+
+        {showMenu && (
+          <motion.div
+            className="flex flex-col gap-2 items-end bg-background border p-2 rounded-lg justify-center"
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.3 }}
+            variants={{
+              visible: { opacity: 1, y: 0 },
+              hidden: { opacity: 0, y: 20 },
+            }}
+          >
+            <Button variant="secondary" className="w-full">
+              <Link href={`/${username}`}>/{username}</Link>
+            </Button>
+            {menuLinks.map((link, index) => {
+              return (
+                <Button variant="secondary" key={index} className="w-full">
+                  <Link href={link.link}>{link.name}</Link>
+                </Button>
+              );
+            })}
+
+            <div className="flex gap-4 flex-wrap w-full items-center justify-between">
+              <ModeToggle />
+              <UserButton afterSignOutUrl="/" />
             </div>
           </motion.div>
         )}
