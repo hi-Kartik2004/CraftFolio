@@ -89,7 +89,9 @@ export default function Editor({
 
   let storedValue = "<!-- Write your blog below -->";
   if (typeof window !== "undefined") {
-    sessionStorage.getItem("addBlog") ? sessionStorage.getItem("addBlog") : "";
+    storedValue = sessionStorage.getItem("addBlog")
+      ? sessionStorage.getItem("addBlog")
+      : "";
   }
 
   const [value, setValue] = React.useState(
