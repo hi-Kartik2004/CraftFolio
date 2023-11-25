@@ -23,6 +23,8 @@ import { Input } from "./ui/input";
 import Link from "next/link";
 import { Skeleton } from "./ui/skeleton";
 
+export const dynamic = "force-dynamic";
+
 export default function Editor({
   showProfile,
   gradient,
@@ -47,7 +49,7 @@ export default function Editor({
         title: title || "No title provided",
         description: description || "No description provided",
         user: user.username,
-        blog: sessionStorage.getItem("editBlog"),
+        blog: sessionStorage.getItem("addBlog"),
         timestamp: Date.now(),
       });
       console.log("Blog added with ID: ", docSnap.id);
@@ -78,23 +80,30 @@ export default function Editor({
     });
   }
 
-  blogCode
-    ? sessionStorage.setItem("editBlog", blogCode)
-    : sessionStorage.setItem("editBlog", "");
+  useEffect(() => {
+    !sessionStorage.getItem("addBlog") && sessionStorage.setItem("addBlog", "");
+    blogCode && sessionStorage.setItem("editBlog", blogCode);
+  }, []);
 
   let storedValue = "<!-- Write your blog below -->";
   if (typeof window !== "undefined") {
-    storedValue = sessionStorage.getItem("editBlog")
+    storedValue = blogCode
       ? sessionStorage.getItem("editBlog")
+      : sessionStorage.getItem("addBlog")
+      ? sessionStorage.getItem("addBlog")
       : "";
   }
 
   const [value, setValue] = React.useState(
-    storedValue || "<!-- Write your blog below -->"
+    gradient === "Edit"
+      ? sessionStorage.getItem("editBlog")
+      : storedValue || "<!-- Write your blog below -->"
   );
 
   useEffect(() => {
-    sessionStorage.setItem("editBlog", value);
+    gradient === "Edit"
+      ? sessionStorage.setItem("editBlog", value)
+      : sessionStorage.setItem("addBlog", value);
   }, [value]);
 
   useEffect(() => {
