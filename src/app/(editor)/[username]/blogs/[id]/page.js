@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { Suspense } from "react";
 import {
   collection,
   doc,
@@ -92,6 +92,20 @@ function page({ params }) {
     fetchBlogData();
   }, [params.id]);
 
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="container">
+        <Skeleton className="w-full h-[100px] my-4" />
+        <Skeleton className="w-full h-[100px] my-2" />
+        <Skeleton className="w-full h-[60vh]" />
+      </div>
+    );
+  }
+
   return (
     <>
       <Navbar data={data} />
@@ -124,15 +138,17 @@ function page({ params }) {
           </div>
           {blogData && (
             <div className="mt-4">
-              <div className="object-cover w-full lg:h-[200px] h-[150px] overflow-hidden">
-                <img
-                  src={`https://source.unsplash.com/random/900x700/?${encodeURIComponent(
-                    blogData.title
-                  )}/1920X1080`}
-                  className="w-full h-full object-cover rounded-lg"
-                  alt="inside blog image"
-                />
-              </div>
+              <Suspense fallback={<div>Loading image...</div>}>
+                <div className="object-cover w-full lg:h-[200px] h-[150px] overflow-hidden">
+                  <img
+                    src={`https://source.unsplash.com/random/900x700/?${encodeURIComponent(
+                      blogData.title
+                    )}/1920X1080`}
+                    className="w-full h-full object-cover rounded-lg bg-muted"
+                    alt="inside blog image"
+                  />
+                </div>
+              </Suspense>
               <div className="mt-6">
                 <h1 className="text-4xl font-bold">{blogData.title}</h1>
                 <p className="text-muted-foreground mt-4">
