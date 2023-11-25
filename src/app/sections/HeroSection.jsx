@@ -137,7 +137,7 @@ function HeroSection({ data }) {
               className="headings flex justify-between mt-10 flex-col"
             >
               <h1 className="text-4xl md:text-5xl font-bold flex flex-col">
-                <span className="leading-snug bg-gradient-to-r from-left-gradient to-right-gradient text-transparent bg-clip-text text-clip">
+                <span className=" leading-tight md:leading-snug bg-gradient-to-r from-left-gradient to-right-gradient text-transparent bg-clip-text text-clip">
                   {data.HeroGradient || "NULL"} <br />
                 </span>
                 {data.HeroTitle || "NULL"}
