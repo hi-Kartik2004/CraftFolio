@@ -11,27 +11,40 @@ Craftfolio is not just a portfolio website; it's your digital canvas, designed f
   Sign in to CraftFolio with your github account and click on the authorize clerk button. 
   (You have successfully signed in ^_^)
   ![step2](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/d845c1b5-dc11-4ef7-9409-a9dd13c7d3b3)
+  
   ![step3](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/3a9db8a2-64bb-4f49-90bb-aceb93ad67ca)
 
 - **Step3**\
   Here you get access to the existing default code and you are able to edit it to fit your 
   description! Make sure to add your own text,images and socials replacing 
   the default placeholders.
-  ![step4](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/17694273-27a4-42df-9c83-90b34dea8754)
+![image](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/69e397a7-7151-4739-9b0d-99c4827bbd96)
 
-  
 - **Step4**\
   Click on the Modify button to push the changes you've made and voila your portfolio is 
-  done :) Click on the /UserName button to access your portfolio.
-  ![step5](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/63fdb345-0af4-4308-a63f-bde0cbdfe545)
-  ![step6](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/75749131-95cb-4d1c-a8f7-64253847c126)
+  done :)
+  ![image](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/8c6f1ba6-df41-42a2-a531-cf317f596159)
+
+- **Step5**\
+  You can access your portfolio by either clicking on the /userName button at the top or you can use the navigation menu in the bottom right to do so.
+  ![image](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/f61bf641-f538-42d0-af41-4c96839e536b)
+  
+  ![image](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/b9364d7c-d978-4291-b367-7ad7e6dd71fc)
+  
+  ![image](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/e6f0facf-c8a9-401c-8b39-71a962a6142c)
+
+- **Step6**\
+  After accessing your portfolio, if you wanna make any other changes, you can do so by using the edit portfolio option in the menu bar which will redirect you to the 
+  portfolio editor.
+  ![image](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/d90f5bdd-0f39-4e6d-a640-f5bb2ff4020a)
 
 
+  - **Note**\
+  If you are facing issues and need some help, you can use the Ask AI button to access CraftBot2. This chatbot can generate your data.json from your resume text and 
+  help you resolve any issues in this context.
+  ![image](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/581bf033-0457-4b13-9b6d-9da9e1f2eca1)
 
-- **Note**\
-  If you are facing issues and need some help, you can use the Ask AI button to access CraftBot2. This chatbot can generate your data.json from your resume text and help you resolve any issues in this context.
-  ![step7](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/cbd4c737-e8d0-4e39-b83b-2093eb35fd84)
-![step8](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/18388370-bcde-422e-855d-8fe80d79bfb7)
+  ![step8](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/18388370-bcde-422e-855d-8fe80d79bfb7)
 
 
 
