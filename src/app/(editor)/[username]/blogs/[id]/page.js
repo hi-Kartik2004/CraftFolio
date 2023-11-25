@@ -105,9 +105,9 @@ function page({ params }) {
             <Button variant="outline">
               <Link
                 href={`/${params.username}`}
-                onClick={() => {
-                  router.reload();
-                }}
+                // onClick={() => {
+                //   router.reload();
+                // }}
               >
                 View Writter's Portfolio
               </Link>
