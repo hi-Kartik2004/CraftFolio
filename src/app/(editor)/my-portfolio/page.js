@@ -39,17 +39,14 @@ function EditPortfolioPage() {
   return (
     <section className="container">
       <SignedOut>
-        <ClerkLoading>
-          <div className="flex justify-center items-center min-h-[80vh]">
-            <Skeleton className="w-[280px] h-[280px] rounded-lg" />
-          </div>
-        </ClerkLoading>
         <div className="flex justify-center items-center min-h-[80vh]">
           <SignIn afterSignInUrl="/my-portfolio" />
         </div>
       </SignedOut>
       <SignedIn>
-        <Navbar showProfile={1} username={user.username} className="my-4" />
+        {user && (
+          <Navbar showProfile={1} username={user.username} className="my-4" />
+        )}
         <div>
           <SectionHeading
             title="Edit your"

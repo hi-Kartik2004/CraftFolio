@@ -56,11 +56,13 @@ function AddBlog() {
   return (
     <div className="container">
       <SignedIn>
-        <Navbar showProfile={1} username={user.username} className="my-4" />
+        {user && (
+          <Navbar showProfile={1} username={user.username} className="my-4" />
+        )}
         <h1 className="text-4xl font-bold mt-6">
           {" "}
           <span className="bg-gradient-to-r from-left-gradient to-right-gradient bg-clip-text text-transparent">
-            {user.username}'s
+            {user && user.username}'s
           </span>{" "}
           Messages{" "}
         </h1>

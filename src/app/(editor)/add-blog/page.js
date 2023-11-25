@@ -18,7 +18,9 @@ async function AddBlog() {
     <div className="">
       <Toaster />
       <SignedIn>
-        <Navbar showProfile={1} username={user.username} className="my-4" />
+        {user && (
+          <Navbar showProfile={1} username={user.username} className="my-4" />
+        )}
         <Editor showProfile={1} />
       </SignedIn>
 
