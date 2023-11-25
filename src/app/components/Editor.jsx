@@ -78,11 +78,7 @@ export default function Editor({
     });
   }
 
-  useEffect(() => {
-    if (buttonType == "edit" && blogCode) {
-      sessionStorage.setItem("editBlog", blogCode);
-    }
-  }, []);
+  blogCode && sessionStorage.setItem("editBlog", blogCode);
 
   let storedValue = "<!-- Write your blog below -->";
   if (typeof window !== "undefined") {
