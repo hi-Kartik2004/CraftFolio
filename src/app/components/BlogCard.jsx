@@ -52,7 +52,7 @@ function BlogCard({
 
     toast({
       title: `Blog Deleted Successfully`,
-      description: `Blog with title ${title} was deleted successfully`,
+      description: `Blog with title ${title} was deleted successfully, refresh to see changes`,
     });
   }
 
