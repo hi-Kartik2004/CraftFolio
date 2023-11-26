@@ -15,12 +15,15 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 
 export default function SearchTech({ technologies }) {
   const frameworks = [];
-  technologies.map((technology) => {
-    frameworks.push({
-      value: technology,
-      label: technology,
+  // check if technologies is an array
+  // if not, return empty array
+  Array.isArray(technologies) &&
+    technologies.map((technology) => {
+      frameworks.push({
+        value: technology,
+        label: technology,
+      });
     });
-  });
 
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");

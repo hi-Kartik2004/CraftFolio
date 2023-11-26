@@ -7,7 +7,6 @@ import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { AiOutlineClose } from "react-icons/ai";
 import { motion } from "framer-motion";
 import { ModeToggle } from "./ModeToggle";
-import { User } from "lucide-react";
 
 const menuLinks = [
   {

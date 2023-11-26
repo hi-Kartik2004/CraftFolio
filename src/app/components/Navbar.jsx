@@ -130,7 +130,7 @@ function Navbar({ showProfile, data, username, showLinks }) {
                       {data.NavName} <TbHandClick />{" "}
                     </span>
                     <p className="text-[0.7rem] text-muted-foreground">
-                      {data.NavSubtitle}
+                      {data.NavSubtitle || "NULL"}
                     </p>
                   </div>
                 </div>
@@ -138,7 +138,7 @@ function Navbar({ showProfile, data, username, showLinks }) {
               <DropdownMenuContent align="start" className="ml-2 mt-1">
                 <DropdownMenuItem>
                   <Link
-                    href={data.resumeLink}
+                    href={data.resumeLink || ""}
                     target="_blank"
                     className="flex gap-2 items-center"
                   >
@@ -158,7 +158,7 @@ function Navbar({ showProfile, data, username, showLinks }) {
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Link
-                    href={data.linkedinUrl}
+                    href={data.linkedinUrl || ""}
                     className="flex gap-2 items-center"
                     target="_blank"
                   >
@@ -167,7 +167,7 @@ function Navbar({ showProfile, data, username, showLinks }) {
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Link
-                    href={`mailto:${data.email}`}
+                    href={`mailto:${data.email || ""}`}
                     className="flex gap-2 items-center"
                   >
                     {" "}

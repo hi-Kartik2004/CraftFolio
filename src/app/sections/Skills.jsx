@@ -141,7 +141,24 @@ function Skills({ data }) {
 
   const indexOfLastCard = currentPage * cardsPerPage;
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-  const currentCards = data.skillsData.slice(indexOfFirstCard, indexOfLastCard);
+
+  const isDataValid =
+    data &&
+    data.skillsData &&
+    Array.isArray(data.skillsData) &&
+    data.skillsData.length > 0;
+
+  const isIndicesValid =
+    typeof indexOfFirstCard === "number" &&
+    typeof indexOfLastCard === "number" &&
+    indexOfFirstCard >= 0 &&
+    indexOfLastCard >= 0 &&
+    indexOfFirstCard <= indexOfLastCard;
+
+  const currentCards =
+    isDataValid && isIndicesValid
+      ? data.skillsData.slice(indexOfFirstCard, indexOfLastCard)
+      : [];
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -210,18 +227,21 @@ function Skills({ data }) {
           </div>
           {/* Pagination buttons */}
           <div className="gap-4 flex">
-            {Array.from(
-              { length: Math.ceil(data.skillsData.length / cardsPerPage) },
-              (_, i) => (
-                <Button
-                  variant="outline"
-                  key={i}
-                  onClick={() => paginate(i + 1)}
-                >
-                  {i + 1}
-                </Button>
-              )
-            )}
+            {data &&
+              data.skillsData &&
+              data.skillsData.length > 0 &&
+              Array.from(
+                { length: Math.ceil(data.skillsData.length / cardsPerPage) },
+                (_, i) => (
+                  <Button
+                    variant="outline"
+                    key={i}
+                    onClick={() => paginate(i + 1)}
+                  >
+                    {i + 1}
+                  </Button>
+                )
+              )}
           </div>
         </div>
       )}
