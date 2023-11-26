@@ -38,8 +38,7 @@ Craftfolio is not just a portfolio website; it's your digital canvas, designed f
   portfolio editor.
   ![image](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/d90f5bdd-0f39-4e6d-a640-f5bb2ff4020a)
 
-
-  - **Note**\
+    - **Note**\
   If you are facing issues and need some help, you can use the Ask AI button to access CraftBot2. This chatbot can generate your data.json from your resume text and 
   help you resolve any issues in this context.
   ![image](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/581bf033-0457-4b13-9b6d-9da9e1f2eca1)
@@ -47,6 +46,49 @@ Craftfolio is not just a portfolio website; it's your digital canvas, designed f
   ![step8](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/18388370-bcde-422e-855d-8fe80d79bfb7)
 
 
+- **Step7**\
+   Craftfolio also lets you add blogs to your portfolio :)
+   - To do so, click on the navigation menu and select the add blog option.
+     ![step11](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/d5032c9f-f541-442b-b9fb-91aa393a4816)
+
+   - This will lead you to the blog editor which has standard editing options. This editor lets you add text, url's as well as images.
+    ![step12](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/c78ae3e1-b751-481b-84da-5b24c9070acc)
+   - Craftfolio also provides three viewing options to make your blog writing more efficient!!
+      Firstly, an option which only lets you see the code you are entering.
+     
+      ![step13](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/7fc73f72-0b16-410b-add9-f45f3091d2f8)
+
+     Secondly, an option which lets you see the code you are writing as well as the live blog side-by-side.
+     
+      ![step14](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/f03abeac-f3eb-43d4-a4ce-e3c9f43769f1)
+
+     Lastly, an option which lets you see the live blog only.
+     
+      ![step15](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/c39c72ed-e561-4170-af51-f13236fa849f)
+
+      You can also make the editor fit the entire page by using the fullscreen toggle button.
+     
+     ![step16](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/5814a834-0896-4381-95c6-fb93b9ac4f40)
+
+   - After writing your blog and perfecting it, click on the publish blog option and make sure add an intriguing title and description ^_^
+     
+    ![image](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/1400d71c-9969-48e8-9da3-43fbd828a2f3)
+  
+    ![image](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/c58bde9f-819e-4366-adeb-9eaa15eb45e3)
+
+  - You can access all your blogs by clicking the Manage Blogs option.
+    
+  ![step19](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/02ada29d-c222-47e0-aeac-a2bb74df8d7b)
+
+  Here you can view, edit or delete any of the blogs you've written.
+  
+  ![image](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/142a9626-672f-46af-97a6-4e2637ec56df)
+
+ - Visitors of your blog have an option to view your portfolio, while also visitors oo your portfolio have an option to view your blogs!
+ - 
+  ![image](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/931c64d0-9c0a-4978-a14d-3a7bae89607d)
+
+  ![step21](https://github.com/hi-Kartik2004/CraftFolio/assets/122284990/f16f355a-5050-4214-8818-a1da5715c97e)
 
 # How do I make this portfolio mine (Way 2: You would have to and host yourself.)
 
