@@ -200,7 +200,6 @@ function EditPortfolio() {
             </AlertDialogTrigger>
             <AlertDialogContent className="h-[90vh]">
               <iframe
-                
                 src="https://app.chatgptbuilder.io/webchat/?p=1979931&ref=1684699582029"
                 width="100%"
                 className="h-[500px] md:h-[575px]"
@@ -208,8 +207,8 @@ function EditPortfolio() {
 
               <AlertDialogFooter className="p-0 m-0">
                 <p>
-                  It might take upto 2 minute to generate a response, kindly be
-                  patient.
+                  Seems like you guys want me to go bankcurrpt, I am stopping
+                  this service on 4th Dec 2023.
                 </p>
                 <AlertDialogCancel>Close</AlertDialogCancel>
               </AlertDialogFooter>
