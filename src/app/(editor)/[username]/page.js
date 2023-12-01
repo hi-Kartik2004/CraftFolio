@@ -9,11 +9,9 @@ import { db } from "@/firebase/config";
 import { Skeleton } from "@/app/components/ui/skeleton";
 import UserNotFound from "@/app/components/UserNotFound";
 import NotFoundData from "@/app/utilpages/defaultFirebaseTemplate";
-
-
+import Loader from "@/app/components/Loader";
 
 function page({ params }) {
-
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
@@ -67,10 +65,9 @@ function page({ params }) {
     setLoading(false);
   }, []);
 
-  useEffect(() => {
-    // if (fetching) return <p>Fetching...</p>;
-    // if (!data) return <UserNotFound />;
-  }, []);
+  if (loading) {
+    return <Loader />;
+  }
 
   if (!params.username) {
     sessionStorage.setItem("username", "hi-kartik2004");
@@ -88,4 +85,3 @@ function page({ params }) {
 }
 
 export default page;
-
