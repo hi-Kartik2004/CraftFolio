@@ -69,7 +69,7 @@ function Navbar({ showProfile, data, username, showLinks }) {
         >
           <div className="flex justify-between items-center pb-2">
             <div className="flex gap-2">
-              <Link href="/sign-in" className="text-sm">
+              <Link href="/sign-up" className="text-sm">
                 Get Started with creating your portfolio &rarr;
               </Link>
             </div>

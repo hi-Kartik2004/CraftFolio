@@ -8,12 +8,12 @@ import Projects from "../sections/Projects";
 import Skills from "../sections/Skills";
 import FooterSection from "../sections/FooterSection";
 import Foot from "./Foot";
-function LandingPage() {
+function LandingPage({signInInsteadOfResume}) {
   return (
     <div>
       <main className="">
         <Navbar data={data} showLinks={1} />
-        <HeroSection data={data} />
+        <HeroSection signInInsteadOfResume={signInInsteadOfResume} data={data} />
         <AboutMe data={data} />
         {/* <AboutSection /> */}
         <Separator className="my-12" />

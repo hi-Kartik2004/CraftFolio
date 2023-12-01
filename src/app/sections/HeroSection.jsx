@@ -2,7 +2,12 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { BiCode, BiSolidMessageAltDetail } from "react-icons/bi";
+import {
+  BiCode,
+  BiLogIn,
+  BiSolidMessageAltDetail,
+  BiSolidRegistered,
+} from "react-icons/bi";
 import { BsDownload, BsGithub } from "react-icons/bs";
 import { IoIosArrowBack } from "react-icons/io";
 import CodeSnippet from "../components/CodeSnippet";
@@ -81,7 +86,7 @@ const code = `function HeroSection() {
   );
 }`;
 
-function HeroSection({ data }) {
+function HeroSection({ data, signInInsteadOfResume }) {
   const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
 
@@ -161,13 +166,19 @@ function HeroSection({ data }) {
                 asChild
                 //   className="bg-gradient-to-r from-[#ffa585] to-[#ffeda0]"
               >
-                <Link
-                  href={data.resumeLink || "NULL"}
-                  target="_blank"
-                  className="flex items-center gap-2"
-                >
-                  <BsDownload /> Download Resume
-                </Link>
+                {signInInsteadOfResume ? (
+                  <Link href="/sign-up" className="flex items-center gap-2">
+                    <BiLogIn /> Get Started
+                  </Link>
+                ) : (
+                  <Link
+                    href={data.resumeLink || "NULL"}
+                    target="_blank"
+                    className="flex items-center gap-2"
+                  >
+                    <BsDownload /> Download Resume
+                  </Link>
+                )}
               </Button>
 
               <Sheet>

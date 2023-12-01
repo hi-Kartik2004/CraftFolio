@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
     <>
-      <LandingPage />
+      <LandingPage signInInsteadOfResume={true} />
     </>
   );
 }
