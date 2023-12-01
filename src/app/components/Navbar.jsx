@@ -75,7 +75,7 @@ function Navbar({ showProfile, data, username, showLinks }) {
             </div>
 
             <div className="left flex gap-4 flex-wrap items-center">
-              <Link href="/my-portfolio" className="text-sm">
+              {/* <Link href="/my-portfolio" className="text-sm">
                 My Portfolio
               </Link>
               <Link href="/my-messages" className="text-sm">
@@ -83,7 +83,7 @@ function Navbar({ showProfile, data, username, showLinks }) {
               </Link>
               <Link href="/add-blog" className="text-sm">
                 Add Blog
-              </Link>
+              </Link> */}
               <IoIosClose
                 size={25}
                 onClick={() => {
@@ -184,7 +184,7 @@ function Navbar({ showProfile, data, username, showLinks }) {
           )}
         </div>
 
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-4 items-center">
           <Link
             href={`/${username || sessionStorage.getItem("username")}/blogs`}
           >

@@ -180,36 +180,43 @@ function HeroSection({ data, signInInsteadOfResume }) {
                   </Link>
                 )}
               </Button>
-
-              <Sheet>
-                <SheetTrigger
-                  className="flex justify-between items-center w-full flex-wrap"
-                  asChild
-                >
-                  <div className="flex justify-between">
-                    <Button variant="outline">
-                      {" "}
-                      <p className="flex gap-2 items-center">
-                        <BiSolidMessageAltDetail /> <span>Contact Me</span>
-                      </p>
-                    </Button>
-                  </div>
-                </SheetTrigger>
-                <SheetContent>
-                  <SheetHeader>
-                    <SheetTitle>
-                      Message{" "}
-                      {data.FirstName || "NULL" + " " + data.LastName || "NULL"}
-                    </SheetTitle>
-                    <SheetDescription>
-                      {data.FooterSliderTitle || "NULL"}
-                    </SheetDescription>
-                  </SheetHeader>
-                  <div className="mt-4">
-                    <ContactMeForm />
-                  </div>
-                </SheetContent>
-              </Sheet>
+              {signInInsteadOfResume ? (
+                <Button asChild variant="outline">
+                  <Link href="/sign-in">Sign in</Link>
+                </Button>
+              ) : (
+                <Sheet>
+                  <SheetTrigger
+                    className="flex justify-between items-center w-full flex-wrap"
+                    asChild
+                  >
+                    <div className="flex justify-between">
+                      <Button variant="outline">
+                        {" "}
+                        <p className="flex gap-2 items-center">
+                          <BiSolidMessageAltDetail /> <span>Contact Me</span>
+                        </p>
+                      </Button>
+                    </div>
+                  </SheetTrigger>
+                  <SheetContent>
+                    <SheetHeader>
+                      <SheetTitle>
+                        Message{" "}
+                        {data.FirstName ||
+                          "NULL" + " " + data.LastName ||
+                          "NULL"}
+                      </SheetTitle>
+                      <SheetDescription>
+                        {data.FooterSliderTitle || "NULL"}
+                      </SheetDescription>
+                    </SheetHeader>
+                    <div className="mt-4">
+                      <ContactMeForm />
+                    </div>
+                  </SheetContent>
+                </Sheet>
+              )}
             </motion.div>
 
             <motion.div

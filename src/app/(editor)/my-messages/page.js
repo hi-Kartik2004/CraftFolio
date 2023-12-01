@@ -22,6 +22,8 @@ import {
 } from "firebase/firestore";
 import MessagesTable from "@/app/components/MessagesTable";
 import Navbar from "@/app/components/Navbar";
+import UserNotFound from "@/app/components/UserNotFound";
+
 function AddBlog() {
   const [loading, setLoading] = useState(true);
   const [messages, setMessages] = useState([]);
@@ -70,14 +72,7 @@ function AddBlog() {
       </SignedIn>
 
       <SignedOut>
-        <ClerkLoading>
-          <div className="flex justify-center items-center min-h-[80vh]">
-            <Skeleton className="w-[280px] h-[280px] rounded-lg" />
-          </div>
-        </ClerkLoading>
-        <div className="flex justify-center items-center min-h-[80vh]">
-          <SignIn afterSignInUrl="/my-messages" />
-        </div>
+        <UserNotFound />
       </SignedOut>
     </div>
   );

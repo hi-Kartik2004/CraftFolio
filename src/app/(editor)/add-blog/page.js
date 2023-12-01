@@ -1,5 +1,6 @@
 import Editor from "@/app/components/Editor";
 import Navbar from "@/app/components/Navbar";
+import UserNotFound from "@/app/components/UserNotFound";
 import { Skeleton } from "@/app/components/ui/skeleton";
 import { Toaster } from "@/app/components/ui/toaster";
 import {
@@ -30,9 +31,7 @@ async function AddBlog() {
             <Skeleton className="w-[280px] h-[280px] rounded-lg" />
           </div>
         </ClerkLoading>
-        <div className="flex justify-center items-center min-h-[80vh]">
-          <SignIn afterSignInUrl="/add-blog" />
-        </div>
+        <UserNotFound />
       </SignedOut>
     </div>
   );

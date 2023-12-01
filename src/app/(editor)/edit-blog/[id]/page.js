@@ -4,6 +4,7 @@ import { db } from "@/firebase/config";
 import React from "react";
 import Editor from "@/app/components/Editor";
 import Navbar from "@/app/components/Navbar";
+import UserNotFound from "@/app/components/UserNotFound";
 
 async function EditBlog({ params }) {
   const user = await currentUser();
@@ -16,8 +17,16 @@ async function EditBlog({ params }) {
   const blogData = data;
   console.log("Blog Data", blogData);
 
+  if (!user) {
+    return <UserNotFound />;
+  }
+
   return (
     <>
+      <SignedOut>
+        <UserNotFound />
+      </SignedOut>
+
       <SignedIn>
         <div>
           <div className="container">
@@ -35,12 +44,6 @@ async function EditBlog({ params }) {
           </div>
         </div>
       </SignedIn>
-
-      <SignedOut>
-        <div className="flex justify-center items-center min-h-screen">
-          <SignIn afterSignInUrl="manage-blogs" />
-        </div>
-      </SignedOut>
     </>
   );
 }

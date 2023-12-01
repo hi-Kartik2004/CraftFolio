@@ -4,6 +4,7 @@ import { db } from "@/firebase/config";
 import React from "react";
 import BlogCard from "@/app/components/BlogCard";
 import Navbar from "@/app/components/Navbar";
+import UserNotFound from "@/app/components/UserNotFound";
 
 async function ManageBlogs() {
   const user = await currentUser();
@@ -55,9 +56,7 @@ async function ManageBlogs() {
       </SignedIn>
 
       <SignedOut>
-        <div className="flex justify-center items-center min-h-screen">
-          <SignIn afterSignInUrl="manage-blogs" />
-        </div>
+        <UserNotFound />
       </SignedOut>
     </>
   );

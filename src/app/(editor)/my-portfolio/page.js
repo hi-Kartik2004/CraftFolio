@@ -9,11 +9,14 @@ import { BiArrowBack } from "react-icons/bi";
 import {
   ClerkLoading,
   SignIn,
+  SignInButton,
   SignedIn,
   SignedOut,
   useUser,
 } from "@clerk/nextjs";
 import Navbar from "@/app/components/Navbar";
+import { useRouter } from "next/navigation";
+import UserNotFound from "@/app/components/UserNotFound";
 
 function EditPortfolioPage() {
   const [loading, setLoading] = useState(true);
@@ -36,12 +39,12 @@ function EditPortfolioPage() {
     return;
   }
 
+  const router = useRouter();
+
   return (
     <section className="container">
       <SignedOut>
-        <div className="flex justify-center items-center min-h-[80vh]">
-          <SignIn afterSignInUrl="/my-portfolio" />
-        </div>
+        <UserNotFound />
       </SignedOut>
       <SignedIn>
         {user && (
