@@ -13,10 +13,15 @@ import { Button } from "../components/ui/button";
 import { BiArrowBack } from "react-icons/bi";
 import AfterSignInMenu from "../components/AfterSignInMenu";
 
+let metadata = "";
+
 async function layout({ children }) {
   const user = (await currentUser()) || "No user";
   const username = user.username || "No username";
-
+  metadata = {
+    title: `${user.username || "User not found"}'s Portfolio`,
+    description: "Created by Kartikeya Saini",
+  };
   return (
     <ClerkProvider>
       <SignedIn>
@@ -30,3 +35,4 @@ async function layout({ children }) {
 }
 
 export default layout;
+export { metadata };

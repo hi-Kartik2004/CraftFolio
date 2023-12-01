@@ -11,6 +11,12 @@ import { useEffect, useState } from "react";
 import { Skeleton } from "./components/ui/skeleton";
 
 export default function Portfolio({ data }) {
+  const [received, setReceived] = useState(true);
+  useEffect(() => {
+    setReceived(false);
+  }, [data]);
+
+  if (!data) return null;
 
   return (
     <main className="">

@@ -7,11 +7,19 @@ import { Toaster } from "@/app/components/ui/toaster";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/firebase/config";
 import { Skeleton } from "@/app/components/ui/skeleton";
+import UserNotFound from "@/app/components/UserNotFound";
+import NotFoundData from "@/app/utilpages/defaultFirebaseTemplate";
+
+
 
 function page({ params }) {
+
   const [data, setData] = React.useState(null);
+  const [loading, setLoading] = useState(true);
   const { toast } = useToast();
+  const [fetching, setFetching] = useState(false);
   async function getPortfolioDetailsFromFirestore() {
+    setFetching(true);
     try {
       const portFolioCollection = collection(db, "portfolios");
 
@@ -28,6 +36,7 @@ function page({ params }) {
           description:
             "Incorrect Username or the user has not created a portfolio yet!",
         });
+        setData(NotFoundData);
         return;
       }
 
@@ -49,10 +58,18 @@ function page({ params }) {
       });
       throw error;
     }
+
+    setFetching(false);
   }
 
   useEffect(() => {
     getPortfolioDetailsFromFirestore();
+    setLoading(false);
+  }, []);
+
+  useEffect(() => {
+    // if (fetching) return <p>Fetching...</p>;
+    // if (!data) return <UserNotFound />;
   }, []);
 
   if (!params.username) {
@@ -71,3 +88,4 @@ function page({ params }) {
 }
 
 export default page;
+

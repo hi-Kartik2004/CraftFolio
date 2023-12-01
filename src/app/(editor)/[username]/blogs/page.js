@@ -2,6 +2,7 @@
 import Navbar from "@/app/components/Navbar";
 import { Alert, AlertDescription } from "@/app/components/ui/alert";
 import { Badge } from "@/app/components/ui/badge";
+import { Button } from "@/app/components/ui/button";
 import {
   Card,
   CardContent,
@@ -133,6 +134,11 @@ function Blogs({ params }) {
     <div>
       <Toaster />
       <Navbar data={data} />
+      <div className="container my-4">
+        <Button variant={"link"} asChild>
+          <Link href={`/${params.username}`}> &larr; {params.username}</Link>
+        </Button>
+      </div>
       <div className="container my-6 flex flex-wrap justify-around gap-4">
         {userBlogs.map((blog, index) => (
           <motion.div

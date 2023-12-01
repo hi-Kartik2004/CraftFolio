@@ -15,13 +15,14 @@ const menuLinks = [
   },
   { name: "My Messages", link: "/my-messages" },
   { name: "Add Blog", link: "/add-blog" },
+  { name: "Manage Blogs", link: "/manage-blogs" },
 ];
 
 function AfterSignInMenu({ username }) {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <div className="fixed bottom-6 right-6 z-[100]">
-      <div className="relative z-100 hidden md:block">
+      <div className="relative z-100 hidden lg:block">
         <Button
           variant="secondary"
           className="rounded-full"
@@ -81,7 +82,7 @@ function AfterSignInMenu({ username }) {
         )}
       </div>
 
-      <div className="relative md:hidden flex flex-col justify-end items-end">
+      <div className="relative lg:hidden flex flex-col justify-end items-end">
         <div>
           <Button
             variant="secondary"

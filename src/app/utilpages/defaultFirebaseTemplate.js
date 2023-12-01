@@ -50,8 +50,7 @@ const data = {
   WhatsAppLink: "https://wa.me/916360006359",
   SkillsBadge: "Full Stack Developer | 3rd Year Undergrad",
   NavSubtitle: "Check the url for typos",
-  resumeLink:
-    "https://hi-kartik2004.github.io/Portfolio/assets/pdf/Kartikeya_Resume_June_2023.pdf",
+  resumeLink: "/",
   skillsData: [
     {
       progress: 90,
