@@ -176,7 +176,7 @@ function HeroSection({ data, signInInsteadOfResume }) {
                     target="_blank"
                     className="flex items-center gap-2"
                   >
-                    <BsDownload /> Download Resume
+                    <BsDownload /> <p>Download Resume</p>
                   </Link>
                 )}
               </Button>
