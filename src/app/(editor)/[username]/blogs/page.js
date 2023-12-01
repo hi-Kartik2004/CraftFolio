@@ -25,6 +25,7 @@ function Blogs({ params }) {
   const [loading, setLoading] = useState(true);
   const [userBlogs, setUserBlogs] = useState([]);
   const [data, setData] = useState([]);
+  const [fetching, setFetching] = useState(true);
 
   async function getPortfolioDetailsFromFirestore() {
     try {
@@ -64,6 +65,8 @@ function Blogs({ params }) {
       });
       throw error;
     }
+
+    setFetching(false);
   }
 
   useEffect(() => {
@@ -118,7 +121,7 @@ function Blogs({ params }) {
     setLoading(false);
   }, [params.username]);
 
-  if (loading) {
+  if (loading || fetching) {
     return (
       <div className="flex flex-col justify-center items-center container">
         <Skeleton className="w-full h-[10vh] m-4" />
@@ -130,6 +133,7 @@ function Blogs({ params }) {
       </div>
     );
   }
+
   return (
     <div>
       <Toaster />
