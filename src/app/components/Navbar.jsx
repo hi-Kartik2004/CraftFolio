@@ -68,7 +68,13 @@ function Navbar({ showProfile, data, username, showLinks }) {
           } container flex flex-col w-full justify-between p-2`}
         >
           <div className="flex justify-between items-center pb-2">
-            <div className="left flex gap-4 flex-wrap">
+            <div className="flex gap-2">
+              <Link href="/sign-in" className="text-sm">
+                Get Started with creating your portfolio &rarr;
+              </Link>
+            </div>
+
+            <div className="left flex gap-4 flex-wrap items-center">
               <Link href="/my-portfolio" className="text-sm">
                 My Portfolio
               </Link>
@@ -78,14 +84,13 @@ function Navbar({ showProfile, data, username, showLinks }) {
               <Link href="/add-blog" className="text-sm">
                 Add Blog
               </Link>
+              <IoIosClose
+                size={25}
+                onClick={() => {
+                  setDisplay(false);
+                }}
+              />
             </div>
-
-            <IoIosClose
-              size={25}
-              onClick={() => {
-                setDisplay(false);
-              }}
-            />
           </div>
           <Separator />
         </div>
