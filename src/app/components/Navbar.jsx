@@ -39,7 +39,7 @@ import { TbHandClick } from "react-icons/tb";
 //   linkedinId: "https://www.linkedin.com/in/kartikeya-saini-65504b240/",
 // };
 
-function Navbar({ showProfile, data, username, showLinks }) {
+function Navbar({ showProfile, data, showLinks, username }) {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
@@ -75,15 +75,20 @@ function Navbar({ showProfile, data, username, showLinks }) {
             </div>
 
             <div className="left flex gap-4 flex-wrap items-center">
-              {/* <Link href="/my-portfolio" className="text-sm">
-                My Portfolio
-              </Link>
-              <Link href="/my-messages" className="text-sm">
-                My Messages
-              </Link>
-              <Link href="/add-blog" className="text-sm">
-                Add Blog
-              </Link> */}
+              {showLinks && (
+                <>
+                  <Link href="/my-portfolio" className="text-sm">
+                    My Portfolio
+                  </Link>
+                  <Link href="/my-messages" className="text-sm">
+                    My Messages
+                  </Link>
+                  <Link href="/add-blog" className="text-sm">
+                    Add Blog
+                  </Link>
+                </>
+              )}
+
               <IoIosClose
                 size={25}
                 onClick={() => {
