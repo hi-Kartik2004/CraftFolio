@@ -77,7 +77,7 @@ function Navbar({ showProfile, data, showLinks, username }) {
             <div className="left flex gap-4 flex-wrap items-center">
               {showLinks && (
                 <>
-                  <Link href="/my-portfolio" className="text-sm">
+                  {/* <Link href="/my-portfolio" className="text-sm">
                     My Portfolio
                   </Link>
                   <Link href="/my-messages" className="text-sm">
@@ -85,7 +85,7 @@ function Navbar({ showProfile, data, showLinks, username }) {
                   </Link>
                   <Link href="/add-blog" className="text-sm">
                     Add Blog
-                  </Link>
+                  </Link> */}
                 </>
               )}
 

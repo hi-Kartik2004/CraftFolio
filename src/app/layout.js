@@ -3,8 +3,9 @@ import "./globals.css";
 import { ThemeProvider } from "./components/providers/ThemeProvider";
 import data from "./data";
 import Navbar from "./components/Navbar";
-import { ClerkProvider } from "@clerk/nextjs";
+import { ClerkProvider, SignedIn, currentUser } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
+import AfterSignInMenu from "./components/AfterSignInMenu";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,19 +14,26 @@ export const metadata = {
   description: "Created by Kartikeya Saini",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const user = (await currentUser()) || "No user";
+  const username = user.username || "No username";
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body className={inter.className}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <SignedIn>
+              <AfterSignInMenu username={username} />
+            </SignedIn>
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

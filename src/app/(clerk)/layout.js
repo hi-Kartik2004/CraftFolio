@@ -23,14 +23,9 @@ async function layout({ children }) {
     description: "Created by Kartikeya Saini",
   };
   return (
-    <ClerkProvider>
-      <SignedIn>
-        {/* <Navbar showProfile={1} username={username} className="my-4" /> */}
-        <AfterSignInMenu username={username} />
-      </SignedIn>
-
+    <>
       <div>{children}</div>
-    </ClerkProvider>
+    </>
   );
 }
 
