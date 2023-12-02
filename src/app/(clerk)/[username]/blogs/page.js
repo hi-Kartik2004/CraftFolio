@@ -140,7 +140,13 @@ function Blogs({ params }) {
       <Navbar data={data} />
       <div className="container my-4">
         <Button variant={"link"} asChild>
-          <Link href={`/${params.username}`}> &larr; {params.username}</Link>
+          <Link
+            href={`/${params.username == "default" ? "" : params.username}`}
+          >
+            {" "}
+            &larr;{" "}
+            {params.username == "default" ? "home" : "/" + params.username}
+          </Link>
         </Button>
       </div>
       <div className="container my-6 flex flex-wrap justify-around gap-4">
