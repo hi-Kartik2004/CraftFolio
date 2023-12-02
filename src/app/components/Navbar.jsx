@@ -46,6 +46,8 @@ function Navbar({ showProfile, data, showLinks, username }) {
   const [display, setDisplay] = useState(true);
   data = data || userNotFoundData;
 
+  const { user, isLoaded } = useUser();
+
   useEffect(() => {
     data = data || userNotFoundData;
     setLoading(false);
@@ -55,7 +57,7 @@ function Navbar({ showProfile, data, showLinks, username }) {
     setShowCode(!showCode);
   }
 
-  if (loading) {
+  if (loading || !isLoaded) {
     return <CustomSizeSkeleton code=" " />;
   }
 
@@ -67,17 +69,19 @@ function Navbar({ showProfile, data, showLinks, username }) {
             display ? "" : "hidden"
           } container flex flex-col w-full justify-between p-2`}
         >
-          <div className="flex justify-between items-center pb-2">
-            <div className="flex gap-2">
-              <Link href="/sign-up" className="text-sm">
-                Get Started with creating your portfolio &rarr;
-              </Link>
-            </div>
+          <div className="flex justify-between items-center pb-2 w-full">
+            {!user && (
+              <div className="flex gap-2">
+                <Link href="/sign-up" className="text-sm">
+                  <p>Get Started with creating your portfolio &rarr;</p>
+                </Link>
+              </div>
+            )}
 
             <div className="left flex gap-4 flex-wrap items-center">
-              {showLinks && (
+              {showLinks && user && (
                 <>
-                  {/* <Link href="/my-portfolio" className="text-sm">
+                  <Link href="/my-portfolio" className="text-sm">
                     My Portfolio
                   </Link>
                   <Link href="/my-messages" className="text-sm">
@@ -85,17 +89,16 @@ function Navbar({ showProfile, data, showLinks, username }) {
                   </Link>
                   <Link href="/add-blog" className="text-sm">
                     Add Blog
-                  </Link> */}
+                  </Link>
                 </>
               )}
-
-              <IoIosClose
-                size={25}
-                onClick={() => {
-                  setDisplay(false);
-                }}
-              />
             </div>
+            <IoIosClose
+              size={25}
+              onClick={() => {
+                setDisplay(false);
+              }}
+            />
           </div>
           <Separator />
         </div>

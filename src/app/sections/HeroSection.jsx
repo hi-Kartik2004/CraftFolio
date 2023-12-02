@@ -27,6 +27,7 @@ import {
   SheetTrigger,
 } from "../components/ui/sheet";
 import userNotFoundData from "@/app/utilpages/UserNotFoundApi";
+import { useUser } from "@clerk/nextjs";
 
 const code = `function HeroSection() {
   const [loading, setLoading] = useState(true);
@@ -89,7 +90,7 @@ const code = `function HeroSection() {
 function HeroSection({ data, signInInsteadOfResume }) {
   const [loading, setLoading] = useState(true);
   const [showCode, setShowCode] = useState(false);
-
+  const { user, isLoaded } = useUser();
   console.log(data);
 
   useEffect(() => {
@@ -106,7 +107,7 @@ function HeroSection({ data, signInInsteadOfResume }) {
     data = data || userNotFoundData;
   }, [data]);
 
-  if (loading || !data) {
+  if (loading || !data || !isLoaded) {
     return <CustomSizeSkeleton code={code} />;
   }
 
@@ -167,9 +168,18 @@ function HeroSection({ data, signInInsteadOfResume }) {
                 //   className="bg-gradient-to-r from-[#ffa585] to-[#ffeda0]"
               >
                 {signInInsteadOfResume ? (
-                  <Link href="/sign-up" className="flex items-center gap-2">
-                    <BiLogIn /> Get Started
-                  </Link>
+                  !user ? (
+                    <Link href="/sign-up" className="flex items-center gap-2">
+                      <BiLogIn /> Get Started
+                    </Link>
+                  ) : (
+                    <Link
+                      href="/my-portfolio"
+                      className="flex items-center gap-2"
+                    >
+                      <BiLogIn /> My portfolio
+                    </Link>
+                  )
                 ) : (
                   <Link
                     href={data.resumeLink || "NULL"}
@@ -181,9 +191,15 @@ function HeroSection({ data, signInInsteadOfResume }) {
                 )}
               </Button>
               {signInInsteadOfResume ? (
-                <Button asChild variant="outline">
-                  <Link href="/sign-in">Sign in</Link>
-                </Button>
+                !user ? (
+                  <Button asChild variant="outline">
+                    <Link href="/sign-in">Sign in</Link>
+                  </Button>
+                ) : (
+                  <Button asChild variant="outline">
+                    <Link href="/add-blog">Add Blog</Link>
+                  </Button>
+                )
               ) : (
                 <Sheet>
                   <SheetTrigger
