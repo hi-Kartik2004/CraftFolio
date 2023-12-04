@@ -166,7 +166,7 @@ function Blogs({ params }) {
               <CardHeader className="h-full w-full">
                 <div className="mb-2 flex justify-between">
                   <Badge className="bg-right-gradient">
-                    {blog.blog.length} characters
+                    {Math.ceil(blog.blog.length / 500)} minutes read.
                   </Badge>
 
                   <Link href={`/${params.username}/blogs/${blog.id}`}>

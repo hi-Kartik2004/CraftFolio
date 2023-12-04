@@ -72,7 +72,9 @@ function BlogCard({
         <Card className="bg-card xs:w-[350px] w-[280px] h-[400px] hover:bg-primary-foreground duration-500 items-baseline flex-col flex justify-between overflow-hidden">
           <CardHeader className="h-full w-full">
             <div className="mb-2 flex justify-between">
-              <Badge className="bg-right-gradient">{length} characters</Badge>
+              <Badge className="bg-right-gradient">
+                {Math.ceil(length / 500)} minutes read.
+              </Badge>
 
               <Link href={link}>{editIcon && <BiEdit size={25} />}</Link>
 
