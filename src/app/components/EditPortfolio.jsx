@@ -208,7 +208,7 @@ function EditPortfolio() {
               <AlertDialogFooter className="p-0 m-0">
                 <p>
                   Seems like you guys want me to go bankrupt, I am stopping this
-                  service on 4th Dec 2023.
+                  service on 7th Dec 2023.
                 </p>
                 <AlertDialogCancel>Close</AlertDialogCancel>
               </AlertDialogFooter>
