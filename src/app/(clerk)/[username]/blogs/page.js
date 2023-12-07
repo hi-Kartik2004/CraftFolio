@@ -52,10 +52,10 @@ function Blogs({ params }) {
 
       const portFolioCode = portFolioData.portfolioCode;
       console.log("Portfolio Code:", portFolioCode);
-      toast({
-        title: "Data Fetched",
-        description: "Our APIs are working fine!",
-      });
+      // toast({
+      //   title: "Data Fetched",
+      //   description: "Our APIs are working fine!",
+      // });
       setData(portFolioCode);
     } catch (error) {
       console.error("Error getting blog:", error);
