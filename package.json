@@ -41,6 +41,7 @@
     "@radix-ui/react-tooltip": "^1.0.7",
     "@tanstack/react-table": "^8.10.7",
     "@uiw/react-md-editor": "^3.25.6",
+    "@vercel/speed-insights": "^1.0.1",
     "axios": "^1.6.1",
     "babel": "^6.23.0",
     "class-variance-authority": "^0.7.0",

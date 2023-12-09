@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import { ClerkProvider, SignedIn, currentUser } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import AfterSignInMenu from "./components/AfterSignInMenu";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,6 +32,7 @@ export default async function RootLayout({ children }) {
               <AfterSignInMenu username={username} />
             </SignedIn>
             {children}
+            <SpeedInsights />
           </ThemeProvider>
         </body>
       </html>
