@@ -11,6 +11,7 @@ import {
 import { TabsContent } from "../components/ui/tabs";
 import { Badge } from "./ui/badge";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 function ProjectTab({ projectDetails, value }) {
   return (
@@ -83,7 +84,7 @@ function ProjectTab({ projectDetails, value }) {
                       <img
                         src={project.projectImage}
                         alt={project.projectName}
-                        className="bg-secondary-foreground rounded-md h-[200px] w-full object-cover object-top"
+                        className="bg-secondary-foreground rounded-md w-full object-cover object-top"
                       />
                     </CardContent>
                   </Card>
