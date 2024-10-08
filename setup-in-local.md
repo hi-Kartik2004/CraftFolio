@@ -29,7 +29,7 @@ npm install
 Run the above command to install dependencies, in the project root folder.
 
 ### Step 6 (Setting up Authentication using Clerk)
-Create your account on ![clerk](https://dashboard.clerk.com/sign-in?sign_in_force_redirect_url=https%3A%2F%2Fdashboard.clerk.com&redirect_url=https%3A%2F%2Fclerk.com%2F)
+Create your account on [clerk](https://dashboard.clerk.com/sign-in?sign_in_force_redirect_url=https%3A%2F%2Fdashboard.clerk.com&redirect_url=https%3A%2F%2Fclerk.com%2F)
 - setup your project.
 - Copy your clerk auth api keys.
 ```bash
@@ -60,7 +60,7 @@ NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/my-portfolio
 NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/my-portfolio
 ```
 - Copy and paste them exactly in your `.env.local` file.
-- This is how your .env.local file should look like after everthing is done, ![Sample ENV file](https://github.com/hi-Kartik2004/CraftFolio/blob/master/.env_sample)
+- This is how your .env.local file should look like after everthing is done, [Sample ENV file](https://github.com/hi-Kartik2004/CraftFolio/blob/master/.env_sample)
 
 ### Step 9 (Spin/run the app)
 Inorder to spin/run the application locally, you need to run the following command in your terminal.
