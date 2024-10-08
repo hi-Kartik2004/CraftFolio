@@ -7,7 +7,7 @@ Proceed by accepting the default repo name.
 `This will create a copy of the project in your account.`
 
 ### Step 2
-Visit the forked repository, it would should ideally by at `github.com/<your github username>/<forked repo name, mostly craftfolio>`
+Visit the forked repository, it would should be at `github.com/<your github username>/<forked repo name, mostly craftfolio>`
 
 ### Step 3
 Run the following command in your git bash/terminal 
